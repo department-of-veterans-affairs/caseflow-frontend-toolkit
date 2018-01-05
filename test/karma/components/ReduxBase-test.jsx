@@ -9,6 +9,8 @@ const initialState = {
   key: 'initial value'
 };
 
+console.log('fak');
+
 const ACTION_NAME = 'ACTION_NAME';
 
 const reducer = (state, action) => {

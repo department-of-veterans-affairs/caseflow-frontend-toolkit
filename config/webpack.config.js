@@ -1,17 +1,18 @@
 const webpack = require('webpack');
 const path = require('path');
+const _ = require('lodash');
 
-module.exports = (callingDirname) => {
+module.exports = (callingDirname, entry) => {
   // eslint-disable-next-line no-process-env
   const devBuild = process.env.NODE_ENV !== 'production';
 
   const config = {
-    entry: [
+    entry: _.compact([
       'es5-shim/es5-shim',
       'es5-shim/es5-sham',
       'babel-polyfill',
-      './app/index'
-    ],
+      entry
+    ]),
 
     output: {
       filename: 'webpack-bundle.js',

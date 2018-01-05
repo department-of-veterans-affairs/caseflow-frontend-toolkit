@@ -37,6 +37,6 @@ module.exports = function(config) {
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': true
       }
-    }, webpackConfig)
+    }, webpackConfig(__dirname))
   });
 };
