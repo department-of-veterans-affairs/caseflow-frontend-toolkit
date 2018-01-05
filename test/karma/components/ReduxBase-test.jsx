@@ -51,7 +51,7 @@ const ConnectedReduxDisplay = connect(
 
 class TestHarness extends React.PureComponent {
   render() {
-    return <ReduxBase initialState={initialState} reducer={reducer}>
+    return <ReduxBase initialState={initialState} reducer={reducer} analyticsMiddlewareArgs={['default-category']}>
       <ConnectedReduxDisplay />
     </ReduxBase>;
   }
@@ -84,6 +84,7 @@ describe('ReduxBase', () => {
     return wait().then(() => expect(analyticsWrapper).to.have.callCount(0));
   });
 
+  /* eslint-disable no-undefined */
   describe('analytics', () => {
 
     const dispatchAnalyticsEvent = (analytics, delayMs = 100) => {
@@ -96,9 +97,10 @@ describe('ReduxBase', () => {
     };
 
     it('fires an event with default analytics', () =>
-      dispatchAnalyticsEvent(true).then(() =>
+      dispatchAnalyticsEvent(true).then(() => {
         expect(analyticsWrapper).to.have.callCount(1)
-      )
+        expect(analyticsWrapper).to.have.been.calledWithExactly('default-category', 'UNRECOGNIZED_ACTION', undefined);
+      })
     );
   });
 });
