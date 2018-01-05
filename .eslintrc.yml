@@ -1,0 +1,2 @@
+extends:
+  - '@department-of-veterans-affairs/eslint-config-appeals'

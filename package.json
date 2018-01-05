@@ -11,8 +11,17 @@
     "react": "^16.2.0",
     "webpack": "^3.10.0"
   },
+  "scripts": {
+    "test": "yarn run lint",
+    "lint": "eslint . --no-ignore --ext .jsx --ext .js --max-warnings 0 --cache",
+    "lint:fix": "yarn run lint --fix"
+  },
   "dependencies": {
     "lodash": "^4.17.4",
     "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "@department-of-veterans-affairs/eslint-config-appeals": "^1.0.2",
+    "eslint": "^4.14.0"
   }
 }

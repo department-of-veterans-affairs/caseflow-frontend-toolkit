@@ -53,4 +53,4 @@ module.exports = (callingDirname) => {
   }
 
   return config;
-}
+};
