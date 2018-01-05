@@ -11,11 +11,20 @@ export default class ReduxBase extends React.PureComponent {
     // eslint-disable-next-line no-underscore-dangle
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+    const middleware = [thunk, getReduxAnalyticsMiddleware(...this.props.analyticsMiddlewareArgs)];
+
+    // Some middleware should be skipped in test scenarios. Normally I wouldn't leave a comment
+    // like this, but we had a bug where we accidentally added essential middleware here and it  
+    // was super hard to track down! :)
+    if (process.env.NODE_ENV !== 'test') {
+      middleware.push(perfLogger);
+    }
+
     const store = createStore(
       this.props.reducer,
       this.props.initialState,
       composeEnhancers(
-        applyMiddleware(thunk, perfLogger, getReduxAnalyticsMiddleware(...this.props.analyticsMiddlewareArgs)),
+        applyMiddleware(...middleware),
         ...this.props.enhancers
       )
     );

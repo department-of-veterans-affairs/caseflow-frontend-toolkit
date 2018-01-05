@@ -30,6 +30,13 @@ class ReduxDisplay extends React.PureComponent {
     type: ACTION_NAME
   })
 
+  dispatchActionWithAnalytics = (analytics) => this.props.dispatch({
+    type: 'UNRECOGNIZED_ACTION',
+    meta: {
+      analytics
+    }
+  })
+
   render() {
     return [
       <span key="display" id={keyId}>{this.props.reduxKey}</span>,
@@ -50,17 +57,19 @@ class TestHarness extends React.PureComponent {
   }
 }
 
-describe('ReduxBase', () => {
+const wait = (timeoutMs) => new Promise((resolve) => setTimeout(resolve, timeoutMs));
 
+describe('ReduxBase', () => {
   let analyticsWrapper;
 
   beforeEach(() => {
-    analyticsWrapper = sinon.spy(window, 'analyticsEvent')
-  })
+    analyticsWrapper = sinon.spy(window, 'analyticsEvent');
+  });
 
   afterEach(() => {
     analyticsWrapper.restore();
-  })
+    analyticsWrapper = null;
+  });
 
   it('creates a working Redux environment', () => {
     const wrapper = mount(<TestHarness />);
@@ -72,6 +81,24 @@ describe('ReduxBase', () => {
 
     expect(wrapper.find(`#${keyId}`).text()).to.equal('updated value');
 
-    expect(analyticsWrapper).to.have.callCount(0);
+    return wait().then(() => expect(analyticsWrapper).to.have.callCount(0));
+  });
+
+  describe('analytics', () => {
+
+    const dispatchAnalyticsEvent = (analytics, delayMs = 100) => {
+      const wrapper = mount(<TestHarness />);
+
+      wrapper.find(ReduxDisplay).instance().
+        dispatchActionWithAnalytics(analytics);
+
+      return new Promise((resolve) => setTimeout(resolve, delayMs));
+    };
+
+    it('fires an event with default analytics', () =>
+      dispatchAnalyticsEvent(true).then(() =>
+        expect(analyticsWrapper).to.have.callCount(1)
+      )
+    );
   });
 });
