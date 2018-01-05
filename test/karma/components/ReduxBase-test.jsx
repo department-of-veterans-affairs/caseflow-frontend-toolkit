@@ -4,10 +4,10 @@ import { mount } from 'enzyme';
 import { connect } from 'react-redux';
 
 import ReduxBase from '../../../components/ReduxBase';
-console.log(ReduxBase, 'reduxbase')
+console.log(ReduxBase, 'reduxbase');
 
 const initialState = {
-  key: 'initial value'
+  reduxKey: 'initial value'
 };
 
 const ACTION_NAME = 'ACTION_NAME';
@@ -15,17 +15,17 @@ const ACTION_NAME = 'ACTION_NAME';
 const reducer = (state, action) => {
   switch (action.type) {
   case ACTION_NAME:
-    return { key: 'updated value' };
+    return { reduxKey: 'updated value' };
   default:
     return state;
   }
 };
 
-const keyId = 'redux-key'; 
+const keyId = 'redux-key';
 
 class ReduxDisplay extends React.PureComponent {
   render() {
-    return <span id={keyId}>{this.props.key}</span>;
+    return <span id={keyId}>{this.props.reduxKey}</span>;
   }
 }
 
