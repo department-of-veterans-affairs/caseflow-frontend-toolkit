@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import { connect } from 'react-redux';
-
+import uuid from 'uuid';
 import ReduxBase from '../../../components/ReduxBase';
 
 import sinon from 'sinon';
@@ -31,8 +31,8 @@ class ReduxDisplay extends React.PureComponent {
     type: ACTION_NAME
   })
 
-  dispatchActionWithAnalytics = (analytics) => this.props.dispatch({
-    type: 'UNRECOGNIZED_ACTION',
+  dispatchActionWithAnalytics = (analytics, type) => this.props.dispatch({
+    type: type || `UNRECOGNIZED_ACTION_${uuid.v4()}`,
     meta: {
       analytics
     }
@@ -87,18 +87,18 @@ describe('ReduxBase', () => {
   /* eslint-disable no-undefined */
   describe('analytics', () => {
 
-    const dispatchAnalyticsEvent = (analytics, delayMs = 100) => {
+    const dispatchAnalyticsEvent = (analytics, actionType, delayMs = 100) => {
       const wrapper = mount(<TestHarness />);
 
       wrapper.find(ReduxDisplay).instance().
-        dispatchActionWithAnalytics(analytics);
+        dispatchActionWithAnalytics(analytics, actionType);
 
       return new Promise((resolve) => setTimeout(resolve, delayMs));
     };
 
     it('fires an event with default analytics', () =>
-      dispatchAnalyticsEvent(true).then(() => {
-        expect(analyticsWrapper).to.have.callCount(1)
+      dispatchAnalyticsEvent(true, 'UNRECOGNIZED_ACTION').then(() => {
+        expect(analyticsWrapper).to.have.callCount(1);
         expect(analyticsWrapper).to.have.been.calledWithExactly('default-category', 'UNRECOGNIZED_ACTION', undefined);
       })
     );
