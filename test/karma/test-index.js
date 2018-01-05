@@ -1,7 +1,10 @@
 import enzyme from 'enzyme';
 import EnzymeAdapterReact16 from 'enzyme-adapter-react-16';
-
 enzyme.configure({ adapter: new EnzymeAdapterReact16() });
+
+import chai from 'chai';
+import sinonChai from 'sinon-chai';
+chai.use(sinonChai);
 
 // TODO let's DRY this out with Caseflow.
 // eslint-disable-next-line no-empty-function

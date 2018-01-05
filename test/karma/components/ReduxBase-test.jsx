@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import ReduxBase from '../../../components/ReduxBase';
 
+import sinon from 'sinon';
+
 const initialState = {
   reduxKey: 'initial value'
 };
@@ -49,6 +51,17 @@ class TestHarness extends React.PureComponent {
 }
 
 describe('ReduxBase', () => {
+
+  let analyticsWrapper;
+
+  beforeEach(() => {
+    analyticsWrapper = sinon.spy(window, 'analyticsEvent')
+  })
+
+  afterEach(() => {
+    analyticsWrapper.restore();
+  })
+
   it('creates a working Redux environment', () => {
     const wrapper = mount(<TestHarness />);
 
@@ -58,5 +71,7 @@ describe('ReduxBase', () => {
     wrapper.update();
 
     expect(wrapper.find(`#${keyId}`).text()).to.equal('updated value');
+
+    expect(analyticsWrapper).to.have.callCount(0);
   });
 });
