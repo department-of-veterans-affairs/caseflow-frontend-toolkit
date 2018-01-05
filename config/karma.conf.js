@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const webpackConfig = require('./webpack.config.js');
+const webpackConfig = require('./getWebpackConfig')(__dirname);
 
 const files = [
   'test/karma/test-index.js'
@@ -37,6 +37,6 @@ module.exports = function(config) {
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': true
       }
-    }, webpackConfig(__dirname))
+    }, webpackConfig)
   });
 };

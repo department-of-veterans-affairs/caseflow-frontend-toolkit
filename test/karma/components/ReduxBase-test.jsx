@@ -4,12 +4,11 @@ import { mount } from 'enzyme';
 import { connect } from 'react-redux';
 
 import ReduxBase from '../../../components/ReduxBase';
+console.log(ReduxBase, 'reduxbase')
 
 const initialState = {
   key: 'initial value'
 };
-
-console.log('fak');
 
 const ACTION_NAME = 'ACTION_NAME';
 
@@ -22,7 +21,7 @@ const reducer = (state, action) => {
   }
 };
 
-const keyId = 'redux-key';
+const keyId = 'redux-key'; 
 
 class ReduxDisplay extends React.PureComponent {
   render() {
@@ -44,8 +43,8 @@ class TestHarness extends React.PureComponent {
 
 describe('ReduxBase', () => {
   it('creates a working Redux environment', () => {
-    const elem = mount(TestHarness);
+    const wrapper = mount(<TestHarness />);
 
-    expect(elem.find(`#${keyId}`)).to.equal('initial value');
+    expect(wrapper.find(`#${keyId}`).text()).to.equal('initial value');
   });
 });
