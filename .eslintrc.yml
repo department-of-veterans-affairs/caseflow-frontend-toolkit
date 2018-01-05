@@ -1,2 +1,5 @@
 extends:
   - '@department-of-veterans-affairs/eslint-config-appeals'
+
+env:
+  browser: true
