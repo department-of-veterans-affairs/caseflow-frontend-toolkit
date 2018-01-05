@@ -14,7 +14,6 @@ const initialState = {
 const ACTION_NAME = 'ACTION_NAME';
 
 const reducer = (state, action) => {
-  console.log(action)
   switch (action.type) {
   case ACTION_NAME:
     return { reduxKey: 'updated value' };
@@ -93,7 +92,7 @@ describe('ReduxBase', () => {
       wrapper.find(ReduxDisplay).instance().
         dispatchActionWithAnalytics(analytics, actionType);
 
-      return new Promise((resolve) => setTimeout(resolve, delayMs));
+      return wait(delayMs);
     };
 
     it('fires an event with default analytics', () =>
@@ -109,9 +108,27 @@ describe('ReduxBase', () => {
         action: 'overridden-action',
         label: 'overriden-label'
       }).then(() => {
-        expect(analyticsWrapper).to.have.callCount(1)
-        expect(analyticsWrapper).to.have.been.calledWithExactly('overridden-category', 'overridden-action', 'overriden-label');
+        expect(analyticsWrapper).to.have.callCount(1);
+        expect(analyticsWrapper).to.have.been.calledWithExactly(
+          'overridden-category', 'overridden-action', 'overriden-label'
+        );
       })
     );
+
+    it('debounces events', () => {
+      const debounceMs = 500;
+      const analytics = {
+        debounceMs
+      };
+      const actionType = 'UNRECOGNIZED_ACTION_DEBOUNCE';
+
+      dispatchAnalyticsEvent(analytics, actionType);
+      dispatchAnalyticsEvent(analytics, actionType);
+      dispatchAnalyticsEvent(analytics, actionType);
+
+      return dispatchAnalyticsEvent(analytics, actionType, debounceMs * 1.5).then(() => {
+        expect(analyticsWrapper).to.have.callCount(1);
+      });
+    });
   });
 });

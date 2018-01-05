@@ -14,8 +14,9 @@ export default class ReduxBase extends React.PureComponent {
     const middleware = [thunk, getReduxAnalyticsMiddleware(...this.props.analyticsMiddlewareArgs)];
 
     // Some middleware should be skipped in test scenarios. Normally I wouldn't leave a comment
-    // like this, but we had a bug where we accidentally added essential middleware here and it  
+    // like this, but we had a bug where we accidentally added essential middleware here and it
     // was super hard to track down! :)
+    // eslint-disable-next-line no-process-env
     if (process.env.NODE_ENV !== 'test') {
       middleware.push(perfLogger);
     }
