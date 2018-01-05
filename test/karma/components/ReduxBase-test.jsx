@@ -115,6 +115,25 @@ describe('ReduxBase', () => {
       })
     );
 
+    it('accepts an action that generates config with a function', () =>
+      dispatchAnalyticsEvent((analyticsEvent, defaultCategory, actionType) => {
+        expect(actionType).to.equal('ACTION_WITH_FUNCTION_ANALYTICS');
+        expect(defaultCategory).to.equal('default-category');
+        expect(analyticsEvent).to.equal(window.analyticsEvent);
+      }, 'ACTION_WITH_FUNCTION_ANALYTICS')
+    );
+
+    it('accepts an action that generates label with a function', () =>
+      dispatchAnalyticsEvent({
+        label: (state) => `value: ${state.reduxKey}`
+      }, 'UNRECOGNIZED_ACTION').then(() => {
+        expect(analyticsWrapper).to.have.callCount(1);
+        expect(analyticsWrapper).to.have.been.calledWithExactly(
+          'default-category', 'UNRECOGNIZED_ACTION', 'value: initial value'
+        );
+      })
+    );
+
     it('debounces events', () => {
       const debounceMs = 500;
       const analytics = {
