@@ -4,7 +4,6 @@ import { mount } from 'enzyme';
 import { connect } from 'react-redux';
 
 import ReduxBase from '../../../components/ReduxBase';
-console.log(ReduxBase, 'reduxbase');
 
 const initialState = {
   reduxKey: 'initial value'
@@ -22,10 +21,18 @@ const reducer = (state, action) => {
 };
 
 const keyId = 'redux-key';
+const buttonId = 'button-id';
 
 class ReduxDisplay extends React.PureComponent {
+  handleUpdate = () => this.props.dispatch({
+    type: ACTION_NAME
+  })
+
   render() {
-    return <span id={keyId}>{this.props.reduxKey}</span>;
+    return [
+      <span key="display" id={keyId}>{this.props.reduxKey}</span>,
+      <button key="update" id={buttonId} onClick={this.handleUpdate}>Update Redux value</button>
+    ];
   }
 }
 
@@ -46,5 +53,10 @@ describe('ReduxBase', () => {
     const wrapper = mount(<TestHarness />);
 
     expect(wrapper.find(`#${keyId}`).text()).to.equal('initial value');
+
+    wrapper.find(`#${buttonId}`).simulate('click');
+    wrapper.update();
+
+    expect(wrapper.find(`#${keyId}`).text()).to.equal('updated value');
   });
 });
