@@ -48,6 +48,8 @@ export const getReduxAnalyticsMiddleware = (defaultCategory) => (store) => (next
         const category = meta.analytics.category || defaultCategory;
         const actionName = meta.analytics.action || action.type;
 
+        console.log('category', category)
+
         debounceFns[action.type] = _.debounce(
           (eventLabel) => window.analyticsEvent(category, actionName, eventLabel),
           meta.analytics.debounceMs || 0
