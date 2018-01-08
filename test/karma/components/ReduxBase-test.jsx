@@ -96,9 +96,11 @@ describe('ReduxBase', () => {
     };
 
     it('fires an event with default analytics', () =>
-      dispatchAnalyticsEvent(true, 'UNRECOGNIZED_ACTION').then(() => {
+      dispatchAnalyticsEvent(true, 'ACTION_WITH_DEFAULT_ANALYTICS').then(() => {
         expect(analyticsWrapper).to.have.callCount(1);
-        expect(analyticsWrapper).to.have.been.calledWithExactly('default-category', 'UNRECOGNIZED_ACTION', undefined);
+        expect(analyticsWrapper).to.have.been.calledWithExactly(
+          'default-category', 'ACTION_WITH_DEFAULT_ANALYTICS', undefined
+        );
       })
     );
 
