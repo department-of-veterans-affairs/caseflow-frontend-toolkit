@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const _ = require('lodash');
+const packageJson = require('../package');
 
 module.exports = (callingDirname, entry) => {
   // eslint-disable-next-line no-process-env
@@ -40,7 +41,7 @@ module.exports = (callingDirname, entry) => {
         {
           test: /\.jsx?$/,
           loader: 'babel-loader',
-          exclude: /node_modules/
+          exclude: new RegExp(`node_modules/(?!${packageJson.name})`)
         }
       ]
     }

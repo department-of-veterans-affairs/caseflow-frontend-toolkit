@@ -5,7 +5,6 @@ const files = [
   'test/karma/test-index.js'
 ];
 
-// When the test runs, it says "no captured browser". I'm not sure why.
 module.exports = function(config) {
   config.set({
     browsers: ['Chrome'],
