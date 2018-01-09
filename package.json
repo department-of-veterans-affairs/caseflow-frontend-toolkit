@@ -1,5 +1,5 @@
 {
-  "name": "appeals-frontend-toolkit",
+  "name": "@department-of-veterans-affairs/appeals-frontend-toolkit",
   "version": "1.0.0",
   "description": "Build tools and React components for the Appeals frontends",
   "main": "index.js",
