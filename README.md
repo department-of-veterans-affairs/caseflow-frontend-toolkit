@@ -11,6 +11,14 @@ $ yarn add @department-of-veterans-affairs/appeals-frontend-toolkit
 
 See how other libraries, like [Caseflow](https://github.com/department-of-veterans-affairs/caseflow/), are using this tool.
 
+### Component Assumptions
+The components make assumptions, like:
+
+* Caseflow Commons CSS will be on the page.
+* Global analytics functions will be available.
+
+These assumptions are not explicitly documented, so you'll have to read the code. :)
+
 ### Dependencies
 This module has many peer dependencies. It relies on contracts with a variety of modules in the Webpack, React, and Karma ecosystems. Unfortunately, yarn and npm's support for `peerDependencies` is weak. For instance, adding peer dependencies can cause yarn to [log warnings for no reason](https://github.com/yarnpkg/yarn/issues/4850). This means that you'll have to just look in `package.json` for what seems relevant, and manually add it to your consumer project.
 
