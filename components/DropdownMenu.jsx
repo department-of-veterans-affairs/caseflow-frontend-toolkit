@@ -44,12 +44,12 @@ export default class DropdownMenu extends React.Component {
   };
 
   render() {
-    let {
+    const {
       label,
       options
     } = this.props;
 
-    let dropdownMenuList = () => {
+    const dropdownMenuList = () => {
       return <ul className="cf-dropdown-menu active"
         aria-labelledby="menu-trigger">
         {options.map((option, index) =>

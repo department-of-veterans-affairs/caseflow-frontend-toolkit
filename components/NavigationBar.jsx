@@ -73,7 +73,7 @@ export default class NavigationBar extends React.Component {
 
 NavigationBar.defaultProps = {
   extraBanner: null
-}
+};
 
 NavigationBar.propTypes = {
   dropdownUrls: PropTypes.arrayOf(PropTypes.shape({
