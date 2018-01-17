@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import DropdownMenu from './DropdownMenu';
 import Link from './Link';
 import Breadcrumbs from './Breadcrumbs';
-import PerformanceDegradationBanner from './PerformanceDegradationBanner';
 import CaseflowLogo from './CaseflowLogo';
 import { css } from 'glamor';
 import { COLORS } from '../util/StyleConstants';
@@ -65,11 +64,15 @@ export default class NavigationBar extends React.Component {
           </span>
         </div>
       </div>
-      <PerformanceDegradationBanner />
+      {this.props.extraBanner}
     </header>
     {this.props.children}
     </div>;
   }
+}
+
+NavigationBar.defaultProps = {
+  extraBanner: null
 }
 
 NavigationBar.propTypes = {
@@ -78,6 +81,7 @@ NavigationBar.propTypes = {
     link: PropTypes.string.isRequired,
     target: PropTypes.string
   })),
+  extraBanner: PropTypes.element,
   defaultUrl: PropTypes.string.isRequired,
   userDisplayName: PropTypes.string.isRequired,
   appName: PropTypes.string.isRequired
