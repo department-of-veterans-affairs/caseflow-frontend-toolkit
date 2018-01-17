@@ -12,8 +12,10 @@
     "lint:fix": "yarn run lint --fix"
   },
   "dependencies": {
+    "glamor": "^2.20.40",
     "lodash": "^4.17.4",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-perf-middleware": "^1.2.2",
     "redux-thunk": "^2.2.0"
