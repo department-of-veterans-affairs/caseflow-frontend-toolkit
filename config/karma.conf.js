@@ -5,10 +5,15 @@ const files = [
   'test/karma/test-index.js'
 ];
 
+const filesPreprocessorObject = _(files).
+  map((file) => [file, ['webpack']]).
+  fromPairs().
+  value();
+
 module.exports = function(config) {
   config.set({
     browsers: ['Chrome'],
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'snapshot', 'mocha-snapshot'],
     reporters: ['mocha'],
     singleRun: true,
 
@@ -17,16 +22,25 @@ module.exports = function(config) {
       level: ''
     },
 
-    files,
+    files: [
+      '**/__snapshots__/**/*.md',
+      ...files
+    ],
 
     mochaReporter: {
       showDiff: true
     },
 
-    preprocessors: _(files).
-      map((file) => [file, ['webpack']]).
-      fromPairs().
-      value(),
+    preprocessors: _.merge({
+      '**/__snapshots__/**/*.md': ['snapshot']
+    }, filesPreprocessorObject),
+
+    snapshot: {
+      /* eslint-disable no-process-env */
+      update: Boolean(process.env.UPDATE),
+      prune: Boolean(process.env.PRUNE)
+      /* eslint-enable no-process-env */
+    },
 
     webpack: _.merge({
       watch: true,

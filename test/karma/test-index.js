@@ -6,6 +6,9 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
 
+import { matchSnapshot } from 'chai-karma-snapshot';
+chai.use(matchSnapshot);
+
 import '../../test-export/bootstrap';
 
 // require all modules ending in "-test" from the
