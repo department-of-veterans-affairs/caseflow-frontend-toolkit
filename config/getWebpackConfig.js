@@ -20,10 +20,10 @@ module.exports = (callingDirname, entry) => {
       path: path.join(callingDirname, '../app/assets/webpack')
     },
 
-    plugins: [
-      new webpack.optimize.ModuleConcatenationPlugin(),
+    plugins: _.compact([
+      devBuild ? null : new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.EnvironmentPlugin({ NODE_ENV: 'development' })
-    ],
+    ]),
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {
