@@ -1,9 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from './Link';
+import { css } from 'glamor';
+import { COLORS } from '../util/StyleConstants';
 
 // Lots of this class are taken from
 // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
+
+const dropdownMenuStyles = css({
+  top: '3em',
+  width: 'auto',
+  minWidth: '13em',
+  display: 'block'
+})
+
+const dropdownWrapperStyles = css({
+    '& a': {
+      color: COLORS.GREY_MEDIUM,
+    },
+  
+    '& li a:hover': {
+      color: COLORS.WHITE
+    }
+})
 
 export default class DropdownMenu extends React.Component {
   constructor(props) {
@@ -51,6 +70,7 @@ export default class DropdownMenu extends React.Component {
 
     const dropdownMenuList = () => {
       return <ul className="cf-dropdown-menu active"
+        {...dropdownMenuStyles}
         aria-labelledby="menu-trigger">
         {options.map((option, index) =>
           <li key={index}>
@@ -63,7 +83,7 @@ export default class DropdownMenu extends React.Component {
       </ul>;
     };
 
-    return <div ref={this.setWrapperRef} className="cf-dropdown">
+    return <div ref={this.setWrapperRef} className="cf-dropdown" {...dropdownWrapperStyles}>
       <a href="#dropdown-menu"
         className="cf-dropdown-trigger"
         id="menu-trigger"
