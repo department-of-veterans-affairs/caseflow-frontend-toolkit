@@ -62,7 +62,7 @@ export default class NavigationBar extends React.Component {
               </Breadcrumbs>
               {topMessage && <h2 className="cf-application-title"> &nbsp; | &nbsp; {topMessage}</h2>}
             </span>
-            <span className="cf-dropdown cf-push-right">
+            <span className="cf-push-right">
               <DropdownMenu
                 analyticsTitle={`${appName} Navbar`}
                 options={dropdownUrls}

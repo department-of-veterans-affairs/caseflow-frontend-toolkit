@@ -1,3 +1,5 @@
+import { css } from 'glamor';
+
 export const COLORS = {
   PRIMARY_ALT: '#02bfe7',
 
@@ -25,3 +27,9 @@ export const LOGO_COLORS = {
     OVERLAP: 'rgb(72, 144, 0)'
   }
 };
+
+export const STYLES = {
+  APPLICATION_TITLE: css({
+    color: COLORS.GREY_MEDIUM
+  })
+}

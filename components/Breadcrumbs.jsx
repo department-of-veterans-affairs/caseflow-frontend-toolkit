@@ -2,12 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from './Link';
 import { Route } from 'react-router-dom';
-import { css } from 'glamor';
-import { COLORS } from '../util/StyleConstants';
-
-const applicationTitleStyles = css({
-  color: COLORS.GREY_MEDIUM
-});
+import { STYLES } from '../util/StyleConstants';
 
 const getElementsWithBreadcrumbs = (element) => {
   if (!element.props.children) {
@@ -33,7 +28,7 @@ export default class Breadcrumbs extends React.Component {
   render() {
     const breadcrumbComponents = getElementsWithBreadcrumbs(this).map(
       (route) => <Route key={route.breadcrumb} path={route.path} render={
-        (props) => <span {...applicationTitleStyles}>
+        (props) => <span {...STYLES.APPLICATION_TITLE}>
           <h2 id="page-title" className="cf-application-title">&nbsp; > &nbsp;</h2>
           <Link id="cf-logo-link" to={props.match.url}>
             <h2 id="page-title" className="cf-application-title">{route.breadcrumb}</h2>
