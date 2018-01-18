@@ -1,6 +1,7 @@
 export const COLORS = {
   PRIMARY_ALT: '#02bfe7',
 
+  GREY_MEDIUM: '#757575',
   GREY_DARK: '#323a45'
 };
 
