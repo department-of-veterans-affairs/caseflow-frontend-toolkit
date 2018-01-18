@@ -24,6 +24,12 @@ const dropdownWrapperStyles = css({
     }
 })
 
+const triggerStyles = css({
+  '::after': {
+    backgroundSize: '.75em'
+  }
+})
+
 export default class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -85,6 +91,7 @@ export default class DropdownMenu extends React.Component {
 
     return <div ref={this.setWrapperRef} className="cf-dropdown" {...dropdownWrapperStyles}>
       <a href="#dropdown-menu"
+        {...triggerStyles}
         className="cf-dropdown-trigger"
         id="menu-trigger"
         onClick={this.onMenuClick}>
