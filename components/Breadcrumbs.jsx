@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import Link from './Link';
 import { Route } from 'react-router-dom';
 import { css } from 'glamor';
-import {COLORS} from '../util/StyleConstants';
+import { COLORS } from '../util/StyleConstants';
 
 const applicationTitleStyles = css({
   color: COLORS.GREY_MEDIUM
-})
+});
 
 const getElementsWithBreadcrumbs = (element) => {
   if (!element.props.children) {

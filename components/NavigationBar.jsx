@@ -7,6 +7,25 @@ import CaseflowLogo from './CaseflowLogo';
 import { css } from 'glamor';
 import { COLORS } from '../util/StyleConstants';
 
+const lineHeight = { lineHeight: '4em' };
+
+const h1Styling = css({
+  margin: 0,
+  display: 'inline-block',
+  fontSize: '1.7rem',
+  ...lineHeight,
+  '& > a': {
+    color: COLORS.GREY_DARK,
+    paddingLeft: '.3em'
+  }
+});
+
+const pushLeftStyling = css({
+  display: 'flex',
+  alignItems: 'center',
+  ...lineHeight
+});
+
 export default class NavigationBar extends React.Component {
   render() {
     const {
@@ -15,58 +34,48 @@ export default class NavigationBar extends React.Component {
       dropdownUrls,
       topMessage,
       logoProps,
+      wideApp,
       userDisplayName
     } = this.props;
 
-    const lineHeight = { lineHeight: '4em' };
-
-    const h1Styling = css({
-      margin: 0,
-      display: 'inline-block',
-      fontSize: '1.7rem',
-      ...lineHeight,
-      '& > a': {
-        color: COLORS.GREY_DARK,
-        paddingLeft: '.3em'
-      }
+    const widthVW = wideApp ? 85 : 75;
+    const appWidthStyling = css({
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      width: `${widthVW}vw`
     });
 
-    const pushLeftStyling = css({
-      display: 'flex',
-      alignItems: 'center',
-      ...lineHeight
-    });
-
-    return <div><header className="cf-app-header">
-      <div>
-        <div className="cf-app-width">
-          <span className="cf-push-left" {...pushLeftStyling}>
-            <CaseflowLogo {...logoProps} />
-            <h1 {...h1Styling}>
-              <Link id="cf-logo-link" to={defaultUrl}>
+    return <div>
+      <header>
+        <div>
+          <div {...appWidthStyling}>
+            <span className="cf-push-left" {...pushLeftStyling}>
+              <CaseflowLogo {...logoProps} />
+              <h1 {...h1Styling}>
+                <Link id="cf-logo-link" to={defaultUrl}>
                   Caseflow
-                <h2 id="page-title" className="cf-application-title">&nbsp; {appName}</h2>
-              </Link>
-            </h1>
-            <Breadcrumbs>
-              {this.props.children}
-            </Breadcrumbs>
-            {topMessage && <h2 className="cf-application-title"> &nbsp; | &nbsp; {topMessage}</h2>}
-          </span>
-          <span className="cf-dropdown cf-push-right">
-            <DropdownMenu
-              analyticsTitle={`${appName} Navbar`}
-              options={dropdownUrls}
-              onClick={this.handleMenuClick}
-              onBlur={this.handleOnBlur}
-              label={userDisplayName}
-            />
-          </span>
+                  <h2 id="page-title" className="cf-application-title">&nbsp; {appName}</h2>
+                </Link>
+              </h1>
+              <Breadcrumbs>
+                {this.props.children}
+              </Breadcrumbs>
+              {topMessage && <h2 className="cf-application-title"> &nbsp; | &nbsp; {topMessage}</h2>}
+            </span>
+            <span className="cf-dropdown cf-push-right">
+              <DropdownMenu
+                analyticsTitle={`${appName} Navbar`}
+                options={dropdownUrls}
+                onClick={this.handleMenuClick}
+                onBlur={this.handleOnBlur}
+                label={userDisplayName}
+              />
+            </span>
+          </div>
         </div>
-      </div>
-      {this.props.extraBanner}
-    </header>
-    {this.props.children}
+        {this.props.extraBanner}
+      </header>
+      {this.props.children}
     </div>;
   }
 }

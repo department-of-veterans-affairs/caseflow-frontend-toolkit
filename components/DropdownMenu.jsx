@@ -12,23 +12,23 @@ const dropdownMenuStyles = css({
   width: 'auto',
   minWidth: '13em',
   display: 'block'
-})
+});
 
 const dropdownWrapperStyles = css({
-    '& a': {
-      color: COLORS.GREY_MEDIUM,
-    },
-  
-    '& li a:hover': {
-      color: COLORS.WHITE
-    }
-})
+  '& a': {
+    color: COLORS.GREY_MEDIUM
+  },
+
+  '& li a:hover': {
+    color: COLORS.WHITE
+  }
+});
 
 const triggerStyles = css({
   '::after': {
     backgroundSize: '.75em'
   }
-})
+});
 
 export default class DropdownMenu extends React.Component {
   constructor(props) {
