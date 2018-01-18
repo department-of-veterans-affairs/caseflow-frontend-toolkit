@@ -32,4 +32,4 @@ export const STYLES = {
   APPLICATION_TITLE: css({
     color: COLORS.GREY_MEDIUM
   })
-}
+};
