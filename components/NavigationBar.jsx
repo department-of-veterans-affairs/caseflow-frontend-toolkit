@@ -5,7 +5,7 @@ import Link from './Link';
 import Breadcrumbs from './Breadcrumbs';
 import CaseflowLogo from './CaseflowLogo';
 import { css } from 'glamor';
-import { COLORS } from '../util/StyleConstants';
+import { COLORS, STYLES } from '../util/StyleConstants';
 
 const lineHeight = { lineHeight: '4em' };
 
@@ -54,13 +54,17 @@ export default class NavigationBar extends React.Component {
               <h1 {...h1Styling}>
                 <Link id="cf-logo-link" to={defaultUrl}>
                   Caseflow
-                  <h2 id="page-title" className="cf-application-title">&nbsp; {appName}</h2>
+                  <h2 id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
+                    &nbsp; {appName}
+                  </h2>
                 </Link>
               </h1>
               <Breadcrumbs>
                 {this.props.children}
               </Breadcrumbs>
-              {topMessage && <h2 className="cf-application-title"> &nbsp; | &nbsp; {topMessage}</h2>}
+              {topMessage && <h2 className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
+                 &nbsp; | &nbsp; {topMessage}
+              </h2>}
             </span>
             <span className="cf-push-right">
               <DropdownMenu
