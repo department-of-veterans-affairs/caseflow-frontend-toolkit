@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
+import { css } from 'glamor';
+import { COLORS } from '../util/StyleConstants';
 
 const CLASS_NAME_MAPPING = {
   primary: 'usa-button',
@@ -8,6 +10,39 @@ const CLASS_NAME_MAPPING = {
   disabled: 'usa-button-disabled',
   matte: 'link-matte link-overflow'
 };
+
+const matteStyling = css({
+  margin: '0 8px',
+  color: 'inherit',
+  padding: '0',
+  backgroundColor: 'transparent',
+  fontSize: 'inherit',
+  pointerEvents: 'all',
+  lineHeight: 'normal',
+
+  ':visited': {
+    color: 'inherit'
+  },
+
+  ':hover': {
+    textDecoration: 'none',
+    backgroundColor: 'transparent',
+    color: COLORS.PRIMARY_ALT,
+
+    '& svg g': {
+      fill: COLORS.PRIMARY_ALT
+    }
+  },
+
+  '& svg': {
+    verticalAlign: 'bottom'
+  },
+
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  overflowX: 'hidden',
+  maxWidth: '100%'
+});
 
 export default class Link extends React.Component {
   render() {
@@ -24,17 +59,20 @@ export default class Link extends React.Component {
     } = this.props;
 
     const type = button ? 'button' : null;
+    const styling = button === 'matte' ? matteStyling : {};
 
     if (button === 'disabled') {
       return <p
         type={type}
         className={CLASS_NAME_MAPPING[button]}
+        {...styling}
       >
         {children}
       </p>;
     }
 
     const commonProps = {
+      ...styling,
       'aria-label': ariaLabel,
       target,
       type,
