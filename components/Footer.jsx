@@ -1,6 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from './Link';
+import { css } from 'glamor';
+
+const footerStyles = css({
+  marginTop: '100px',
+  minHeight: '5em',
+
+  '& > div': {
+    padding: '30px 0',
+    height: 'auto'
+  }
+});
 
 export default class Footer extends React.Component {
   onFeedbackClick = () => {
@@ -13,7 +24,7 @@ export default class Footer extends React.Component {
       feedbackUrl
     } = this.props;
 
-    return <footer className="cf-app-footer">
+    return <footer className="cf-app-footer" {...footerStyles}>
       <div className="cf-app-width">
         <div className="cf-push-left">
           <span title={buildDate}>Built</span> with <abbr title="love">&#9825;</abbr> by the
