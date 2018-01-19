@@ -30,7 +30,7 @@ export default class Footer extends React.Component {
       <div {...getAppWidthStyling(wideApp)}>
         <div className="cf-push-left">
           <span title={buildDate}>Built</span> with <abbr title="love">&#9825;</abbr> by the
-          <Link href="https://www.usds.gov"> Digital Service at the
+          <Link href="https://www.usds.gov"> Digital Service at
             <abbr title="Department of Veterans Affairs"> VA</abbr></Link>
         </div>
         <div className="cf-push-right">

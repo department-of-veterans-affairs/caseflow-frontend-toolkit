@@ -28,7 +28,7 @@
       <Link
         href="https://www.usds.gov"
       >
-         Digital Service at the
+         Digital Service at
         <abbr
           title="Department of Veterans Affairs"
         >
@@ -79,7 +79,7 @@
       <Link
         href="https://www.usds.gov"
       >
-         Digital Service at the
+         Digital Service at
         <abbr
           title="Department of Veterans Affairs"
         >
