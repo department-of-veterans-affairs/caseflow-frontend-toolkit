@@ -6,6 +6,7 @@ import Breadcrumbs from './Breadcrumbs';
 import CaseflowLogo from './CaseflowLogo';
 import { css } from 'glamor';
 import { COLORS, STYLES } from '../util/StyleConstants';
+import getAppWidthStyling from './util/getAppWidthStyling';
 
 const lineHeight = { lineHeight: '4em' };
 
@@ -38,17 +39,10 @@ export default class NavigationBar extends React.Component {
       userDisplayName
     } = this.props;
 
-    const widthVW = wideApp ? 85 : 75;
-    const appWidthStyling = css({
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: `${widthVW}vw`
-    });
-
     return <div>
       <header>
         <div>
-          <div {...appWidthStyling}>
+          <div {...getAppWidthStyling(wideApp)}>
             <span className="cf-push-left" {...pushLeftStyling}>
               <CaseflowLogo {...logoProps} />
               <h1 {...h1Styling}>

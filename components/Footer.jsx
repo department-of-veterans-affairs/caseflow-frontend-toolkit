@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from './Link';
 import { css } from 'glamor';
+import getAppWidthStyling from './util/getAppWidthStyling';
 
 const footerStyles = css({
   marginTop: '100px',
@@ -21,11 +22,12 @@ export default class Footer extends React.Component {
   render() {
     const {
       buildDate,
+      wideApp,
       feedbackUrl
     } = this.props;
 
     return <footer className="cf-app-footer" {...footerStyles}>
-      <div className="cf-app-width">
+      <div {...getAppWidthStyling(wideApp)}>
         <div className="cf-push-left">
           <span title={buildDate}>Built</span> with <abbr title="love">&#9825;</abbr> by the
           <Link href="https://www.usds.gov"> Digital Service at the

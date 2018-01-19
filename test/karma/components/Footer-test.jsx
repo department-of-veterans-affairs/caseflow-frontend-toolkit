@@ -10,4 +10,10 @@ describe('Footer', () => {
       toJson(shallow(<Footer buildDate="some date string" feedbackUrl="https://feedback.va.gov" />))
     ).to.matchSnapshot()
   );
+
+  it('respects wideApp setting', () =>
+    expect(
+      toJson(shallow(<Footer buildDate="some date string" feedbackUrl="https://feedback.va.gov" wideApp />))
+    ).to.matchSnapshot()
+  );
 });
