@@ -16,7 +16,7 @@ const h1Styling = css({
   fontSize: '1.7rem',
   ...lineHeight,
   '& > a': {
-    color: `${COLORS.GREY_DARK} + !important`,
+    color: `${COLORS.GREY_DARK} !important`,
     paddingLeft: '.3em'
   }
 });
