@@ -16,7 +16,7 @@ const h1Styling = css({
   fontSize: '1.7rem',
   ...lineHeight,
   '& > a': {
-    color: COLORS.GREY_DARK,
+    color: `${COLORS.GREY_DARK} + !important`,
     paddingLeft: '.3em'
   }
 });
@@ -25,6 +25,16 @@ const pushLeftStyling = css({
   display: 'flex',
   alignItems: 'center',
   ...lineHeight
+});
+
+const headerStyling = css({
+  background: COLORS.WHITE,
+  ...lineHeight
+});
+
+const clearingDivStyling = css({
+  borderBottom: `1px solid ${COLORS.GREY_LIGHT}`,
+  clear: 'both'
 });
 
 export default class NavigationBar extends React.Component {
@@ -40,7 +50,7 @@ export default class NavigationBar extends React.Component {
     } = this.props;
 
     return <div>
-      <header>
+      <header {...headerStyling}>
         <div>
           <div {...getAppWidthStyling(wideApp)}>
             <span className="cf-push-left" {...pushLeftStyling}>
@@ -71,7 +81,7 @@ export default class NavigationBar extends React.Component {
             </span>
           </div>
         </div>
-        {this.props.extraBanner}
+        <div {...clearingDivStyling}> </div>
       </header>
       {this.props.children}
     </div>;
