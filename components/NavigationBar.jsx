@@ -16,7 +16,7 @@ const h1Styling = css({
   fontSize: '1.7rem',
   ...lineHeight,
   '& > a': {
-    color: COLORS.GREY_DARK + ' !important',
+    color: `${COLORS.GREY_DARK} + !important`,
     paddingLeft: '.3em'
   }
 });
@@ -33,7 +33,7 @@ const headerStyling = css({
 });
 
 const clearingDivStyling = css({
-  borderBottom: '1px solid ' + COLORS.GREY_LIGHT,
+  borderBottom: `1px solid ${COLORS.GREY_LIGHT}`,
   clear: 'both'
 });
 
