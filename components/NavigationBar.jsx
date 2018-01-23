@@ -27,6 +27,18 @@ const pushLeftStyling = css({
   ...lineHeight
 });
 
+const headerStyling = css({
+  background: COLORS.WHITE,
+  ...lineHeight
+});
+
+const clearingDivStyling = css({
+  borderBottom: '1px solid ' + COLORS.GREY_LIGHT,
+  clear: 'both',
+  display: 'block',
+  lineHeight: 0
+});
+
 export default class NavigationBar extends React.Component {
   render() {
     const {
@@ -40,7 +52,7 @@ export default class NavigationBar extends React.Component {
     } = this.props;
 
     return <div>
-      <header>
+      <header {...headerStyling}>
         <div>
           <div {...getAppWidthStyling(wideApp)}>
             <span className="cf-push-left" {...pushLeftStyling}>
@@ -71,7 +83,7 @@ export default class NavigationBar extends React.Component {
             </span>
           </div>
         </div>
-        {this.props.extraBanner}
+        <div {...clearingDivStyling}> </div>
       </header>
       {this.props.children}
     </div>;
