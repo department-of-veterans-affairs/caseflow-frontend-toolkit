@@ -16,7 +16,7 @@ const h1Styling = css({
   fontSize: '1.7rem',
   ...lineHeight,
   '& > a': {
-    color: COLORS.GREY_DARK,
+    color: COLORS.GREY_DARK + ' !important',
     paddingLeft: '.3em'
   }
 });
@@ -34,9 +34,7 @@ const headerStyling = css({
 
 const clearingDivStyling = css({
   borderBottom: '1px solid ' + COLORS.GREY_LIGHT,
-  clear: 'both',
-  display: 'block',
-  lineHeight: 0
+  clear: 'both'
 });
 
 export default class NavigationBar extends React.Component {
