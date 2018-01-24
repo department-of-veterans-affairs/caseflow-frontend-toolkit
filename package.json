@@ -1,6 +1,6 @@
 {
   "name": "@department-of-veterans-affairs/appeals-frontend-toolkit",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Build tools and React components for the Appeals frontends",
   "main": "index.js",
   "repository": "git@github.com:department-of-veterans-affairs/appeals-frontend-toolkit.git",
