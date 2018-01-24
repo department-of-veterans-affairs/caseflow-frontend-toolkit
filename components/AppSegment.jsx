@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { css } from 'glamor';
 
 // extraClassNames is only to help with migration, but should not be used for new code.
-// We should be adding properties to this component and applying styling internally, 
+// We should be adding properties to this component and applying styling internally,
 // instead of applying new class names.
 const AppSegment = ({ children, extraClassNames, filledBackground, noMarginTop, styling }) => {
   const marginTopStyling = noMarginTop ?
