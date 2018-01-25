@@ -24,8 +24,16 @@ export const LOGO_COLORS = {
     OVERLAP: '#7a4b91'
   },
   HEARINGS: {
-    ACCENT: 'rgb(72, 144, 0)',
-    OVERLAP: 'rgb(72, 144, 0)'
+    ACCENT: '#56b605',
+    OVERLAP: COLORS.GREY_LIGHT
+  },
+  CERTIFICATION: {
+    ACCENT: '#459FD7',
+    OVERLAP: COLORS.GREY_LIGHT
+  },
+  DEFAULT: {
+    ACCENT: COLORS.GREY_DARK,
+    OVERLAP: COLORS.GREY_LIGHT
   }
 };
 
