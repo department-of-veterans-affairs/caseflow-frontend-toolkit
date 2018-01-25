@@ -5,7 +5,7 @@ import classNamesFn from 'classnames';
 
 export default class StatusMessage extends React.Component {
   render() {
-    let {
+    const {
       checklist,
       checklistClassNames,
       example,
@@ -21,8 +21,8 @@ export default class StatusMessage extends React.Component {
       checklistClassNames.push('cf-sg-success-example');
     }
 
-    let getClassNames = () => {
-      let h1classNames = ['cf-msg-screen-heading'];
+    const getClassNames = () => {
+      const h1classNames = ['cf-msg-screen-heading'];
 
       if (type === 'success') {
         h1classNames.push('cf-success');
