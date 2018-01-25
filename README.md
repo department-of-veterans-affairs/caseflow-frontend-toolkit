@@ -1,10 +1,10 @@
-# appeals-frontend-toolkit
-Build tools and React components for the Appeals frontends.
+# caseflow-frontend-toolkit
+Build tools and React components for the Caseflow frontends.
 
 ## Installation
 
 ```
-$ yarn add @department-of-veterans-affairs/appeals-frontend-toolkit
+$ yarn add @department-of-veterans-affairs/caseflow-frontend-toolkit
 ```
 
 ## Usage
