@@ -1,9 +1,9 @@
 {
-  "name": "@department-of-veterans-affairs/appeals-frontend-toolkit",
+  "name": "@department-of-veterans-affairs/caseflow-frontend-toolkit",
   "version": "2.2.0",
-  "description": "Build tools and React components for the Appeals frontends",
+  "description": "Build tools and React components for the Caseflow frontends",
   "main": "index.js",
-  "repository": "git@github.com:department-of-veterans-affairs/appeals-frontend-toolkit.git",
+  "repository": "git@github.com:department-of-veterans-affairs/caseflow-frontend-toolkit.git",
   "scripts": {
     "test": "yarn run lint && yarn run test:karma",
     "test:karma": "NODE_ENV=test karma start",
