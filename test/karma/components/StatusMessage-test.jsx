@@ -7,6 +7,7 @@ import StatusMessage from '../../../components/StatusMessage';
 /* eslint-disable max-statements */
 describe('StatusMessage', () => {
   it('no props', () => expect(toJson(shallow(<StatusMessage />))).to.matchSnapshot());
+  it('wrapInAppSegment', () => expect(toJson(shallow(<StatusMessage wrapInAppSegment={false} />))).to.matchSnapshot());
   it('no props with child', () =>
     expect(toJson(shallow(<StatusMessage><p>Magnificent desolation</p></StatusMessage>))).to.matchSnapshot());
   it('checklist only', () =>

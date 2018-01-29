@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import classNamesFn from 'classnames';
+import AppSegment from './AppSegment';
 
 export default class StatusMessage extends React.Component {
   render() {
@@ -35,11 +35,7 @@ export default class StatusMessage extends React.Component {
       return h1classNames.join(' ');
     };
 
-    const wrapperClassName = classNamesFn('cf-app-msg-screen', {
-      'cf-app-segment cf-app-segment--alt': wrapInAppSegment
-    });
-
-    return <div id="certifications-generate" className={wrapperClassName}>
+    const wrappedContent = <div>
       <h1 className={getClassNames()}>{title}</h1>
 
       { children ?
@@ -58,6 +54,10 @@ export default class StatusMessage extends React.Component {
         { messageText }
       </p>
     </div>;
+
+    return wrapInAppSegment ?
+      <AppSegment extraClassNames="cf-app-msg-screen">{wrappedContent}</AppSegment> :
+      <div className="cf-app-msg-screen">{wrappedContent}</div>;
   }
 }
 

@@ -16,6 +16,22 @@
 </div>
 ```
 
+#### `wrapInAppSegment`
+
+```
+<div
+  className="cf-app-msg-screen"
+  id="certifications-generate"
+>
+  <h1
+    className="cf-msg-screen-heading"
+  />
+  <p
+    className="cf-msg-screen-text"
+  />
+</div>
+```
+
 #### `no props with child`
 
 ```
