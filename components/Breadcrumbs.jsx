@@ -17,7 +17,7 @@ const getElementsWithBreadcrumbs = (element) => {
     return [...acc, ...getElementsWithBreadcrumbs(child)];
   }, []);
 
-  return _.sortBy(breadcrumbs, ({path}) => path.length);
+  return _.sortBy(breadcrumbs, ({ path }) => path.length);
 };
 
 // When passed a child component with Route or PageRoute objects that have
