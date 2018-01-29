@@ -22,7 +22,7 @@ describe('Breadcrumbs', () => {
               title="Assignments | Caseflow Reader" />
           </Breadcrumbs>
         </MemoryRouter>
-      ))
+      ).find(Breadcrumbs))
     ).to.matchSnapshot()
   );
 });
