@@ -3,17 +3,19 @@
 #### `no props`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <p
-    className="cf-msg-screen-text"
-  />
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <p
+      className="cf-msg-screen-text"
+    />
+  </div>
+</AppSegment>
 ```
 
 #### `wrapInAppSegment`
@@ -21,345 +23,372 @@
 ```
 <div
   className="cf-app-msg-screen"
-  id="certifications-generate"
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <p
-    className="cf-msg-screen-text"
-  />
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <p
+      className="cf-msg-screen-text"
+    />
+  </div>
 </div>
 ```
 
 #### `no props with child`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <h2
-    className="cf-msg-screen-deck"
-  >
-    <p>
-      Magnificent desolation
-    </p>
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  />
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <h2
+      className="cf-msg-screen-deck"
+    >
+      <p>
+        Magnificent desolation
+      </p>
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    />
+  </div>
+</AppSegment>
 ```
 
 #### `checklist only`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <p
-    className="cf-msg-screen-text"
-  />
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <p
+      className="cf-msg-screen-text"
+    />
+  </div>
+</AppSegment>
 ```
 
 #### `checklist only with child`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <h2
-    className="cf-msg-screen-deck"
-  >
-    <p>
-      Magnificent desolation
-    </p>
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  />
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <h2
+      className="cf-msg-screen-deck"
+    >
+      <p>
+        Magnificent desolation
+      </p>
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    />
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, leadMessageList only`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <h2
-    className="cf-msg-screen-deck"
-    key="0"
-  >
-    argon
-  </h2>
-  <h2
-    className="cf-msg-screen-deck"
-    key="1"
-  >
-    boron
-  </h2>
-  <h2
-    className="cf-msg-screen-deck"
-    key="2"
-  >
-    carbon
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  />
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <h2
+      className="cf-msg-screen-deck"
+      key="0"
+    >
+      argon
+    </h2>
+    <h2
+      className="cf-msg-screen-deck"
+      key="1"
+    >
+      boron
+    </h2>
+    <h2
+      className="cf-msg-screen-deck"
+      key="2"
+    >
+      carbon
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    />
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, leadMessageList only with child`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <h2
-    className="cf-msg-screen-deck"
-  >
-    <p>
-      Magnificent desolation
-    </p>
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  />
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <h2
+      className="cf-msg-screen-deck"
+    >
+      <p>
+        Magnificent desolation
+      </p>
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    />
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, messageText only`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <p
-    className="cf-msg-screen-text"
-  >
-    dummy message text
-  </p>
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <p
+      className="cf-msg-screen-text"
+    >
+      dummy message text
+    </p>
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, messageText only with child`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <h2
-    className="cf-msg-screen-deck"
-  >
-    <p>
-      Magnificent desolation
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <h2
+      className="cf-msg-screen-deck"
+    >
+      <p>
+        Magnificent desolation
+      </p>
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    >
+      dummy message text
     </p>
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  >
-    dummy message text
-  </p>
-</div>
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, title only`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  >
-    dummy message text
-  </h1>
-  <p
-    className="cf-msg-screen-text"
-  />
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    >
+      dummy message text
+    </h1>
+    <p
+      className="cf-msg-screen-text"
+    />
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, title only with child`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  >
-    dummy message text
-  </h1>
-  <h2
-    className="cf-msg-screen-deck"
-  >
-    <p>
-      Magnificent desolation
-    </p>
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  />
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    >
+      dummy message text
+    </h1>
+    <h2
+      className="cf-msg-screen-deck"
+    >
+      <p>
+        Magnificent desolation
+      </p>
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    />
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, leadMessageList, messageText only`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <h2
-    className="cf-msg-screen-deck"
-    key="0"
-  >
-    argon
-  </h2>
-  <h2
-    className="cf-msg-screen-deck"
-    key="1"
-  >
-    boron
-  </h2>
-  <h2
-    className="cf-msg-screen-deck"
-    key="2"
-  >
-    carbon
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  >
-    dummy message text
-  </p>
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <h2
+      className="cf-msg-screen-deck"
+      key="0"
+    >
+      argon
+    </h2>
+    <h2
+      className="cf-msg-screen-deck"
+      key="1"
+    >
+      boron
+    </h2>
+    <h2
+      className="cf-msg-screen-deck"
+      key="2"
+    >
+      carbon
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    >
+      dummy message text
+    </p>
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, leadMessageList, messageText only with child`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  />
-  <h2
-    className="cf-msg-screen-deck"
-  >
-    <p>
-      Magnificent desolation
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    />
+    <h2
+      className="cf-msg-screen-deck"
+    >
+      <p>
+        Magnificent desolation
+      </p>
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    >
+      dummy message text
     </p>
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  >
-    dummy message text
-  </p>
-</div>
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, leadMessageList, messageText, title`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  >
-    dummy message text
-  </h1>
-  <h2
-    className="cf-msg-screen-deck"
-    key="0"
-  >
-    argon
-  </h2>
-  <h2
-    className="cf-msg-screen-deck"
-    key="1"
-  >
-    boron
-  </h2>
-  <h2
-    className="cf-msg-screen-deck"
-    key="2"
-  >
-    carbon
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  >
-    dummy message text
-  </p>
-</div>
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    >
+      dummy message text
+    </h1>
+    <h2
+      className="cf-msg-screen-deck"
+      key="0"
+    >
+      argon
+    </h2>
+    <h2
+      className="cf-msg-screen-deck"
+      key="1"
+    >
+      boron
+    </h2>
+    <h2
+      className="cf-msg-screen-deck"
+      key="2"
+    >
+      carbon
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    >
+      dummy message text
+    </p>
+  </div>
+</AppSegment>
 ```
 
 #### `checklist, leadMessageList, messageText, title with child`
 
 ```
-<div
-  className="cf-app-msg-screen cf-app-segment cf-app-segment--alt"
-  id="certifications-generate"
+<AppSegment
+  extraClassNames="cf-app-msg-screen"
+  filledBackground={true}
 >
-  <h1
-    className="cf-msg-screen-heading"
-  >
-    dummy message text
-  </h1>
-  <h2
-    className="cf-msg-screen-deck"
-  >
-    <p>
-      Magnificent desolation
+  <div>
+    <h1
+      className="cf-msg-screen-heading"
+    >
+      dummy message text
+    </h1>
+    <h2
+      className="cf-msg-screen-deck"
+    >
+      <p>
+        Magnificent desolation
+      </p>
+    </h2>
+    <p
+      className="cf-msg-screen-text"
+    >
+      dummy message text
     </p>
-  </h2>
-  <p
-    className="cf-msg-screen-text"
-  >
-    dummy message text
-  </p>
-</div>
+  </div>
+</AppSegment>
 ```
 
