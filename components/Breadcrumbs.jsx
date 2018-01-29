@@ -17,7 +17,6 @@ const getElementsWithBreadcrumbs = (element) => {
     return [...acc, ...getElementsWithBreadcrumbs(child)];
   }, []);
 
-  // return breadcrumbs;
   return _.sortBy(breadcrumbs, ({ path }) => path.length);
 };
 
