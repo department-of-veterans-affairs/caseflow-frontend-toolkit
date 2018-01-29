@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import Link from './Link';
 import { Route } from 'react-router-dom';
 import { STYLES } from '../util/StyleConstants';
+import _ from 'lodash';
 
 const getElementsWithBreadcrumbs = (element) => {
-  if (!element.props.children) {
-    return [];
-  }
-
-  return React.Children.toArray(element.props.children).reduce((acc, child) => {
+  const breadcrumbs = React.Children.toArray(element.props.children).reduce((acc, child) => {
     if (child.props.breadcrumb) {
       return [...acc, {
         path: child.props.path,
@@ -19,6 +16,8 @@ const getElementsWithBreadcrumbs = (element) => {
 
     return [...acc, ...getElementsWithBreadcrumbs(child)];
   }, []);
+
+  return _.sortBy(breadcrumbs, ({path}) => path.length);
 };
 
 // When passed a child component with Route or PageRoute objects that have
