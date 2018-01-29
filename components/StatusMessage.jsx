@@ -56,7 +56,7 @@ export default class StatusMessage extends React.Component {
     </div>;
 
     return wrapInAppSegment ?
-      <AppSegment extraClassNames="cf-app-msg-screen">{wrappedContent}</AppSegment> :
+      <AppSegment extraClassNames="cf-app-msg-screen" filledBackground>{wrappedContent}</AppSegment> :
       <div className="cf-app-msg-screen">{wrappedContent}</div>;
   }
 }
