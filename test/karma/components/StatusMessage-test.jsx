@@ -1,10 +1,11 @@
+/* eslint-disable max-statements */
+
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import StatusMessage from '../../../components/StatusMessage';
 
-/* eslint-disable max-statements */
 describe('StatusMessage', () => {
   it('no props', () => expect(toJson(shallow(<StatusMessage />))).to.matchSnapshot());
   it('no props with child', () =>
@@ -90,4 +91,3 @@ describe('StatusMessage', () => {
     </StatusMessage>))).to.matchSnapshot()
   );
 });
-/* eslint-enable max-statements */
