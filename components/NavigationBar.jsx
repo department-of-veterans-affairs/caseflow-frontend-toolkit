@@ -37,6 +37,10 @@ const clearingDivStyling = css({
   clear: 'both'
 });
 
+const topMessageStyling = css({
+  marginBottom: 0
+})
+
 export default class NavigationBar extends React.Component {
   render() {
     const {
@@ -66,7 +70,7 @@ export default class NavigationBar extends React.Component {
               <Breadcrumbs>
                 {this.props.children}
               </Breadcrumbs>
-              {topMessage && <h2 className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
+              {topMessage && <h2 className="cf-application-title" {...STYLES.APPLICATION_TITLE} {...topMessageStyling}>
                  &nbsp; | &nbsp; {topMessage}
               </h2>}
             </span>
