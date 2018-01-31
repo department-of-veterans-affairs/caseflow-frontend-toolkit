@@ -39,7 +39,7 @@ const clearingDivStyling = css({
 
 const topMessageStyling = css({
   marginBottom: 0
-})
+});
 
 export default class NavigationBar extends React.Component {
   render() {
