@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { MemoryRouter } from 'react-router-dom';
 import Breadcrumbs from '../../../components/Breadcrumbs';
+import { css } from 'glamor';
 
 describe('Breadcrumbs', () => {
   it('renders with props', () =>
@@ -21,6 +22,33 @@ describe('Breadcrumbs', () => {
               path="/"
               title="Assignments | Caseflow Reader" />
           </Breadcrumbs>
+        </MemoryRouter>
+      ).find(Breadcrumbs))
+    ).to.matchSnapshot()
+  );
+
+  it('renders array of crumbs, custom label fn, styling, without initial caret', () =>
+    expect(
+      toJson(mount(
+        <MemoryRouter initialEntries={['/vacolsId/documents/docId']}>
+          <Breadcrumbs
+            getBreadcrumbLabel={((route) => route.breadcrumb)}
+            caretBeforeCrumb={false}
+            styling={css({
+              marginTop: '-1.5rem',
+              marginBottom: '-1.5rem'
+            })}
+            getElements={() => [{
+              breadcrumb: 'Document Viewer',
+              path: '/:vacolsId/documents/:docId'
+            }, {
+              breadcrumb: 'Claims Folder',
+              path: '/:vacolsId/documents'
+            }, {
+              breadcrumb: 'Assignments | Caseflow Reader',
+              path: '/'
+            }]}
+          />
         </MemoryRouter>
       ).find(Breadcrumbs))
     ).to.matchSnapshot()
