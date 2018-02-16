@@ -26,6 +26,10 @@ export const LOGO_COLORS = {
   HEARINGS: {
     ACCENT: 'rgb(72, 144, 0)',
     OVERLAP: 'rgb(72, 144, 0)'
+  },
+  CERTIFICATION: {
+    ACCENT: '#459FD7',
+    OVERLAP: '#e4e2e0'
   }
 };
 
