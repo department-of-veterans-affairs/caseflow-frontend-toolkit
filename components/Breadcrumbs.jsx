@@ -5,8 +5,11 @@ import { Route } from 'react-router-dom';
 import { STYLES } from '../util/StyleConstants';
 import _ from 'lodash';
 
-const getElementsWithBreadcrumbs = (element) => {
-  const breadcrumbs = React.Children.toArray(element.props.children).reduce((acc, child) => {
+// When passed a child component with Route or PageRoute objects that have
+// breadcrumb properties set, this will generate breadcrumbs as links to
+// those other routes.
+const getElementsWithBreadcrumbs = (element) => React.Children.toArray(element.props.children).
+  reduce((acc, child) => {
     if (child.props.breadcrumb) {
       return [...acc, {
         path: child.props.path,
@@ -17,29 +20,53 @@ const getElementsWithBreadcrumbs = (element) => {
     return [...acc, ...getElementsWithBreadcrumbs(child)];
   }, []);
 
-  return _.sortBy(breadcrumbs, ({ path }) => path.length);
-};
+const getBreadcrumbLabel = (route) => <h2 id="page-title" className="cf-application-title">
+  {route.breadcrumb}
+</h2>;
 
-// When passed a child component with Route or PageRoute objects that have
-// breadcrumb properties set, this component will generate breadcrumbs as links
-// to those other routes.
-export default class Breadcrumbs extends React.Component {
-  render() {
-    const breadcrumbComponents = getElementsWithBreadcrumbs(this).map(
-      (route) => <Route key={route.breadcrumb} path={route.path} render={
-        (props) => <span {...STYLES.APPLICATION_TITLE}>
-          <h2 id="page-title" className="cf-application-title">&nbsp; > &nbsp;</h2>
-          <Link id="cf-logo-link" to={props.match.url}>
-            <h2 id="page-title" className="cf-application-title">{route.breadcrumb}</h2>
-          </Link>
-        </span>
-      } />
-    );
+export default class Breadcrumbs extends React.PureComponent {
+  render = () => {
+    const {
+      styling,
+      getElements,
+      caretBeforeCrumb
+    } = this.props;
+    const children = getElements(this);
+    const caret = <React.Fragment>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</React.Fragment>;
 
-    return <span>{breadcrumbComponents}</span>;
-  }
+    const breadcrumbComponents = _.sortBy(children, ({ path }) => path.length).
+      map((route, idx) =>
+        <Route key={route.breadcrumb} path={route.path} render={(props) =>
+          <React.Fragment>
+            {caretBeforeCrumb && caret}
+            <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']}>
+              {this.props.getBreadcrumbLabel(route)}
+            </Link>
+            {(!caretBeforeCrumb && idx + 1 < children.length) && caret}
+          </React.Fragment>
+        } />
+      );
+
+    return <div {...styling}>{breadcrumbComponents}</div>;
+  };
 }
 
 Breadcrumbs.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.shape({
+      path: PropTypes.string,
+      breadcrumb: PropTypes.string
+    })
+  ]),
+  styling: PropTypes.object,
+  getElements: PropTypes.func,
+  caretBeforeCrumb: PropTypes.bool
+};
+
+Breadcrumbs.defaultProps = {
+  getBreadcrumbLabel,
+  getElements: getElementsWithBreadcrumbs,
+  caretBeforeCrumb: true,
+  styling: STYLES.APPLICATION_TITLE
 };

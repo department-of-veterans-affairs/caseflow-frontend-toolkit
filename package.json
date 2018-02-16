@@ -51,6 +51,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.9",
     "mocha": "^4.1.0",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "sinon": "^4.1.3",
