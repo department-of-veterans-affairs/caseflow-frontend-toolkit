@@ -3,87 +3,90 @@
 #### `renders with props`
 
 ```
-<Breadcrumbs>
-  <span>
+<Breadcrumbs
+  caretBeforeCrumb={true}
+  getBreadcrumbLabel={[Function]}
+  getElements={[Function]}
+  styling={
+    Object {
+      "data-css-1mdtwij": "",
+    }
+  }
+>
+  <div
+    data-css-1mdtwij=""
+  >
     <Route
       key="Claims Folder"
       path="/:vacolsId/documents"
       render={[Function]}
     >
-      <span
-        data-css-1mdtwij=""
+        &gt;  
+      <Link
+        classNames={
+          Array [
+            "cf-btn-link",
+          ]
+        }
+        id="cf-logo-link"
+        to="/vacolsId/documents"
       >
-        <h2
-          className="cf-application-title"
-          id="page-title"
-        >
-            &gt;  
-        </h2>
         <Link
-          id="cf-logo-link"
+          replace={false}
           to="/vacolsId/documents"
+          type={null}
         >
-          <Link
-            replace={false}
-            to="/vacolsId/documents"
+          <a
+            href="/vacolsId/documents"
+            onClick={[Function]}
             type={null}
           >
-            <a
-              href="/vacolsId/documents"
-              onClick={[Function]}
-              type={null}
+            <h2
+              className="cf-application-title"
+              id="page-title"
             >
-              <h2
-                className="cf-application-title"
-                id="page-title"
-              >
-                Claims Folder
-              </h2>
-            </a>
-          </Link>
+              Claims Folder
+            </h2>
+          </a>
         </Link>
-      </span>
+      </Link>
     </Route>
     <Route
       key="Document Viewer"
       path="/:vacolsId/documents/:docId"
       render={[Function]}
     >
-      <span
-        data-css-1mdtwij=""
+        &gt;  
+      <Link
+        classNames={
+          Array [
+            "cf-btn-link",
+          ]
+        }
+        id="cf-logo-link"
+        to="/vacolsId/documents/docId"
       >
-        <h2
-          className="cf-application-title"
-          id="page-title"
-        >
-            &gt;  
-        </h2>
         <Link
-          id="cf-logo-link"
+          replace={false}
           to="/vacolsId/documents/docId"
+          type={null}
         >
-          <Link
-            replace={false}
-            to="/vacolsId/documents/docId"
+          <a
+            href="/vacolsId/documents/docId"
+            onClick={[Function]}
             type={null}
           >
-            <a
-              href="/vacolsId/documents/docId"
-              onClick={[Function]}
-              type={null}
+            <h2
+              className="cf-application-title"
+              id="page-title"
             >
-              <h2
-                className="cf-application-title"
-                id="page-title"
-              >
-                Document Viewer
-              </h2>
-            </a>
-          </Link>
+              Document Viewer
+            </h2>
+          </a>
         </Link>
-      </span>
+      </Link>
     </Route>
-  </span>
+  </div>
 </Breadcrumbs>
 ```
 
