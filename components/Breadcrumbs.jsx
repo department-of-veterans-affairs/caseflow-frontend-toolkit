@@ -28,10 +28,10 @@ export default class Breadcrumbs extends React.PureComponent {
   render = () => {
     const {
       styling,
-      getElements,
-      caretBeforeAllCrumbs
+      caretBeforeAllCrumbs,
+      elements
     } = this.props;
-    const children = getElements(this);
+    const children = elements || getElementsWithBreadcrumbs(this);
     const caret = <React.Fragment>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</React.Fragment>;
 
     let breadcrumbComponents = _.sortBy(children, 'length').
@@ -67,13 +67,12 @@ Breadcrumbs.propTypes = {
     })
   ]),
   styling: PropTypes.object,
-  getElements: PropTypes.func,
+  elements: PropTypes.array,
   caretBeforeAllCrumbs: PropTypes.bool
 };
 
 Breadcrumbs.defaultProps = {
   getBreadcrumbLabel,
-  getElements: getElementsWithBreadcrumbs,
   caretBeforeAllCrumbs: true,
   styling: STYLES.APPLICATION_TITLE
 };
