@@ -34,18 +34,25 @@ export default class Breadcrumbs extends React.PureComponent {
     const children = getElements(this);
     const caret = <React.Fragment>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</React.Fragment>;
 
-    const breadcrumbComponents = _.sortBy(children, ({ path }) => path.length).
-      map((route, idx) =>
+    let breadcrumbComponents = _.sortBy(children, 'length').
+      map((route) =>
         <Route key={route.breadcrumb} path={route.path} render={(props) =>
-          <React.Fragment>
-            {caretBeforeCrumb && caret}
-            <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']}>
-              {this.props.getBreadcrumbLabel(route)}
-            </Link>
-            {(!caretBeforeCrumb && idx + 1 < children.length) && caret}
-          </React.Fragment>
+          <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']}>
+            {this.props.getBreadcrumbLabel(route)}
+          </Link>
         } />
       );
+
+    if (breadcrumbComponents.length > 1) {
+      breadcrumbComponents = _(breadcrumbComponents).
+        zip(new Array(breadcrumbComponents.length - 1).fill(caret)).
+        flatten().
+        value();
+    }
+
+    if (caretBeforeCrumb && breadcrumbComponents.length) {
+      breadcrumbComponents.splice(0, 0, caret);
+    }
 
     return <div {...styling}>{breadcrumbComponents}</div>;
   };
