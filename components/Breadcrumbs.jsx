@@ -29,7 +29,7 @@ export default class Breadcrumbs extends React.PureComponent {
     const {
       styling,
       getElements,
-      caretBeforeCrumb
+      caretBeforeAllCrumbs
     } = this.props;
     const children = getElements(this);
     const caret = <React.Fragment>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</React.Fragment>;
@@ -50,7 +50,7 @@ export default class Breadcrumbs extends React.PureComponent {
         value();
     }
 
-    if (caretBeforeCrumb && breadcrumbComponents.length) {
+    if (caretBeforeAllCrumbs && breadcrumbComponents.length) {
       breadcrumbComponents.splice(0, 0, caret);
     }
 
@@ -68,12 +68,12 @@ Breadcrumbs.propTypes = {
   ]),
   styling: PropTypes.object,
   getElements: PropTypes.func,
-  caretBeforeCrumb: PropTypes.bool
+  caretBeforeAllCrumbs: PropTypes.bool
 };
 
 Breadcrumbs.defaultProps = {
   getBreadcrumbLabel,
   getElements: getElementsWithBreadcrumbs,
-  caretBeforeCrumb: true,
+  caretBeforeAllCrumbs: true,
   styling: STYLES.APPLICATION_TITLE
 };
