@@ -148,13 +148,13 @@
           </a>
         </Link>
       </Link>
-        &gt;  
     </Route>
     <Route
       key="Claims Folder"
       path="/:vacolsId/documents"
       render={[Function]}
     >
+        &gt;  
       <Link
         classNames={
           Array [
@@ -178,13 +178,13 @@
           </a>
         </Link>
       </Link>
-        &gt;  
     </Route>
     <Route
       key="Assignments | Caseflow Reader"
       path="/"
       render={[Function]}
     >
+        &gt;  
       <Link
         classNames={
           Array [
