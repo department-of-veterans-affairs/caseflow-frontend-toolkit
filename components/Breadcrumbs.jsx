@@ -25,49 +25,50 @@ const getBreadcrumbLabel = (route) => <h2 id="page-title" className="cf-applicat
 </h2>;
 
 export default class Breadcrumbs extends React.PureComponent {
-  render = () => {
+  renderBreadcrumb = (props, route, idx, arr) => {
+    const { caretBeforeAllCrumbs } = this.props;
+    const caret = <React.Fragment>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</React.Fragment>;
+    const caretPositions = {
+      before: caretBeforeAllCrumbs,
+      after: !caretBeforeAllCrumbs && idx < arr.length - 1
+    };
+
+    return <React.Fragment>
+      {caretPositions.before && caret}
+      <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']}>
+        {this.props.getBreadcrumbLabel(route)}
+      </Link>
+      {caretPositions.after && caret}
+    </React.Fragment>;
+  };
+
+  render() {
     const {
-      styling,
-      caretBeforeAllCrumbs,
-      elements
+      elements,
+      styling
     } = this.props;
     const children = elements || getElementsWithBreadcrumbs(this);
-    const caret = <React.Fragment>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</React.Fragment>;
 
-    let breadcrumbComponents = _.sortBy(children, 'length').
-      map((route) =>
-        <Route key={route.breadcrumb} path={route.path} render={(props) =>
-          <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']}>
-            {this.props.getBreadcrumbLabel(route)}
-          </Link>
-        } />
+    const breadcrumbComponents = _.sortBy(children, 'length').
+      map((route, idx, arr) =>
+        <Route
+          key={route.breadcrumb}
+          path={route.path}
+          render={(props) => this.renderBreadcrumb(props, route, idx, arr)} />
       );
 
-    if (breadcrumbComponents.length > 1) {
-      breadcrumbComponents = _(breadcrumbComponents).
-        zip(new Array(breadcrumbComponents.length - 1).fill(caret)).
-        flatten().
-        value();
-    }
-
-    if (caretBeforeAllCrumbs && breadcrumbComponents.length) {
-      breadcrumbComponents.splice(0, 0, caret);
-    }
-
     return <div {...styling}>{breadcrumbComponents}</div>;
-  };
+  }
 }
 
 Breadcrumbs.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.shape({
-      path: PropTypes.string,
-      breadcrumb: PropTypes.string
-    })
-  ]),
+  children: PropTypes.node,
+  elements: PropTypes.arrayOf(PropTypes.shape({
+    path: PropTypes.string,
+    breadcrumb: PropTypes.string
+  })),
+  getBreadcrumbLabel: PropTypes.func,
   styling: PropTypes.object,
-  elements: PropTypes.array,
   caretBeforeAllCrumbs: PropTypes.bool
 };
 
