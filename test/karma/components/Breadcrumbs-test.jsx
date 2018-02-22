@@ -33,12 +33,12 @@ describe('Breadcrumbs', () => {
         <MemoryRouter initialEntries={['/vacolsId/documents/docId']}>
           <Breadcrumbs
             getBreadcrumbLabel={((route) => route.breadcrumb)}
-            caretBeforeCrumb={false}
+            caretBeforeAllCrumbs={false}
             styling={css({
               marginTop: '-1.5rem',
               marginBottom: '-1.5rem'
             })}
-            getElements={() => [{
+            elements={[{
               breadcrumb: 'Document Viewer',
               path: '/:vacolsId/documents/:docId'
             }, {

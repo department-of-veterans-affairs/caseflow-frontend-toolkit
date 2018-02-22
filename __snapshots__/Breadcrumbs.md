@@ -4,9 +4,8 @@
 
 ```
 <Breadcrumbs
-  caretBeforeCrumb={true}
+  caretBeforeAllCrumbs={true}
   getBreadcrumbLabel={[Function]}
-  getElements={[Function]}
   styling={
     Object {
       "data-css-1mdtwij": "",
@@ -16,41 +15,6 @@
   <div
     data-css-1mdtwij=""
   >
-    <Route
-      key="Claims Folder"
-      path="/:vacolsId/documents"
-      render={[Function]}
-    >
-        &gt;  
-      <Link
-        classNames={
-          Array [
-            "cf-btn-link",
-          ]
-        }
-        id="cf-logo-link"
-        to="/vacolsId/documents"
-      >
-        <Link
-          replace={false}
-          to="/vacolsId/documents"
-          type={null}
-        >
-          <a
-            href="/vacolsId/documents"
-            onClick={[Function]}
-            type={null}
-          >
-            <h2
-              className="cf-application-title"
-              id="page-title"
-            >
-              Claims Folder
-            </h2>
-          </a>
-        </Link>
-      </Link>
-    </Route>
     <Route
       key="Document Viewer"
       path="/:vacolsId/documents/:docId"
@@ -86,6 +50,41 @@
         </Link>
       </Link>
     </Route>
+    <Route
+      key="Claims Folder"
+      path="/:vacolsId/documents"
+      render={[Function]}
+    >
+        &gt;  
+      <Link
+        classNames={
+          Array [
+            "cf-btn-link",
+          ]
+        }
+        id="cf-logo-link"
+        to="/vacolsId/documents"
+      >
+        <Link
+          replace={false}
+          to="/vacolsId/documents"
+          type={null}
+        >
+          <a
+            href="/vacolsId/documents"
+            onClick={[Function]}
+            type={null}
+          >
+            <h2
+              className="cf-application-title"
+              id="page-title"
+            >
+              Claims Folder
+            </h2>
+          </a>
+        </Link>
+      </Link>
+    </Route>
   </div>
 </Breadcrumbs>
 ```
@@ -94,9 +93,24 @@
 
 ```
 <Breadcrumbs
-  caretBeforeCrumb={false}
+  caretBeforeAllCrumbs={false}
+  elements={
+    Array [
+      Object {
+        "breadcrumb": "Document Viewer",
+        "path": "/:vacolsId/documents/:docId",
+      },
+      Object {
+        "breadcrumb": "Claims Folder",
+        "path": "/:vacolsId/documents",
+      },
+      Object {
+        "breadcrumb": "Assignments | Caseflow Reader",
+        "path": "/",
+      },
+    ]
+  }
   getBreadcrumbLabel={[Function]}
-  getElements={[Function]}
   styling={
     Object {
       "data-css-c6mfa5": "",
@@ -107,8 +121,8 @@
     data-css-c6mfa5=""
   >
     <Route
-      key="Assignments | Caseflow Reader"
-      path="/"
+      key="Document Viewer"
+      path="/:vacolsId/documents/:docId"
       render={[Function]}
     >
       <Link
@@ -118,19 +132,19 @@
           ]
         }
         id="cf-logo-link"
-        to="/"
+        to="/vacolsId/documents/docId"
       >
         <Link
           replace={false}
-          to="/"
+          to="/vacolsId/documents/docId"
           type={null}
         >
           <a
-            href="/"
+            href="/vacolsId/documents/docId"
             onClick={[Function]}
             type={null}
           >
-            Assignments | Caseflow Reader
+            Document Viewer
           </a>
         </Link>
       </Link>
@@ -167,8 +181,8 @@
         &gt;  
     </Route>
     <Route
-      key="Document Viewer"
-      path="/:vacolsId/documents/:docId"
+      key="Assignments | Caseflow Reader"
+      path="/"
       render={[Function]}
     >
       <Link
@@ -178,19 +192,19 @@
           ]
         }
         id="cf-logo-link"
-        to="/vacolsId/documents/docId"
+        to="/"
       >
         <Link
           replace={false}
-          to="/vacolsId/documents/docId"
+          to="/"
           type={null}
         >
           <a
-            href="/vacolsId/documents/docId"
+            href="/"
             onClick={[Function]}
             type={null}
           >
-            Document Viewer
+            Assignments | Caseflow Reader
           </a>
         </Link>
       </Link>
