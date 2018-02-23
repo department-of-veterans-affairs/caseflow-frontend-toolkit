@@ -24,7 +24,7 @@ const getBreadcrumbLabel = (route) => <h2 id="page-title" className="cf-applicat
   {route.breadcrumb}
 </h2>;
 
-export default class Breadcrumbs extends React.PureComponent {
+export default class Breadcrumbs extends React.Component {
   renderBreadcrumb = (props, route, idx) => {
     const { caretBeforeAllCrumbs } = this.props;
     const caret = <React.Fragment>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</React.Fragment>;
