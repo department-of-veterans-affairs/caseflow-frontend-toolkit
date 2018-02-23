@@ -4,8 +4,8 @@
 
 ```
 <Breadcrumbs
-  caretBeforeAllCrumbs={true}
   getBreadcrumbLabel={[Function]}
+  shouldDrawCaretBeforeFirstCrumb={true}
   styling={
     Object {
       "data-css-1mdtwij": "",
@@ -93,7 +93,6 @@
 
 ```
 <Breadcrumbs
-  caretBeforeAllCrumbs={false}
   elements={
     Array [
       Object {
@@ -111,6 +110,7 @@
     ]
   }
   getBreadcrumbLabel={[Function]}
+  shouldDrawCaretBeforeFirstCrumb={false}
   styling={
     Object {
       "data-css-c6mfa5": "",
