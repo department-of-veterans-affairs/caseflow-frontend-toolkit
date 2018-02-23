@@ -26,15 +26,11 @@ const getBreadcrumbLabel = (route) => <h2 id="page-title" className="cf-applicat
 
 export default class Breadcrumbs extends React.Component {
   renderBreadcrumb = (props, route, idx) => {
-    const { caretBeforeAllCrumbs } = this.props;
+    const { shouldDrawCaretBeforeFirstCrumb } = this.props;
     const caret = <React.Fragment>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</React.Fragment>;
-    const caretPositions = {
-      before: caretBeforeAllCrumbs,
-      after: !caretBeforeAllCrumbs && idx > 0
-    };
 
     return <React.Fragment>
-      {(caretPositions.before || caretPositions.after) && caret}
+      {(shouldDrawCaretBeforeFirstCrumb || idx > 0) && caret}
       <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']}>
         {this.props.getBreadcrumbLabel(route)}
       </Link>
@@ -68,11 +64,11 @@ Breadcrumbs.propTypes = {
   })),
   getBreadcrumbLabel: PropTypes.func,
   styling: PropTypes.object,
-  caretBeforeAllCrumbs: PropTypes.bool
+  shouldDrawCaretBeforeFirstCrumb: PropTypes.bool
 };
 
 Breadcrumbs.defaultProps = {
   getBreadcrumbLabel,
-  caretBeforeAllCrumbs: true,
+  shouldDrawCaretBeforeFirstCrumb: true,
   styling: STYLES.APPLICATION_TITLE
 };
