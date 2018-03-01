@@ -32,7 +32,7 @@ describe('Breadcrumbs', () => {
       toJson(mount(
         <MemoryRouter initialEntries={['/vacolsId/documents/docId']}>
           <Breadcrumbs
-            getBreadcrumbLabel={((route) => route.breadcrumb)}
+            getBreadcrumbLabel={(route) => route.breadcrumb}
             shouldDrawCaretBeforeFirstCrumb={false}
             styling={css({
               marginTop: '-1.5rem',
@@ -47,6 +47,37 @@ describe('Breadcrumbs', () => {
             }, {
               breadcrumb: 'Assignments | Caseflow Reader',
               path: '/'
+            }]}
+          />
+        </MemoryRouter>
+      ).find(Breadcrumbs))
+    ).to.matchSnapshot()
+  );
+
+  it('renders an array of crumbs regardless of route', () =>
+    expect(
+      toJson(mount(
+        <MemoryRouter initialEntries={['/vacolsId/documents/docId']}>
+          <Breadcrumbs
+            getBreadcrumbLabel={(route) => route.breadcrumb}
+            shouldDrawCaretBeforeFirstCrumb={false}
+            renderAllCrumbs
+            styling={css({
+              marginTop: '-1.5rem',
+              marginBottom: '-1.5rem'
+            })}
+            elements={[{
+              breadcrumb: 'Your Queue',
+              path: '/'
+            }, {
+              breadcrumb: 'Vet. E Ran',
+              path: '/tasks/:vacolsId'
+            }, {
+              breadcrumb: 'Select Dispositions',
+              path: '/tasks/:vacolsId/dispositions'
+            }, {
+              breadcrumb: 'Submit Draft Decision',
+              path: '/tasks/:vacolsId/submit'
             }]}
           />
         </MemoryRouter>
