@@ -25,7 +25,7 @@ const getBreadcrumbLabel = (route) => <h2 id="page-title" className="cf-applicat
 </h2>;
 
 export default class Breadcrumbs extends React.Component {
-  renderBreadcrumb = (props, route, idx) => {
+  renderBreadcrumbContent = (props, route, idx) => {
     const { shouldDrawCaretBeforeFirstCrumb } = this.props;
     const caret = <React.Fragment>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</React.Fragment>;
 
@@ -37,20 +37,26 @@ export default class Breadcrumbs extends React.Component {
     </React.Fragment>;
   };
 
+  getCrumb = (route, idx) => {
+    if (this.props.renderAllCrumbs) {
+      return <React.Fragment>
+        {this.renderBreadcrumbContent({ match: { url: route.path } }, route, idx)}
+      </React.Fragment>;
+    }
+
+    return <Route
+      key={route.breadcrumb}
+      path={route.path}
+      render={(props) => this.renderBreadcrumbContent(props, route, idx)} />;
+  };
+
   render() {
     const {
       elements,
       styling
     } = this.props;
     const children = elements || getElementsWithBreadcrumbs(this);
-
-    const breadcrumbComponents = _.sortBy(children, 'length').
-      map((route, idx) =>
-        <Route
-          key={route.breadcrumb}
-          path={route.path}
-          render={(props) => this.renderBreadcrumb(props, route, idx)} />
-      );
+    const breadcrumbComponents = _.sortBy(children, 'length').map(this.getCrumb);
 
     return <div {...styling}>{breadcrumbComponents}</div>;
   }
@@ -64,11 +70,13 @@ Breadcrumbs.propTypes = {
   })),
   getBreadcrumbLabel: PropTypes.func,
   styling: PropTypes.object,
-  shouldDrawCaretBeforeFirstCrumb: PropTypes.bool
+  shouldDrawCaretBeforeFirstCrumb: PropTypes.bool,
+  renderAllCrumbs: PropTypes.bool
 };
 
 Breadcrumbs.defaultProps = {
   getBreadcrumbLabel,
   shouldDrawCaretBeforeFirstCrumb: true,
-  styling: STYLES.APPLICATION_TITLE
+  styling: STYLES.APPLICATION_TITLE,
+  renderAllCrumbs: false
 };
