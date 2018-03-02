@@ -13,6 +13,10 @@ const footerStyles = css({
     height: 'auto'
   }
 });
+const barStyling = css({
+  marginLeft: '1rem',
+  marginRight: '1rem'
+});
 
 export default class Footer extends React.Component {
   onFeedbackClick = () => {
@@ -23,7 +27,8 @@ export default class Footer extends React.Component {
     const {
       buildDate,
       wideApp,
-      feedbackUrl
+      feedbackUrl,
+      statusPage
     } = this.props;
 
     return <footer className="cf-app-footer" {...footerStyles}>
@@ -34,6 +39,10 @@ export default class Footer extends React.Component {
             <abbr title="Department of Veterans Affairs"> VA</abbr></Link>
         </div>
         <div className="cf-push-right">
+         <Link
+          href={statusPage}
+          target="_blank">Track Caseflow Status</Link>
+          <span {...barStyling}>|</span>
           <Link
             href={feedbackUrl}
             target="_blank"
@@ -47,5 +56,10 @@ export default class Footer extends React.Component {
 Footer.propTypes = {
   appName: PropTypes.string.isRequired,
   buildDate: PropTypes.string,
-  feedbackUrl: PropTypes.string.isRequired
+  feedbackUrl: PropTypes.string.isRequired,
+  statusPage: PropTypes.string
 };
+
+Footer.defaultProps = {
+  statusPage: 'https://dsva.statuspage.io'
+}
