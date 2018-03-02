@@ -27,9 +27,10 @@ export default class Footer extends React.Component {
     const {
       buildDate,
       wideApp,
-      feedbackUrl,
-      statusPage
+      feedbackUrl
     } = this.props;
+
+    const statusPage = 'https://dsva.statuspage.io';
 
     return <footer className="cf-app-footer" {...footerStyles}>
       <div {...getAppWidthStyling(wideApp)}>
@@ -39,9 +40,9 @@ export default class Footer extends React.Component {
             <abbr title="Department of Veterans Affairs"> VA</abbr></Link>
         </div>
         <div className="cf-push-right">
-         <Link
-          href={statusPage}
-          target="_blank">Track Caseflow Status</Link>
+          <Link
+            href={statusPage}
+            target="_blank">Track Caseflow Status</Link>
           <span {...barStyling}>|</span>
           <Link
             href={feedbackUrl}
@@ -56,10 +57,5 @@ export default class Footer extends React.Component {
 Footer.propTypes = {
   appName: PropTypes.string.isRequired,
   buildDate: PropTypes.string,
-  feedbackUrl: PropTypes.string.isRequired,
-  statusPage: PropTypes.string
+  feedbackUrl: PropTypes.string.isRequired
 };
-
-Footer.defaultProps = {
-  statusPage: 'https://dsva.statuspage.io'
-}
