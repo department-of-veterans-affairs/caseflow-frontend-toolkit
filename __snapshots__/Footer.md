@@ -18,7 +18,7 @@
       >
         Built
       </span>
-       with 
+       with
       <abbr
         title="love"
       >
@@ -40,6 +40,17 @@
       className="cf-push-right"
     >
       <Link
+        href="https://dsva.statuspage.io"
+        target="_blank"
+      >
+        Track Caseflow Status
+      </Link>
+      <span
+        data-css-1bblw8p=""
+      >
+        |
+      </span>
+      <Link
         href="https://feedback.va.gov"
         onClick={[Function]}
         target="_blank"
@@ -50,9 +61,7 @@
   </div>
 </footer>
 ```
-
 #### `respects wideApp setting`
-
 ```
 <footer
   className="cf-app-footer"
@@ -69,7 +78,7 @@
       >
         Built
       </span>
-       with 
+       with
       <abbr
         title="love"
       >
@@ -91,6 +100,17 @@
       className="cf-push-right"
     >
       <Link
+        href="https://dsva.statuspage.io"
+        target="_blank"
+      >
+        Track Caseflow Status
+      </Link>
+      <span
+        data-css-1bblw8p=""
+      >
+        |
+      </span>
+      <Link
         href="https://feedback.va.gov"
         onClick={[Function]}
         target="_blank"
@@ -101,4 +121,3 @@
   </div>
 </footer>
 ```
-
