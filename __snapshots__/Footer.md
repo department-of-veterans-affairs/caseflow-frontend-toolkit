@@ -18,7 +18,7 @@
       >
         Built
       </span>
-       with
+       with 
       <abbr
         title="love"
       >
@@ -78,7 +78,7 @@
       >
         Built
       </span>
-       with 
+       with
       <abbr
         title="love"
       >
