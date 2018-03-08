@@ -251,101 +251,117 @@
   <div
     data-css-c6mfa5=""
   >
-    <Link
-      classNames={
-        Array [
-          "cf-btn-link",
-        ]
-      }
-      id="cf-logo-link"
-      to="/"
+    <span
+      key="Your Queue"
     >
       <Link
-        replace={false}
+        classNames={
+          Array [
+            "cf-btn-link",
+          ]
+        }
+        id="cf-logo-link"
         to="/"
-        type={null}
       >
-        <a
-          href="/"
-          onClick={[Function]}
+        <Link
+          replace={false}
+          to="/"
           type={null}
         >
-          Your Queue
-        </a>
+          <a
+            href="/"
+            onClick={[Function]}
+            type={null}
+          >
+            Your Queue
+          </a>
+        </Link>
       </Link>
-    </Link>
-      &gt;  
-    <Link
-      classNames={
-        Array [
-          "cf-btn-link",
-        ]
-      }
-      id="cf-logo-link"
-      to="/tasks/:vacolsId"
+    </span>
+    <span
+      key="Vet. E Ran"
     >
+        &gt;  
       <Link
-        replace={false}
+        classNames={
+          Array [
+            "cf-btn-link",
+          ]
+        }
+        id="cf-logo-link"
         to="/tasks/:vacolsId"
-        type={null}
       >
-        <a
-          href="/tasks/:vacolsId"
-          onClick={[Function]}
+        <Link
+          replace={false}
+          to="/tasks/:vacolsId"
           type={null}
         >
-          Vet. E Ran
-        </a>
+          <a
+            href="/tasks/:vacolsId"
+            onClick={[Function]}
+            type={null}
+          >
+            Vet. E Ran
+          </a>
+        </Link>
       </Link>
-    </Link>
-      &gt;  
-    <Link
-      classNames={
-        Array [
-          "cf-btn-link",
-        ]
-      }
-      id="cf-logo-link"
-      to="/tasks/:vacolsId/dispositions"
+    </span>
+    <span
+      key="Select Dispositions"
     >
+        &gt;  
       <Link
-        replace={false}
+        classNames={
+          Array [
+            "cf-btn-link",
+          ]
+        }
+        id="cf-logo-link"
         to="/tasks/:vacolsId/dispositions"
-        type={null}
       >
-        <a
-          href="/tasks/:vacolsId/dispositions"
-          onClick={[Function]}
+        <Link
+          replace={false}
+          to="/tasks/:vacolsId/dispositions"
           type={null}
         >
-          Select Dispositions
-        </a>
+          <a
+            href="/tasks/:vacolsId/dispositions"
+            onClick={[Function]}
+            type={null}
+          >
+            Select Dispositions
+          </a>
+        </Link>
       </Link>
-    </Link>
-      &gt;  
-    <Link
-      classNames={
-        Array [
-          "cf-btn-link",
-        ]
-      }
-      id="cf-logo-link"
-      to="/tasks/:vacolsId/submit"
+    </span>
+    <span
+      key="Submit Draft Decision"
     >
+        &gt;  
       <Link
-        replace={false}
+        classNames={
+          Array [
+            "cf-btn-link",
+          ]
+        }
+        id="cf-logo-link"
         to="/tasks/:vacolsId/submit"
-        type={null}
       >
-        <a
-          href="/tasks/:vacolsId/submit"
-          onClick={[Function]}
+        <Link
+          replace={false}
+          to="/tasks/:vacolsId/submit"
           type={null}
         >
-          Submit Draft Decision
-        </a>
+          <a
+            href="/tasks/:vacolsId/submit"
+            onClick={[Function]}
+            type={null}
+          >
+            Submit Draft Decision
+          </a>
+        </Link>
       </Link>
-    </Link>
+    </span>
   </div>
 </Breadcrumbs>
 ```
