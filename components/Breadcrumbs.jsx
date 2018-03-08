@@ -39,9 +39,9 @@ export default class Breadcrumbs extends React.Component {
 
   getCrumb = (route, idx) => {
     if (this.props.renderAllCrumbs) {
-      return <React.Fragment>
+      return <span key={route.breadcrumb}>
         {this.renderBreadcrumbContent({ match: { url: route.path } }, route, idx)}
-      </React.Fragment>;
+      </span>;
     }
 
     return <Route
