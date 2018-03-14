@@ -27,7 +27,8 @@ export default class Footer extends React.Component {
     const {
       buildDate,
       wideApp,
-      feedbackUrl
+      feedbackUrl,
+      onClick
     } = this.props;
 
     const statusPage = 'https://dsva.statuspage.io';
@@ -47,7 +48,7 @@ export default class Footer extends React.Component {
           <Link
             href={feedbackUrl}
             target="_blank"
-            onClick={this.onFeedbackClick}>Send feedback</Link>
+            onClick={onClick || this.onFeedbackClick}>Send feedback</Link>
         </div>
       </div>
     </footer>;
@@ -57,5 +58,6 @@ export default class Footer extends React.Component {
 Footer.propTypes = {
   appName: PropTypes.string.isRequired,
   buildDate: PropTypes.string,
-  feedbackUrl: PropTypes.string.isRequired
+  feedbackUrl: PropTypes.string.isRequired,
+  onClick: PropTypes.func
 };
