@@ -20,18 +20,20 @@ const barStyling = css({
 
 export default class Footer extends React.Component {
   onFeedbackClick = () => {
-    window.analyticsEvent(this.props.appName, 'feedback', 'footer');
+    window.analyticsEvent(this.props.appName, 'feedback', 
+      `${window.location.pathname} - footer`);
   }
 
   render() {
     const {
       buildDate,
       wideApp,
-      feedbackUrl,
-      onClick
+      feedbackUrl
     } = this.props;
 
     const statusPage = 'https://dsva.statuspage.io';
+
+    console.log("location");
 
     return <footer className="cf-app-footer" {...footerStyles}>
       <div {...getAppWidthStyling(wideApp)}>
@@ -48,7 +50,7 @@ export default class Footer extends React.Component {
           <Link
             href={feedbackUrl}
             target="_blank"
-            onClick={onClick || this.onFeedbackClick}>Send feedback</Link>
+            onClick={this.onFeedbackClick}>Send feedback</Link>
         </div>
       </div>
     </footer>;
