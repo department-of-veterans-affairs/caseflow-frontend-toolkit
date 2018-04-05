@@ -56,7 +56,12 @@ export default class Breadcrumbs extends React.Component {
       styling
     } = this.props;
     const children = elements || getElementsWithBreadcrumbs(this);
-    const breadcrumbComponents = _.sortBy(children, 'length').map(this.getCrumb);
+
+    // When we're rendering breadcrumbs based on path then we want to sort by
+    // path length to get the correct breadcrumb ordering. Otherwise we want the order
+    // in which we push breadcrumbs.
+    const breadcrumbComponents = this.props.renderAllCrumbs ?
+      children.map(this.getCrumb) : _.sortBy(children, 'path.length').map(this.getCrumb);
 
     return <div {...styling}>{breadcrumbComponents}</div>;
   }
