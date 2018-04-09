@@ -40,7 +40,7 @@
       className="cf-push-right"
     >
       <Link
-        href="https://dsva.statuspage.io"
+        href="https://caseflow.statuspage.io"
         target="_blank"
       >
         Track Caseflow Status
@@ -100,7 +100,7 @@
       className="cf-push-right"
     >
       <Link
-        href="https://dsva.statuspage.io"
+        href="https://caseflow.statuspage.io"
         target="_blank"
       >
         Track Caseflow Status
