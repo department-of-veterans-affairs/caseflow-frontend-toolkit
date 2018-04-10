@@ -11,6 +11,13 @@ const CLASS_NAME_MAPPING = {
   matte: 'link-matte link-overflow'
 };
 
+const disabledLinkStyling = css({
+  color: COLORS.GREY_MEDIUM,
+  ':hover': {
+    color: COLORS.GREY_MEDIUM
+  }
+});
+
 const matteStyling = css({
   margin: '0 8px',
   color: 'inherit',
@@ -55,11 +62,18 @@ export default class Link extends React.Component {
       onMouseUp,
       href,
       button,
-      children
+      children,
+      disabled
     } = this.props;
 
     const type = button ? 'button' : null;
-    const styling = button === 'matte' ? matteStyling : {};
+    let styling = {};
+
+    if (button === 'matte') {
+      styling = matteStyling;
+    } else if (disabled) {
+      styling = disabledLinkStyling;
+    }
 
     if (button === 'disabled') {
       return <p
@@ -79,7 +93,8 @@ export default class Link extends React.Component {
       id: name,
       className: CLASS_NAME_MAPPING[button],
       onClick,
-      onMouseUp
+      onMouseUp,
+      disabled
     };
 
     if (to) {
@@ -104,5 +119,6 @@ Link.propTypes = {
   button: PropTypes.string,
   onMouseUp: PropTypes.func,
   onClick: PropTypes.func,
-  children: PropTypes.node
+  children: PropTypes.node,
+  disabled: PropTypes.bool
 };
