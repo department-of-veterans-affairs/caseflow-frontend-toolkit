@@ -66,14 +66,14 @@ export default class Link extends React.Component {
       disabled
     } = this.props;
 
-    const type = button ? 'button' : null;
-    let styling = {};
-
-    if (button === 'matte') {
-      styling = matteStyling;
-    } else if (disabled) {
-      styling = disabledLinkStyling;
+    if (disabled) {
+      return <span {...disabledLinkStyling}>
+        {children}
+      </span>;
     }
+
+    const type = button ? 'button' : null;
+    const styling = button === 'matte' ? matteStyling : {};
 
     if (button === 'disabled') {
       return <p
@@ -93,8 +93,7 @@ export default class Link extends React.Component {
       id: name,
       className: CLASS_NAME_MAPPING[button],
       onClick,
-      onMouseUp,
-      disabled
+      onMouseUp
     };
 
     if (to) {
