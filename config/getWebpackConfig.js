@@ -18,6 +18,7 @@ module.exports = (callingDirname, entry) => {
 
     output: {
       filename: 'webpack-bundle.js',
+      sourceMapFilename: "webpack-bundle.js.map",
       path: path.join(callingDirname, '../app/assets/webpack')
     },
 
