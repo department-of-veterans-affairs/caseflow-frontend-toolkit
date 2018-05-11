@@ -18,7 +18,7 @@ module.exports = (callingDirname, entry) => {
 
     output: {
       filename: 'webpack-bundle.js',
-      sourceMapFilename: "webpack-bundle.js.map",
+      sourceMapFilename: 'webpack-bundle.js.map',
       path: path.join(callingDirname, '../app/assets/webpack')
     },
 
@@ -59,6 +59,7 @@ module.exports = (callingDirname, entry) => {
     config.devtool = 'eval-source-map';
   } else {
     console.log('Webpack production build for Rails'); // eslint-disable-line no-console
+    config.devtool = 'source-map';
   }
 
   return config;
