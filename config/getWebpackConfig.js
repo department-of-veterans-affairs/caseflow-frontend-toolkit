@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const _ = require('lodash');
 const packageJson = require('../package');
+const SentryCliPlugin = require('@sentry/webpack-plugin');
 
 module.exports = (callingDirname, entry) => {
   // eslint-disable-next-line no-process-env
@@ -22,7 +23,12 @@ module.exports = (callingDirname, entry) => {
 
     plugins: _.compact([
       devBuild ? null : new webpack.optimize.ModuleConcatenationPlugin(),
-      new webpack.EnvironmentPlugin({ NODE_ENV: 'development' })
+      new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
+      new SentryCliPlugin({
+        include: '.',
+        ignore: ['node_modules', 'webpack.config.js'],
+        dryRun: devBuild
+      })
     ]),
     resolve: {
       extensions: ['.js', '.jsx'],
