@@ -71,7 +71,7 @@ export default class NavigationBar extends React.Component {
                 <Link id="cf-logo-link" {...logoLinkProps}>
                   Caseflow
                   <h2 id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
-                    &nbsp;&gt; {appName}
+                    &nbsp; {appName && `> ${appName}`}
                   </h2>
                 </Link>
               </h1>
