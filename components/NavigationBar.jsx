@@ -47,7 +47,7 @@ export default class NavigationBar extends React.Component {
       appName,
       defaultUrl,
       defaultHref,
-      appNameHref,
+      appNameUrl,
       dropdownUrls,
       topMessage,
       logoProps,
@@ -63,10 +63,11 @@ export default class NavigationBar extends React.Component {
       logoLinkProps.href = defaultHref;
     }
 
-    if (appNameHref) {
-      appNameLinkProps.href = appNameHref;
+    if (appNameUrl) {
+      appNameLinkProps.to = appNameUrl;
     } else {
-      appNameLinkProps.to = defaultUrl || defaultHref;
+      // if no separate appNameUrl, link to same dest as logo
+      Object.assign(appNameLinkProps, logoLinkProps);
     }
 
     return <div>
@@ -122,8 +123,8 @@ NavigationBar.propTypes = {
   })),
   extraBanner: PropTypes.element,
   defaultUrl: PropTypes.string,
+  appNameUrl: PropTypes.string,
   defaultHref: PropTypes.string,
-  appNameHref: PropTypes.string,
   userDisplayName: PropTypes.string.isRequired,
   appName: PropTypes.string.isRequired
 };
