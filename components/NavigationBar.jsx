@@ -46,29 +46,12 @@ export default class NavigationBar extends React.Component {
     const {
       appName,
       defaultUrl,
-      defaultHref,
-      appNameUrl,
       dropdownUrls,
       topMessage,
       logoProps,
       wideApp,
       userDisplayName
     } = this.props;
-    const logoLinkProps = {};
-    const appNameLinkProps = {};
-
-    if (defaultUrl) {
-      logoLinkProps.to = defaultUrl;
-    } else if (defaultHref) {
-      logoLinkProps.href = defaultHref;
-    }
-
-    if (appNameUrl) {
-      appNameLinkProps.to = appNameUrl;
-    } else {
-      // if no separate appNameUrl, link to same dest as logo
-      Object.assign(appNameLinkProps, logoLinkProps);
-    }
 
     return <div>
       <header {...headerStyling}>
@@ -77,10 +60,10 @@ export default class NavigationBar extends React.Component {
             <span className="cf-push-left" {...pushLeftStyling}>
               <CaseflowLogo {...logoProps} />
               <h1 {...h1Styling}>
-                <Link id="cf-logo-link" {...logoLinkProps}>
+                <Link id="cf-logo-link" href="/">
                   Caseflow
                 </Link>
-                {appName && <Link {...appNameLinkProps}>
+                {appName && <Link to={defaultUrl}>
                   <h2 id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
                     &gt; {appName}
                   </h2>
@@ -123,8 +106,6 @@ NavigationBar.propTypes = {
   })),
   extraBanner: PropTypes.element,
   defaultUrl: PropTypes.string,
-  appNameUrl: PropTypes.string,
-  defaultHref: PropTypes.string,
   userDisplayName: PropTypes.string.isRequired,
   appName: PropTypes.string.isRequired
 };
