@@ -25,7 +25,7 @@ module.exports = (callingDirname, entry) => {
       devBuild ? null : new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
       new SentryCliPlugin({
-        include: '.',
+        include: path.join(callingDirname, '../app/assets/webpack'),
         ignore: ['node_modules', 'webpack.config.js'],
         dryRun: devBuild
       })
