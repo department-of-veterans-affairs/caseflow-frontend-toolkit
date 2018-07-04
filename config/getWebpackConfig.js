@@ -23,12 +23,7 @@ module.exports = (callingDirname, entry) => {
 
     plugins: _.compact([
       devBuild ? null : new webpack.optimize.ModuleConcatenationPlugin(),
-      new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
-      new SentryCliPlugin({
-        include: path.join(callingDirname, '../app/assets/webpack'),
-        ignore: ['node_modules', 'webpack.config.js'],
-        dryRun: devBuild
-      })
+      new webpack.EnvironmentPlugin({ NODE_ENV: 'development' })
     ]),
     resolve: {
       extensions: ['.js', '.jsx'],
