@@ -3,6 +3,7 @@ const path = require('path');
 const _ = require('lodash');
 const packageJson = require('../package');
 const SentryCliPlugin = require('@sentry/webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = (callingDirname, entry) => {
   // eslint-disable-next-line no-process-env
@@ -19,6 +20,12 @@ module.exports = (callingDirname, entry) => {
     output: {
       filename: 'webpack-bundle.js',
       path: path.join(callingDirname, '../app/assets/webpack')
+    },
+
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin()
+      ]
     },
 
     plugins: _.compact([
