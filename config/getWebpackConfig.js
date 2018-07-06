@@ -21,16 +21,10 @@ module.exports = (callingDirname, entry) => {
       filename: 'webpack-bundle.js',
       path: path.join(callingDirname, '../app/assets/webpack')
     },
-
-    optimization: {
-      minimizer: [
-        new UglifyJsPlugin()
-      ]
-    },
-
     plugins: _.compact([
       devBuild ? null : new webpack.optimize.ModuleConcatenationPlugin(),
-      new webpack.EnvironmentPlugin({ NODE_ENV: 'development' })
+      new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
+      new UglifyJsPlugin()
     ]),
     resolve: {
       extensions: ['.js', '.jsx'],
