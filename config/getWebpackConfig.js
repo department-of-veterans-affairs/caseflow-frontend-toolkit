@@ -22,9 +22,8 @@ module.exports = (callingDirname, entry) => {
       path: path.join(callingDirname, '../app/assets/webpack')
     },
     plugins: _.compact([
-      devBuild ? null : new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
-      new UglifyJsPlugin({ sourceMap: true })
+      devBuild ? null : new UglifyJsPlugin({ sourceMap: true })
     ]),
     resolve: {
       extensions: ['.js', '.jsx'],
