@@ -24,7 +24,7 @@ module.exports = (callingDirname, entry) => {
     plugins: _.compact([
       devBuild ? null : new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
-      new UglifyJsPlugin()
+      new UglifyJsPlugin({ sourceMap: true })
     ]),
     resolve: {
       extensions: ['.js', '.jsx'],
