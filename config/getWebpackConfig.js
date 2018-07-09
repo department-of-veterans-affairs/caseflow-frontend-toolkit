@@ -19,6 +19,7 @@ module.exports = (callingDirname, entry) => {
 
     output: {
       filename: 'webpack-bundle.js',
+      sourceMapFilename: 'sourcemap-[file].map',
       path: path.join(callingDirname, '../app/assets/webpack')
     },
     plugins: _.compact([
