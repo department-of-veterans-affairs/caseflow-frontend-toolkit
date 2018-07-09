@@ -7,7 +7,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = (callingDirname, entry) => {
   // eslint-disable-next-line no-process-env
-  const devBuild = process.env.NODE_ENV !== 'production';
+  const devBuild = false;
 
   const config = {
     entry: _.compact([
