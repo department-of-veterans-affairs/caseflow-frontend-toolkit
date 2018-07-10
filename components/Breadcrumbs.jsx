@@ -20,7 +20,7 @@ const getElementsWithBreadcrumbs = (element) => React.Children.toArray(element.p
     return [...acc, ...getElementsWithBreadcrumbs(child)];
   }, []);
 
-const getBreadcrumbLabel = (route) => <h2 id="page-title" className="cf-application-title">
+const getBreadcrumbLabel = (route) => <h2 id="page-title" className="cf-application-title" >
   {route.breadcrumb}
 </h2>;
 
@@ -31,7 +31,7 @@ export default class Breadcrumbs extends React.Component {
 
     return <React.Fragment>
       {(shouldDrawCaretBeforeFirstCrumb || idx > 0) && caret}
-      <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']}>
+      <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']} role="Breadcrumbs">
         {this.props.getBreadcrumbLabel(route)}
       </Link>
     </React.Fragment>;
