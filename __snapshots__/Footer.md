@@ -61,7 +61,9 @@
   </div>
 </footer>
 ```
+
 #### `respects wideApp setting`
+
 ```
 <footer
   className="cf-app-footer"
@@ -121,3 +123,4 @@
   </div>
 </footer>
 ```
+

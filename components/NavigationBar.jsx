@@ -53,7 +53,7 @@ export default class NavigationBar extends React.Component {
       userDisplayName
     } = this.props;
 
-    return <div>
+    return <React.Fragment>
       <header {...headerStyling}>
         <div>
           <div {...getAppWidthStyling(wideApp)}>
@@ -91,7 +91,7 @@ export default class NavigationBar extends React.Component {
         <div {...clearingDivStyling}> </div>
       </header>
       {this.props.children}
-    </div>;
+    </React.Fragment>;
   }
 }
 

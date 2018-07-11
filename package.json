@@ -6,7 +6,7 @@
   "repository": "git@github.com:department-of-veterans-affairs/caseflow-frontend-toolkit.git",
   "scripts": {
     "test": "yarn run lint && yarn run test:karma",
-    "test:karma": "NODE_ENV=test karma start",
+    "test:karma": "NODE_ENV=test karma start --update",
     "test:karma:watch": "yarn run test:karma --no-single-run",
     "lint": "eslint . --no-ignore --ext .jsx --ext .js --max-warnings 0 --cache",
     "lint:fix": "yarn run lint --fix"
