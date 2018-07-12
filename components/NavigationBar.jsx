@@ -84,6 +84,7 @@ export default class NavigationBar extends React.Component {
                 onClick={this.handleMenuClick}
                 onBlur={this.handleOnBlur}
                 label={userDisplayName}
+                role="dropdown-menu"
               />
             </span>
           </div>

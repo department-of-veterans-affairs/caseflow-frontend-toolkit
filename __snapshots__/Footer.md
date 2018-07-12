@@ -27,6 +27,7 @@
        by the
       <Link
         href="https://www.usds.gov"
+        title="Digital Service at VA"
       >
          Digital Service at
         <abbr
@@ -89,6 +90,7 @@
        by the
       <Link
         href="https://www.usds.gov"
+        title="Digital Service at VA"
       >
          Digital Service at
         <abbr
