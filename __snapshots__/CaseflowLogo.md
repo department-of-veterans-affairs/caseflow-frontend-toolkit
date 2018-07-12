@@ -4,7 +4,7 @@
 
 ```
 <svg
-  data-css-1qqzilq=""
+  data-css-fu31os=""
   height="500px"
   version="1.1"
   viewBox="0 0 500 500"
@@ -36,7 +36,7 @@
 
 ```
 <svg
-  data-css-1qqzilq=""
+  data-css-fu31os=""
   height="500px"
   version="1.1"
   viewBox="0 0 500 500"

@@ -1,12 +1,12 @@
 {
   "name": "@department-of-veterans-affairs/caseflow-frontend-toolkit",
-  "version": "2.5.8",
+  "version": "2.5.9",
   "description": "Build tools and React components for the Caseflow frontends",
   "main": "index.js",
   "repository": "git@github.com:department-of-veterans-affairs/caseflow-frontend-toolkit.git",
   "scripts": {
     "test": "yarn run lint && yarn run test:karma",
-    "test:karma": "NODE_ENV=test karma start --update",
+    "test:karma": "NODE_ENV=test karma start",
     "test:karma:watch": "yarn run test:karma --no-single-run",
     "lint": "eslint . --no-ignore --ext .jsx --ext .js --max-warnings 0 --cache",
     "lint:fix": "yarn run lint --fix"
