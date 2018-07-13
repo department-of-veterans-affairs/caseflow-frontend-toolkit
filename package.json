@@ -1,6 +1,7 @@
 {
   "name": "@department-of-veterans-affairs/caseflow-frontend-toolkit",
   "version": "2.5.9",
+  "private": true,
   "description": "Build tools and React components for the Caseflow frontends",
   "main": "index.js",
   "repository": "git@github.com:department-of-veterans-affairs/caseflow-frontend-toolkit.git",
@@ -22,7 +23,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "@department-of-veterans-affairs/eslint-config-appeals": "^1.0.2",
+    "@department-of-veterans-affairs/eslint-config-appeals": "https://github.com/department-of-veterans-affairs/eslint-config-appeals#f50522e",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
