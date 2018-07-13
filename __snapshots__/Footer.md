@@ -27,12 +27,10 @@
        by the
       <Link
         href="https://www.usds.gov"
-        title="Digital Service at VA"
+        title="Digital Service at Department of Veterans Affairs"
       >
          Digital Service at
-        <abbr
-          title="Department of Veterans Affairs"
-        >
+        <abbr>
            VA
         </abbr>
       </Link>
@@ -90,12 +88,10 @@
        by the
       <Link
         href="https://www.usds.gov"
-        title="Digital Service at VA"
+        title="Digital Service at Department of Veterans Affairs"
       >
          Digital Service at
-        <abbr
-          title="Department of Veterans Affairs"
-        >
+        <abbr>
            VA
         </abbr>
       </Link>
