@@ -37,7 +37,7 @@ module.exports = function(config) {
 
     snapshot: {
       /* eslint-disable no-process-env */
-      update: true,
+      update: Boolean(process.env.UPDATE),
       prune: Boolean(process.env.PRUNE)
       /* eslint-enable no-process-env */
     },
