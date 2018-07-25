@@ -1,6 +1,6 @@
 {
   "name": "@department-of-veterans-affairs/caseflow-frontend-toolkit",
-  "version": "2.6.0",
+  "version": "2.5.8",
   "private": true,
   "description": "Build tools and React components for the Caseflow frontends",
   "main": "index.js",

@@ -6,10 +6,7 @@ export default class CaseflowLogo extends PureComponent {
   render() {
     const styling = css({
       width: '32px',
-      height: '32px',
-      top: '10px',
-      marginRight: '8px',
-      position: 'relative'
+      height: '32px'
     });
 
     return <svg width="500px" height="500px" viewBox="0 0 500 500" version="1.1" {...styling}>
