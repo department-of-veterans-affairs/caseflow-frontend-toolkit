@@ -60,7 +60,7 @@ export default class NavigationBar extends React.Component {
             <span className="cf-push-left" {...pushLeftStyling}>
               <CaseflowLogo {...logoProps} />
               <h1 {...h1Styling}>
-                <Link id="cf-logo-link" href="/">
+                <Link id="cf-logo-link" to={defaultUrl}>
                   Caseflow
                 </Link>
                 {appName && <Link to={defaultUrl}>
