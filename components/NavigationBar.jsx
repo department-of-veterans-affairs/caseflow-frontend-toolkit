@@ -50,8 +50,10 @@ export default class NavigationBar extends React.Component {
       topMessage,
       wideApp,
       userDisplayName,
-      ...logoProps,
+      logoProps,
     } = this.props;
+
+    const Logo = <CaseflowLogo {...logoProps} />
 
     return <React.Fragment>
       <header {...headerStyling}>
@@ -61,8 +63,7 @@ export default class NavigationBar extends React.Component {
               <h1 {...h1Styling}>
 
                 <Link id="cf-logo-link" to={defaultUrl} title="Homepage" aria-label="Caseflow">
-                  <CaseflowLogo {...logoProps} />
-                  Caseflow
+                  {logo} Caseflow
                 </Link>
                 {appName && <Link to={defaultUrl}>
                   <h2 id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
