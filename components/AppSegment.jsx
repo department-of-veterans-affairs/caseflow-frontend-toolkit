@@ -12,11 +12,11 @@ const AppSegment = ({ children, extraClassNames, filledBackground, noMarginTop, 
     css({ marginTop: '0 !important' }) :
     {};
 
-  return <section {...marginTopStyling} {...styling} className={classNames('cf-app-segment', extraClassNames, {
+  return <div {...marginTopStyling} {...styling} className={classNames('cf-app-segment', extraClassNames, {
     'cf-app-segment--alt': filledBackground
-  })} role="main" >
+  })}>
     {children}
-  </section>;
+  </div>;
 };
 
 export default AppSegment;

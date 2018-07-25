@@ -31,7 +31,7 @@ export default class Breadcrumbs extends React.Component {
 
     return <React.Fragment>
       {(shouldDrawCaretBeforeFirstCrumb || idx > 0) && caret}
-      <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']} role="Breadcrumbs">
+      <Link id="cf-logo-link" to={props.match.url} classNames={['cf-btn-link']}>
         {this.props.getBreadcrumbLabel(route)}
       </Link>
     </React.Fragment>;

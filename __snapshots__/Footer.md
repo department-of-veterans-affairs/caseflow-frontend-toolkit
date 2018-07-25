@@ -27,10 +27,11 @@
        by the
       <Link
         href="https://www.usds.gov"
-        title="Digital Service at Department of Veterans Affairs"
       >
-        Digital Service at 
-        <abbr>
+         Digital Service at
+        <abbr
+          title="Department of Veterans Affairs"
+        >
            VA
         </abbr>
       </Link>
@@ -60,9 +61,7 @@
   </div>
 </footer>
 ```
-
 #### `respects wideApp setting`
-
 ```
 <footer
   className="cf-app-footer"
@@ -88,10 +87,11 @@
        by the
       <Link
         href="https://www.usds.gov"
-        title="Digital Service at Department of Veterans Affairs"
       >
-        Digital Service at 
-        <abbr>
+         Digital Service at
+        <abbr
+          title="Department of Veterans Affairs"
+        >
            VA
         </abbr>
       </Link>
@@ -121,4 +121,3 @@
   </div>
 </footer>
 ```
-
