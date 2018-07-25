@@ -48,9 +48,9 @@ export default class NavigationBar extends React.Component {
       defaultUrl,
       dropdownUrls,
       topMessage,
-      logoProps,
       wideApp,
-      userDisplayName
+      userDisplayName,
+      ...logoProps,
     } = this.props;
 
     return <React.Fragment>
