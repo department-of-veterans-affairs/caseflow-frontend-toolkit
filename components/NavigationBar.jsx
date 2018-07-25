@@ -59,7 +59,7 @@ export default class NavigationBar extends React.Component {
           <div {...getAppWidthStyling(wideApp)}>
             <nav className="cf-push-left" {...pushLeftStyling} >
               <h1 {...h1Styling}>
-                  <CaseflowLogo {...logoProps} />
+                <CaseflowLogo {...logoProps} />
                 <Link id="cf-logo-link" to={defaultUrl} title="Homepage" aria-label="Caseflow">
 
                   Caseflow
