@@ -50,7 +50,8 @@ export default class NavigationBar extends React.Component {
       topMessage,
       logoProps,
       wideApp,
-      userDisplayName
+      userDisplayName,
+      ...rest
     } = this.props;
 
     return <React.Fragment>
@@ -62,7 +63,6 @@ export default class NavigationBar extends React.Component {
 
                 <Link id="cf-logo-link" to={defaultUrl} title="Homepage" aria-label="Caseflow">
                   <CaseflowLogo {...logoProps} />
-                  Caseflow
                 </Link>
                 {appName && <Link to={defaultUrl}>
                   <h2 id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
