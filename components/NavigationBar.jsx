@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DropdownMenu from './DropdownMenu';
-import Link from './Link';
+import { Link } from 'react-router-dom';
 import Breadcrumbs from './Breadcrumbs';
 import CaseflowLogo from './CaseflowLogo';
 import { css } from 'glamor';
