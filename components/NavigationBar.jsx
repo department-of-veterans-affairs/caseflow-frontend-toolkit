@@ -50,7 +50,7 @@ export default class NavigationBar extends React.Component {
       topMessage,
       logoProps,
       wideApp,
-      userDisplayName,
+      userDisplayName
     } = this.props;
 
     return <React.Fragment>
@@ -59,9 +59,9 @@ export default class NavigationBar extends React.Component {
           <div {...getAppWidthStyling(wideApp)}>
             <nav className="cf-push-left" {...pushLeftStyling} >
               <h1 {...h1Styling}>
-                <CaseflowLogo {...logoProps}  to={defaultUrl}  />
+                <CaseflowLogo {...logoProps} />
                 <Link id="cf-logo-link" to={defaultUrl} title="Homepage" aria-label="Caseflow">
-                Caseflow
+                  Caseflow
                 </Link>
                 {appName && <Link to={defaultUrl}>
                   <h2 id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
