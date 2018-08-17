@@ -42,7 +42,7 @@ export default class Footer extends React.Component {
         <div className="cf-push-right">
           <Link
             href={statusPage}
-            target="_blank">Track Caseflow Status</Link>
+            target="_blank">Track Caseflow status</Link>
           <span {...barStyling}>|</span>
           <Link
             href={feedbackUrl}
