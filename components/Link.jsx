@@ -6,7 +6,7 @@ import { COLORS } from '../util/StyleConstants';
 
 const CLASS_NAME_MAPPING = {
   primary: 'usa-button',
-  secondary: 'usa-button-outline',
+  secondary: 'usa-button-secondary',
   disabled: 'usa-button-disabled',
   matte: 'link-matte link-overflow'
 };

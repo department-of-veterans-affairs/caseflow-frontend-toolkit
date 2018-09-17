@@ -47,11 +47,18 @@ export default class NavigationBar extends React.Component {
       appName,
       defaultUrl,
       dropdownUrls,
+      outsideCurrentRouter,
       topMessage,
       logoProps,
       wideApp,
       userDisplayName
     } = this.props;
+
+    let targetArgument = { to: defaultUrl };
+
+    if (outsideCurrentRouter) {
+      targetArgument = { href: defaultUrl };
+    }
 
     return <React.Fragment>
       <header {...headerStyling}>
@@ -59,11 +66,13 @@ export default class NavigationBar extends React.Component {
           <div {...getAppWidthStyling(wideApp)}>
             <nav className="cf-push-left" {...pushLeftStyling} >
               <h1 {...h1Styling}>
+
                 <CaseflowLogo {...logoProps} />
-                <Link id="cf-logo-link" to={defaultUrl} title="Homepage" aria-label="Caseflow">
+                <Link id="cf-logo-link" {...targetArgument} title="Homepage" aria-label="Caseflow">
+
                   Caseflow
                 </Link>
-                {appName && <Link to={defaultUrl}>
+                {appName && <Link {...targetArgument}>
                   <h2 id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
                     &gt; {appName}
                   </h2>
