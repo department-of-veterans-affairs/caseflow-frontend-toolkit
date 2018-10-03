@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DropdownMenu from './DropdownMenu';
-import { Link } from 'react-router-dom';
+import Link from './Link';
 import Breadcrumbs from './Breadcrumbs';
 import CaseflowLogo from './CaseflowLogo';
 import { css } from 'glamor';
@@ -66,10 +66,8 @@ export default class NavigationBar extends React.Component {
           <div {...getAppWidthStyling(wideApp)}>
             <nav className="cf-push-left" {...pushLeftStyling} >
               <h1 {...h1Styling}>
-
-                <CaseflowLogo {...logoProps} />
                 <Link id="cf-logo-link" {...targetArgument} title="Homepage" aria-label="Caseflow">
-
+                  <CaseflowLogo {...logoProps} />
                   Caseflow
                 </Link>
                 {appName && <Link {...targetArgument}>
