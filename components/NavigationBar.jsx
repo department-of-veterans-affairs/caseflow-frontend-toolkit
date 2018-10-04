@@ -60,7 +60,7 @@ export default class NavigationBar extends React.Component {
       targetArgument = { href: defaultUrl };
     }
 
-    return <React.Fragment>
+    return <div>
       <header {...headerStyling}>
         <div>
           <div {...getAppWidthStyling(wideApp)}>
@@ -97,7 +97,7 @@ export default class NavigationBar extends React.Component {
         <div {...clearingDivStyling}> </div>
       </header>
       {this.props.children}
-    </React.Fragment>;
+    </div>;
   }
 }
 
