@@ -50,6 +50,7 @@ export default class NavigationBar extends React.Component {
       outsideCurrentRouter,
       topMessage,
       logoProps,
+      rightNavElement,
       wideApp,
       userDisplayName
     } = this.props;
@@ -84,6 +85,7 @@ export default class NavigationBar extends React.Component {
               </h2>}
             </nav>
             <span className="cf-push-right">
+              { rightNavElement && rightNavElement }
               <DropdownMenu
                 analyticsTitle={`${appName} Navbar`}
                 options={dropdownUrls}
