@@ -80,7 +80,7 @@ export default class DropdownMenu extends React.Component {
         aria-labelledby="menu-trigger">
         {options.map((option, index) =>
           <li key={index}>
-            {options.length - 1 === index && <div className="dropdown-border"></div>}
+            {option.border && <div className="dropdown-border"></div>}
             <Link
               href={option.link}
               target={option.target}
@@ -91,7 +91,7 @@ export default class DropdownMenu extends React.Component {
 
     return <div ref={this.setWrapperRef} {...dropdownWrapperStyles}
       className="cf-dropdown" role="dropdown-menu" >
-      <a href="#dropdown-menu"
+      <a
         {...triggerStyles}
         className="cf-dropdown-trigger"
         id="menu-trigger"
@@ -108,6 +108,7 @@ DropdownMenu.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
+    border: PropTypes.boolean,
     target: PropTypes.string
   })),
   label: PropTypes.string.isRequired

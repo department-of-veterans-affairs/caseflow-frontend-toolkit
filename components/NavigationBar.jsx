@@ -47,6 +47,7 @@ export default class NavigationBar extends React.Component {
       appName,
       defaultUrl,
       dropdownUrls,
+      applicationUrls,
       outsideCurrentRouter,
       topMessage,
       logoProps,
@@ -73,7 +74,7 @@ export default class NavigationBar extends React.Component {
                 </Link>
                 {appName && <Link {...targetArgument}>
                   <h2 id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
-                    &gt; {appName}
+                    {appName}
                   </h2>
                 </Link>}
               </h1>
@@ -83,6 +84,19 @@ export default class NavigationBar extends React.Component {
               {topMessage && <h2 className="cf-application-title" {...STYLES.APPLICATION_TITLE} {...topMessageStyling}>
                  &nbsp; | &nbsp; {topMessage}
               </h2>}
+              { applicationUrls &&
+                <span>&nbsp; | &nbsp;
+                  <DropdownMenu
+                    analyticsTitle={`${appName} Switch App`}
+                    options={applicationUrls.map((option) => {
+                      return {
+                        ...option,
+                        title: <span><b>Caseflow</b> {option.title}</span>
+                      };
+                    })}
+                    label="Switch product"
+                  />
+                </span>}
             </nav>
             <span className="cf-push-right">
               { rightNavElement && rightNavElement }
@@ -108,10 +122,17 @@ NavigationBar.defaultProps = {
 };
 
 NavigationBar.propTypes = {
+  applicationUrls: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    target: PropTypes.string,
+    border: PropTypes.boolean
+  })),
   dropdownUrls: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
-    target: PropTypes.string
+    target: PropTypes.string,
+    border: PropTypes.boolean
   })),
   extraBanner: PropTypes.element,
   defaultUrl: PropTypes.string,
