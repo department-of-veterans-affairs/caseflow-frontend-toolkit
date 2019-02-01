@@ -57,6 +57,11 @@ export default class NavigationBar extends React.Component {
 
     let targetArgument = { to: defaultUrl };
 
+    const updatedDropdownUrls = dropdownUrls.map((obj) => {
+      return obj.title === 'Send Feedback' ? Object.assign({}, obj,
+        { link: `${obj.link}&original_url=${encodeURIComponent(window.location.href)}` }) : obj;
+    });
+
     if (outsideCurrentRouter) {
       targetArgument = { href: defaultUrl };
     }
@@ -88,7 +93,7 @@ export default class NavigationBar extends React.Component {
               { rightNavElement && rightNavElement }
               <DropdownMenu
                 analyticsTitle={`${appName} Navbar`}
-                options={dropdownUrls}
+                options={updatedDropdownUrls}
                 onClick={this.handleMenuClick}
                 onBlur={this.handleOnBlur}
                 label={userDisplayName}
