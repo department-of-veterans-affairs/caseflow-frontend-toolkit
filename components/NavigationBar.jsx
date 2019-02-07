@@ -57,7 +57,7 @@ export default class NavigationBar extends React.Component {
 
     let targetArgument = { to: defaultUrl };
 
-    const updatedDropdownUrls = dropdownUrls.map((obj) => {
+    const updatedDropdownUrls = (typeof dropdownUrls == 'undefined') ? dropdownUrls : dropdownUrls.map((obj) => {
       return obj.title === 'Send Feedback' ? Object.assign({}, obj,
         { link: `${obj.link}&original_url=${encodeURIComponent(window.location.href)}` }) : obj;
     });
