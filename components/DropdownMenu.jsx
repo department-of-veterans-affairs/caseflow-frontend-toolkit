@@ -14,16 +14,6 @@ const dropdownMenuStyles = css({
   display: 'block'
 });
 
-// const dropdownWrapperStyles = css({
-//   '& a': {
-//     color: COLORS.GREY_MEDIUM
-//   },
-
-//   '& li a:hover': {
-//     color: COLORS.WHITE
-//   }
-// });
-
 const triggerStyles = css({
   '::after': {
     backgroundSize: '.75em'
