@@ -14,15 +14,15 @@ const dropdownMenuStyles = css({
   display: 'block'
 });
 
-const dropdownWrapperStyles = css({
-  '& a': {
-    color: COLORS.GREY_MEDIUM
-  },
+// const dropdownWrapperStyles = css({
+//   '& a': {
+//     color: COLORS.GREY_MEDIUM
+//   },
 
-  '& li a:hover': {
-    color: COLORS.WHITE
-  }
-});
+//   '& li a:hover': {
+//     color: COLORS.WHITE
+//   }
+// });
 
 const triggerStyles = css({
   '::after': {
@@ -57,7 +57,7 @@ export default class DropdownMenu extends React.Component {
   }
 
   onClick = (title) => () => {
-    window.analyticsEvent(this.props.analyticsTitle, title.toLowerCase());
+    window.analyticsEvent(this.props.analyticsTitle, title.toString().toLowerCase());
   }
 
   onMenuClick = () => {
@@ -89,7 +89,7 @@ export default class DropdownMenu extends React.Component {
       </ul>;
     };
 
-    return <div ref={this.setWrapperRef} {...dropdownWrapperStyles}
+    return <div ref={this.setWrapperRef}
       className="cf-dropdown" role="dropdown-menu" >
       <a
         {...triggerStyles}
