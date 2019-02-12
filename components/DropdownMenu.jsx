@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from './Link';
 import { css } from 'glamor';
-import { COLORS } from '../util/StyleConstants';
 
 // Lots of this class are taken from
 // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
@@ -12,16 +11,6 @@ const dropdownMenuStyles = css({
   width: 'auto',
   minWidth: '13em',
   display: 'block'
-});
-
-const dropdownWrapperStyles = css({
-  '& a': {
-    color: COLORS.GREY_MEDIUM
-  },
-
-  '& li a:hover': {
-    color: COLORS.WHITE
-  }
 });
 
 const triggerStyles = css({
@@ -57,7 +46,7 @@ export default class DropdownMenu extends React.Component {
   }
 
   onClick = (title) => () => {
-    window.analyticsEvent(this.props.analyticsTitle, title.toLowerCase());
+    window.analyticsEvent(this.props.analyticsTitle, title.toString().toLowerCase());
   }
 
   onMenuClick = () => {
@@ -80,7 +69,7 @@ export default class DropdownMenu extends React.Component {
         aria-labelledby="menu-trigger">
         {options.map((option, index) =>
           <li key={index}>
-            {options.length - 1 === index && <div className="dropdown-border"></div>}
+            {option.border && <div className="dropdown-border"></div>}
             <Link
               href={option.link}
               target={option.target}
@@ -89,9 +78,9 @@ export default class DropdownMenu extends React.Component {
       </ul>;
     };
 
-    return <div ref={this.setWrapperRef} {...dropdownWrapperStyles}
+    return <div ref={this.setWrapperRef}
       className="cf-dropdown" role="dropdown-menu" >
-      <a href="#dropdown-menu"
+      <a
         {...triggerStyles}
         className="cf-dropdown-trigger"
         id="menu-trigger"
@@ -108,6 +97,7 @@ DropdownMenu.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
+    border: PropTypes.boolean,
     target: PropTypes.string
   })),
   label: PropTypes.string.isRequired
