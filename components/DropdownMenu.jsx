@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from './Link';
 import { css } from 'glamor';
-import { COLORS } from '../util/StyleConstants';
 
 // Lots of this class are taken from
 // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
