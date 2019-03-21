@@ -18,7 +18,7 @@
       >
         Built
       </span>
-       with 
+       with
       <abbr
         title="love"
       >
@@ -29,7 +29,7 @@
         href="https://www.usds.gov"
         title="Digital Service at Department of Veterans Affairs"
       >
-        Digital Service at 
+        &nbsp;Digital Service at
         <abbr>
            VA
         </abbr>
@@ -79,7 +79,7 @@
       >
         Built
       </span>
-       with 
+       with
       <abbr
         title="love"
       >
@@ -90,7 +90,7 @@
         href="https://www.usds.gov"
         title="Digital Service at Department of Veterans Affairs"
       >
-        Digital Service at 
+         Digital Service at
         <abbr>
            VA
         </abbr>
@@ -121,4 +121,3 @@
   </div>
 </footer>
 ```
-
