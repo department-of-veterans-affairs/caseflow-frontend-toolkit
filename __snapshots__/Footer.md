@@ -29,7 +29,7 @@
         href="https://www.usds.gov"
         title="Digital Service at Department of Veterans Affairs"
       >
-        &nbsp;Digital Service at
+         Digital Service at
         <abbr>
            VA
         </abbr>
