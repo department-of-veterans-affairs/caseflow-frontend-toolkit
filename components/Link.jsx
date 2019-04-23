@@ -63,6 +63,7 @@ export default class Link extends React.Component {
       href,
       button,
       children,
+      replace,
       disabled
     } = this.props;
 
@@ -97,7 +98,7 @@ export default class Link extends React.Component {
     };
 
     if (to) {
-      return <RouterLink to={to} {...commonProps}>
+      return <RouterLink to={to} replace={replace} {...commonProps}>
         {children}
       </RouterLink>;
     }
@@ -119,5 +120,6 @@ Link.propTypes = {
   onMouseUp: PropTypes.func,
   onClick: PropTypes.func,
   children: PropTypes.node,
+  replace: PropTypes.bool,
   disabled: PropTypes.bool
 };
