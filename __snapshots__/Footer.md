@@ -50,7 +50,7 @@
         |
       </span>
       <Link
-        href="https://feedback.va.gov&original_url=http%3A%2F%2Flocalhost%3A9876%2Fcontext.html"
+        href="https://feedback.va.gov"
         onClick={[Function]}
         target="_blank"
       >
@@ -111,7 +111,7 @@
         |
       </span>
       <Link
-        href="https://feedback.va.gov&original_url=http%3A%2F%2Flocalhost%3A9876%2Fcontext.html"
+        href="https://feedback.va.gov"
         onClick={[Function]}
         target="_blank"
       >

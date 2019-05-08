@@ -45,7 +45,7 @@ export default class Footer extends React.Component {
             target="_blank">Track Caseflow Status</Link>
           <span {...barStyling}>|</span>
           <Link
-            href={`${feedbackUrl}&original_url=${encodeURIComponent(window.location.href)}`}
+            href={feedbackUrl}
             target="_blank"
             onClick={this.onFeedbackClick}>Send feedback</Link>
         </div>
