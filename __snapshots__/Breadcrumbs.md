@@ -33,7 +33,6 @@
         to="/vacolsId/documents"
       >
         <Link
-          replace={false}
           to="/vacolsId/documents"
           type={null}
         >
@@ -69,7 +68,6 @@
         to="/vacolsId/documents/docId"
       >
         <Link
-          replace={false}
           to="/vacolsId/documents/docId"
           type={null}
         >
@@ -140,7 +138,6 @@
         to="/"
       >
         <Link
-          replace={false}
           to="/"
           type={null}
         >
@@ -171,7 +168,6 @@
         to="/vacolsId/documents"
       >
         <Link
-          replace={false}
           to="/vacolsId/documents"
           type={null}
         >
@@ -202,7 +198,6 @@
         to="/vacolsId/documents/docId"
       >
         <Link
-          replace={false}
           to="/vacolsId/documents/docId"
           type={null}
         >
@@ -270,7 +265,6 @@
         to="/"
       >
         <Link
-          replace={false}
           to="/"
           type={null}
         >
@@ -299,7 +293,6 @@
         to="/tasks/:vacolsId"
       >
         <Link
-          replace={false}
           to="/tasks/:vacolsId"
           type={null}
         >
@@ -328,7 +321,6 @@
         to="/tasks/:vacolsId/dispositions"
       >
         <Link
-          replace={false}
           to="/tasks/:vacolsId/dispositions"
           type={null}
         >
@@ -357,7 +349,6 @@
         to="/tasks/:vacolsId/submit"
       >
         <Link
-          replace={false}
           to="/tasks/:vacolsId/submit"
           type={null}
         >
