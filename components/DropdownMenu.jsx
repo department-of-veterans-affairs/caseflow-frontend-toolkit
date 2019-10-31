@@ -80,6 +80,7 @@ export default class DropdownMenu extends React.Component {
 
     return <div ref={this.setWrapperRef}
       className="cf-dropdown" role="dropdown-menu" >
+
       <a href={`#${label}`}
         {...triggerStyles}
         className="cf-dropdown-trigger"
