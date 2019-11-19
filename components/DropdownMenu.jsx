@@ -64,11 +64,11 @@ export default class DropdownMenu extends React.Component {
     } = this.props;
 
     const dropdownMenuList = () => {
-      return <ul className="cf-dropdown-menu active"
+      return <ul className="cf-dropdown-menu active" role="menu"
         {...dropdownMenuStyles}
         aria-labelledby="menu-trigger">
         {options.map((option, index) =>
-          <li key={index}>
+          <li key={index} role="menuitem">
             {option.border && <div className="dropdown-border"></div>}
             <Link
               href={option.link}
@@ -85,6 +85,8 @@ export default class DropdownMenu extends React.Component {
         {...triggerStyles}
         className="cf-dropdown-trigger"
         id="menu-trigger"
+        aria-haspopup="menu"
+        aria-expanded={this.state.menu}
         onClick={this.onMenuClick}>
         {label}
       </a>
