@@ -36,18 +36,24 @@
           to="/vacolsId/documents"
           type={null}
         >
-          <a
+          <LinkAnchor
             href="/vacolsId/documents"
-            onClick={[Function]}
+            navigate={[Function]}
             type={null}
           >
-            <h2
-              className="cf-application-title"
-              id="page-title"
+            <a
+              href="/vacolsId/documents"
+              onClick={[Function]}
+              type={null}
             >
-              Claims Folder
-            </h2>
-          </a>
+              <h2
+                className="cf-application-title"
+                id="page-title"
+              >
+                Claims Folder
+              </h2>
+            </a>
+          </LinkAnchor>
         </Link>
       </Link>
     </Route>
@@ -71,18 +77,24 @@
           to="/vacolsId/documents/docId"
           type={null}
         >
-          <a
+          <LinkAnchor
             href="/vacolsId/documents/docId"
-            onClick={[Function]}
+            navigate={[Function]}
             type={null}
           >
-            <h2
-              className="cf-application-title"
-              id="page-title"
+            <a
+              href="/vacolsId/documents/docId"
+              onClick={[Function]}
+              type={null}
             >
-              Document Viewer
-            </h2>
-          </a>
+              <h2
+                className="cf-application-title"
+                id="page-title"
+              >
+                Document Viewer
+              </h2>
+            </a>
+          </LinkAnchor>
         </Link>
       </Link>
     </Route>
@@ -141,13 +153,19 @@
           to="/"
           type={null}
         >
-          <a
+          <LinkAnchor
             href="/"
-            onClick={[Function]}
+            navigate={[Function]}
             type={null}
           >
-            Assignments | Caseflow Reader
-          </a>
+            <a
+              href="/"
+              onClick={[Function]}
+              type={null}
+            >
+              Assignments | Caseflow Reader
+            </a>
+          </LinkAnchor>
         </Link>
       </Link>
     </Route>
@@ -171,13 +189,19 @@
           to="/vacolsId/documents"
           type={null}
         >
-          <a
+          <LinkAnchor
             href="/vacolsId/documents"
-            onClick={[Function]}
+            navigate={[Function]}
             type={null}
           >
-            Claims Folder
-          </a>
+            <a
+              href="/vacolsId/documents"
+              onClick={[Function]}
+              type={null}
+            >
+              Claims Folder
+            </a>
+          </LinkAnchor>
         </Link>
       </Link>
     </Route>
@@ -201,13 +225,19 @@
           to="/vacolsId/documents/docId"
           type={null}
         >
-          <a
+          <LinkAnchor
             href="/vacolsId/documents/docId"
-            onClick={[Function]}
+            navigate={[Function]}
             type={null}
           >
-            Document Viewer
-          </a>
+            <a
+              href="/vacolsId/documents/docId"
+              onClick={[Function]}
+              type={null}
+            >
+              Document Viewer
+            </a>
+          </LinkAnchor>
         </Link>
       </Link>
     </Route>
@@ -268,13 +298,19 @@
           to="/"
           type={null}
         >
-          <a
+          <LinkAnchor
             href="/"
-            onClick={[Function]}
+            navigate={[Function]}
             type={null}
           >
-            Your Queue
-          </a>
+            <a
+              href="/"
+              onClick={[Function]}
+              type={null}
+            >
+              Your Queue
+            </a>
+          </LinkAnchor>
         </Link>
       </Link>
     </span>
@@ -296,13 +332,19 @@
           to="/tasks/:vacolsId"
           type={null}
         >
-          <a
+          <LinkAnchor
             href="/tasks/:vacolsId"
-            onClick={[Function]}
+            navigate={[Function]}
             type={null}
           >
-            Vet. E Ran
-          </a>
+            <a
+              href="/tasks/:vacolsId"
+              onClick={[Function]}
+              type={null}
+            >
+              Vet. E Ran
+            </a>
+          </LinkAnchor>
         </Link>
       </Link>
     </span>
@@ -324,13 +366,19 @@
           to="/tasks/:vacolsId/dispositions"
           type={null}
         >
-          <a
+          <LinkAnchor
             href="/tasks/:vacolsId/dispositions"
-            onClick={[Function]}
+            navigate={[Function]}
             type={null}
           >
-            Select Dispositions
-          </a>
+            <a
+              href="/tasks/:vacolsId/dispositions"
+              onClick={[Function]}
+              type={null}
+            >
+              Select Dispositions
+            </a>
+          </LinkAnchor>
         </Link>
       </Link>
     </span>
@@ -352,13 +400,19 @@
           to="/tasks/:vacolsId/submit"
           type={null}
         >
-          <a
+          <LinkAnchor
             href="/tasks/:vacolsId/submit"
-            onClick={[Function]}
+            navigate={[Function]}
             type={null}
           >
-            Submit Draft Decision
-          </a>
+            <a
+              href="/tasks/:vacolsId/submit"
+              onClick={[Function]}
+              type={null}
+            >
+              Submit Draft Decision
+            </a>
+          </LinkAnchor>
         </Link>
       </Link>
     </span>
