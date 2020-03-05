@@ -24,14 +24,14 @@
       >
         ♡
       </abbr>
-       by the
+       by the 
       <Link
         href="https://www.usds.gov"
         title="Digital Service at Department of Veterans Affairs"
       >
         Digital Service at 
         <abbr>
-           VA
+          VA
         </abbr>
       </Link>
     </div>
@@ -85,14 +85,14 @@
       >
         ♡
       </abbr>
-       by the
+       by the 
       <Link
         href="https://www.usds.gov"
         title="Digital Service at Department of Veterans Affairs"
       >
         Digital Service at 
         <abbr>
-           VA
+          VA
         </abbr>
       </Link>
     </div>
