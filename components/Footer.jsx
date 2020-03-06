@@ -35,9 +35,10 @@ export default class Footer extends React.Component {
     return <footer className="cf-app-footer" {...footerStyles}>
       <div {...getAppWidthStyling(wideApp)}>
         <div className="cf-push-left">
-          <span title={buildDate}>Built</span> with <abbr title="love">&#9825;</abbr> by the
+          <span title={buildDate}>Built</span> with <abbr title="love">&#9825;</abbr>{' by the '}
           <Link href="https://www.usds.gov" title="Digital Service at Department of Veterans Affairs">
-          Digital Service at <abbr> VA</abbr></Link>
+            Digital Service at <abbr>VA</abbr>
+          </Link>
         </div>
         <div className="cf-push-right">
           <Link
