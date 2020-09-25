@@ -10,7 +10,7 @@ import _ from 'lodash';
 // those other routes.
 const getElementsWithBreadcrumbs = (element) => React.Children.toArray(element.props.children).
   reduce((acc, child) => {
-    if (child.props.breadcrumb) {
+    if (child?.props?.breadcrumb) {
       return [...acc, {
         path: child.props.path,
         breadcrumb: child.props.breadcrumb
