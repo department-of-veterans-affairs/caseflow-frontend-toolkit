@@ -11,7 +11,7 @@ module.exports = (callingDirname, entry) => {
     entry: _.compact([
       'es5-shim/es5-shim',
       'es5-shim/es5-sham',
-      'babel-polyfill',
+      // 'babel-polyfill',
       entry
     ]),
 
