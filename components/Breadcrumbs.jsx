@@ -55,7 +55,6 @@ export default class Breadcrumbs extends React.Component {
       elements,
       styling
     } = this.props;
-    console.log('Breadcrumbs', this, this.props)
     const children = elements || getElementsWithBreadcrumbs(this);
 
     // When we're rendering breadcrumbs based on path then we want to sort by
