@@ -26,6 +26,8 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@department-of-veterans-affairs/eslint-config-appeals": "https://github.com/department-of-veterans-affairs/eslint-config-appeals#f50522e",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
