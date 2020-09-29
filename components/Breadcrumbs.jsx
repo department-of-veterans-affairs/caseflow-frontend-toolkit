@@ -8,9 +8,9 @@ import _ from 'lodash';
 // When passed a child component with Route or PageRoute objects that have
 // breadcrumb properties set, this will generate breadcrumbs as links to
 // those other routes.
-const getElementsWithBreadcrumbs = (element) => React.Children.toArray(element.props.children).
+const getElementsWithBreadcrumbs = (element) => React.Children.toArray(element?.props?.children).
   reduce((acc, child) => {
-    if (child.props.breadcrumb) {
+    if (child?.props?.breadcrumb) {
       return [...acc, {
         path: child.props.path,
         breadcrumb: child.props.breadcrumb
