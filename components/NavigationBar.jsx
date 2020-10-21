@@ -53,7 +53,8 @@ export default class NavigationBar extends React.Component {
       logoProps,
       rightNavElement,
       wideApp,
-      userDisplayName
+      userDisplayName,
+      crumbs
     } = this.props;
 
     let targetArgument = { to: defaultUrl };
@@ -78,7 +79,7 @@ export default class NavigationBar extends React.Component {
                   </h2>
                 </Link>}
               </h1>
-              <Breadcrumbs>
+              <Breadcrumbs elements={crumbs}>
                 {this.props.children}
               </Breadcrumbs>
               {topMessage && <h2 className="cf-application-title" {...STYLES.APPLICATION_TITLE} {...topMessageStyling}>
@@ -137,5 +138,9 @@ NavigationBar.propTypes = {
   extraBanner: PropTypes.element,
   defaultUrl: PropTypes.string,
   userDisplayName: PropTypes.string.isRequired,
-  appName: PropTypes.string.isRequired
+  appName: PropTypes.string.isRequired,
+  crumbs: PropTypes.arrayOf(PropTypes.shape({
+    path: PropTypes.string,
+    breadcrumb: PropTypes.string
+  }))
 };
