@@ -32,3 +32,6 @@ For our use case, I've decided to forgo that. Our team owns both this module and
 
 ### React as a dev dep
 Unfortunately, if `react` is listed as a `dependency` in `package.json`, then `yarn` fires a bunch of erroneous warnings about `react` not being met as a peer dependency. Thus, we move it to `devDependencies` to silence the warnings. Semantically, `react` is a `dependency` of this module and should be listed as such.
+
+### Local Development
+You may want to use `yarn link` to (link)[https://classic.yarnpkg.com/en/docs/cli/link/] a local copy of this module project level to view changes in your development environment. Simply `yarn link` in your local directory for this module, then `yarn link <version of this module>` in the project directory that contains `package.json` that you want to use it in. This is ideal for testing changes before you push.
