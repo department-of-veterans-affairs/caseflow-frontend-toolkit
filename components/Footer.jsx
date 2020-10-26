@@ -25,7 +25,6 @@ export default class Footer extends React.Component {
 
   render() {
     const {
-      buildDate,
       wideApp,
       feedbackUrl
     } = this.props;
