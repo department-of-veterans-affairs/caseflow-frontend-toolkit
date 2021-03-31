@@ -11,31 +11,6 @@
     data-css-pw7rlt=""
   >
     <div
-      className="cf-push-left"
-    >
-      <span
-        title="some date string"
-      >
-        Built
-      </span>
-       with 
-      <abbr
-        title="love"
-      >
-        ♡
-      </abbr>
-       by the 
-      <Link
-        href="https://www.usds.gov"
-        title="Digital Service at Department of Veterans Affairs"
-      >
-        Digital Service at 
-        <abbr>
-          VA
-        </abbr>
-      </Link>
-    </div>
-    <div
       className="cf-push-right"
     >
       <Link
@@ -71,31 +46,6 @@
   <div
     data-css-35ly83=""
   >
-    <div
-      className="cf-push-left"
-    >
-      <span
-        title="some date string"
-      >
-        Built
-      </span>
-       with 
-      <abbr
-        title="love"
-      >
-        ♡
-      </abbr>
-       by the 
-      <Link
-        href="https://www.usds.gov"
-        title="Digital Service at Department of Veterans Affairs"
-      >
-        Digital Service at 
-        <abbr>
-          VA
-        </abbr>
-      </Link>
-    </div>
     <div
       className="cf-push-right"
     >
