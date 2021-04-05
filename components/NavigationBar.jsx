@@ -10,10 +10,11 @@ import getAppWidthStyling from './util/getAppWidthStyling';
 
 const lineHeight = { lineHeight: '4em' };
 
-const h1Styling = css({
+const pStyling = css({
   margin: 0,
   display: 'inline-block',
   fontSize: '1.7rem',
+  fontWeight: 900,
   ...lineHeight,
   '& > a': {
     color: `${COLORS.GREY_DARK} !important`,
@@ -67,23 +68,23 @@ export default class NavigationBar extends React.Component {
         <div>
           <div {...getAppWidthStyling(wideApp)}>
             <nav className="cf-push-left" {...pushLeftStyling} >
-              <h1 {...h1Styling}>
+              <p {...pStyling}>
                 <Link id="cf-logo-link" {...targetArgument} title="Homepage" aria-label="Caseflow">
                   <CaseflowLogo {...logoProps} />
                   Caseflow
                 </Link>
                 {appName && <Link {...targetArgument}>
-                  <h2 id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
+                  <p id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
                     {appName}
-                  </h2>
+                  </p>
                 </Link>}
-              </h1>
+              </p>
               <Breadcrumbs>
                 {this.props.children}
               </Breadcrumbs>
-              {topMessage && <h2 className="cf-application-title" {...STYLES.APPLICATION_TITLE} {...topMessageStyling}>
+              {topMessage && <p className="cf-application-title" {...STYLES.APPLICATION_TITLE} {...topMessageStyling}>
                  &nbsp; | &nbsp; {topMessage}
-              </h2>}
+              </p>}
               { applicationUrls &&
                 <span>&nbsp; | &nbsp;
                   <DropdownMenu
