@@ -74,9 +74,9 @@ export default class NavigationBar extends React.Component {
                   Caseflow
                 </Link>
                 {appName && <Link {...targetArgument}>
-                  <p id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
+                  <span id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE}>
                     {appName}
-                  </p>
+                  </span>
                 </Link>}
               </p>
               <Breadcrumbs>
