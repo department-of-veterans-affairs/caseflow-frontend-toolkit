@@ -84,9 +84,11 @@ export default class DropdownMenu extends React.Component {
       <a href={`#${label}`}
         {...triggerStyles}
         className="cf-dropdown-trigger"
+        role="button"
         id="menu-trigger"
         aria-haspopup="menu"
         aria-expanded={this.state.menu}
+        aria-label={`Logged in as ${label}`}
         onClick={this.onMenuClick}>
         {label}
       </a>

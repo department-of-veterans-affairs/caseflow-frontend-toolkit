@@ -106,7 +106,7 @@ export default class NavigationBar extends React.Component {
                 options={dropdownUrls}
                 onClick={this.handleMenuClick}
                 onBlur={this.handleOnBlur}
-                label={`Logged in as ${userDisplayName}`}
+                label={userDisplayName}
               />
             </span>
           </div>
