@@ -107,6 +107,7 @@ export default class NavigationBar extends React.Component {
                 onClick={this.handleMenuClick}
                 onBlur={this.handleOnBlur}
                 label={userDisplayName}
+                loggedIn
               />
             </span>
           </div>
@@ -127,13 +128,13 @@ NavigationBar.propTypes = {
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
     target: PropTypes.string,
-    border: PropTypes.boolean
+    border: PropTypes.bool
   })),
   dropdownUrls: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
     target: PropTypes.string,
-    border: PropTypes.boolean
+    border: PropTypes.bool
   })),
   extraBanner: PropTypes.element,
   defaultUrl: PropTypes.string,
