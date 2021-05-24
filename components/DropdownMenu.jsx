@@ -60,8 +60,11 @@ export default class DropdownMenu extends React.Component {
   render() {
     const {
       label,
-      options
+      options,
+      loggedIn
     } = this.props;
+
+    const ariaLabel = loggedIn ? `Logged in as ${label}` : label;
 
     const dropdownMenuList = () => {
       return <ul className="cf-dropdown-menu active" role="menu"
@@ -88,7 +91,7 @@ export default class DropdownMenu extends React.Component {
         id="menu-trigger"
         aria-haspopup="menu"
         aria-expanded={this.state.menu}
-        aria-label={`Logged in as ${label}`}
+        aria-label={ariaLabel}
         onClick={this.onMenuClick}>
         {label}
       </a>
@@ -102,8 +105,9 @@ DropdownMenu.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
-    border: PropTypes.boolean,
+    border: PropTypes.bool,
     target: PropTypes.string
   })),
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  loggedIn: PropTypes.bool
 };
