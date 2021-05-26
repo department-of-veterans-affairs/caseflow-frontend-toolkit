@@ -60,6 +60,7 @@ export default class DropdownMenu extends React.Component {
   render() {
     const {
       label,
+      ariaLabel,
       options
     } = this.props;
 
@@ -84,9 +85,11 @@ export default class DropdownMenu extends React.Component {
       <a href={`#${label}`}
         {...triggerStyles}
         className="cf-dropdown-trigger"
+        role="button"
         id="menu-trigger"
         aria-haspopup="menu"
         aria-expanded={this.state.menu}
+        aria-label={ariaLabel || label}
         onClick={this.onMenuClick}>
         {label}
       </a>
@@ -100,8 +103,9 @@ DropdownMenu.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
-    border: PropTypes.boolean,
+    border: PropTypes.bool,
     target: PropTypes.string
   })),
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  ariaLabel: PropTypes.string
 };
