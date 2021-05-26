@@ -107,7 +107,7 @@ export default class NavigationBar extends React.Component {
                 onClick={this.handleMenuClick}
                 onBlur={this.handleOnBlur}
                 label={userDisplayName}
-                loggedIn
+                ariaLabel={`Logged in as ${userDisplayName}`}
               />
             </span>
           </div>
