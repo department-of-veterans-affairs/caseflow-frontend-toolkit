@@ -14,7 +14,7 @@ const AppSegment = ({ children, extraClassNames, filledBackground, noMarginTop, 
 
   return <section {...marginTopStyling} {...styling} className={classNames('cf-app-segment', extraClassNames, {
     'cf-app-segment--alt': filledBackground
-  })} >
+  })}>
     {children}
   </section>;
 };
