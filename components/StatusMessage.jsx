@@ -39,13 +39,13 @@ export default class StatusMessage extends React.Component {
       <h1 className={getClassNames()}>{title}</h1>
 
       { children ?
-        <h2 className="cf-msg-screen-deck">
+        <p className="cf-msg-screen-deck">
           {children}
-        </h2> :
+        </p> :
         _.map(leadMessageList, (listValue, i) =>
-          <h2 className="cf-msg-screen-deck" key={i}>
+          <p className="cf-msg-screen-deck" key={i}>
             {listValue}
-          </h2>)
+          </p>)
       }
       {type === 'success' && checklist && <ul className={checklistClassNames.join(' ')}>
         {checklist.map((listValue, i) => <li key={i}>{listValue}</li>)}
