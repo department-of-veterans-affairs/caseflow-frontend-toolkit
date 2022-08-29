@@ -90,8 +90,7 @@ export default class DropdownMenu extends React.Component {
         aria-haspopup="menu"
         aria-expanded={this.state.menu}
         aria-label={ariaLabel || label}
-        onClick={this.onMenuClick}
-        name={`#${label}`}>
+        onClick={this.onMenuClick}>
         {label}
       </a>
       {this.state.menu && dropdownMenuList() }
