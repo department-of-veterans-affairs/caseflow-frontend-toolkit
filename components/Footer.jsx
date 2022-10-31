@@ -13,10 +13,6 @@ const footerStyles = css({
     height: 'auto'
   }
 });
-const barStyling = css({
-  marginLeft: '1rem',
-  marginRight: '1rem'
-});
 
 export default class Footer extends React.Component {
   onFeedbackClick = () => {
@@ -29,15 +25,9 @@ export default class Footer extends React.Component {
       feedbackUrl
     } = this.props;
 
-    const statusPage = 'https://caseflow.statuspage.io';
-
     return <footer className="cf-app-footer" {...footerStyles}>
       <div {...getAppWidthStyling(wideApp)}>
         <div className="cf-push-right">
-          <Link
-            href={statusPage}
-            target="_blank">Track Caseflow Status</Link>
-          <span {...barStyling}>|</span>
           <Link
             href={feedbackUrl}
             target="_blank"
