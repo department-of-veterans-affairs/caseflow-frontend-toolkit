@@ -71,7 +71,7 @@ export default class DropdownMenu extends React.Component {
         {...dropdownMenuStyles}
         aria-labelledby="menu-trigger">
         {options.map((option, index) =>
-          <li key={index} role="menuitem">
+          <li key={index} role="menuitem" aria-label={option.title}>
             {option.border && <div className="dropdown-border"></div>}
             <Link
               href={option.link}
@@ -91,6 +91,7 @@ export default class DropdownMenu extends React.Component {
         id="menu-trigger"
         aria-haspopup="menu"
         aria-expanded={this.state.menu}
+        aria-pressed={this.state.menu}
         aria-label={ariaLabel || label}
         onClick={this.onMenuClick}>
         {label}
