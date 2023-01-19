@@ -29,9 +29,15 @@ export default class DropdownMenu extends React.Component {
     };
   }
 
-  componentDidMount = () => document.addEventListener('mousedown', this.onClickOutside);
+  componentDidMount = () => {
+    document.addEventListener('mousedown', this.onClickOutside);
+    document.addEventListener('keydown', this.onClickOutside);
+  }
 
-  componentWillUnmount = () => document.removeEventListener('mousedown', this.onClickOutside);
+  componentWillUnmount = () => {
+    document.removeEventListener('mousedown', this.onClickOutside);
+    document.removeEventListener('keydown', this.onClickOutside);
+  }
 
   setWrapperRef = (node) => this.wrapperRef = node
 
@@ -45,6 +51,11 @@ export default class DropdownMenu extends React.Component {
       this.setState({
         menu: false
       });
+    } else if (event.key === 'Escape') {
+      this.setState({
+        menu: false
+      });
+      event.preventDefault();
     }
   }
 
