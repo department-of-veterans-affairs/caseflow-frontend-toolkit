@@ -29,21 +29,33 @@ export default class DropdownMenu extends React.Component {
     };
   }
 
-  componentDidMount = () => document.addEventListener('mousedown', this.onClickOutside);
+  componentDidMount = () => {
+    document.addEventListener('mousedown', this.onClickOutside);
+    document.addEventListener('keydown', this.onClickOutside);
+  }
 
-  componentWillUnmount = () => document.removeEventListener('mousedown', this.onClickOutside);
+  componentWillUnmount = () => {
+    document.removeEventListener('mousedown', this.onClickOutside);
+    document.removeEventListener('keydown', this.onClickOutside);
+  }
 
   setWrapperRef = (node) => this.wrapperRef = node
 
   onClickOutside = (event) => {
-    // event.path is [html, document, Window] when clicking the scroll bar and always more when clicking content
+    // event.composedPath() is [html, document, Window] when clicking the scroll bar and more when clicking content
     // this stops the menu from closing if a user clicks to use the scroll bar with the menu open
-    if (this.wrapperRef && !this.wrapperRef.contains(event.target) && event.path[2] !== window && this.state.menu) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target) &&
+      event.composedPath()[2] !== window && this.state.menu) {
       window.analyticsEvent(this.props.analyticsTitle, 'menu', 'blur');
 
       this.setState({
         menu: false
       });
+    } else if (event.key === 'Escape') {
+      this.setState({
+        menu: false
+      });
+      event.preventDefault();
     }
   }
 
