@@ -92,7 +92,7 @@ export default class NavigationBar extends React.Component {
                     options={applicationUrls.map((option) => {
                       return {
                         ...option,
-                        title: <span><b>{option?.prefix || 'Caseflow'}</b> {option.title}</span>
+                        title: <span><b>{option.prefix || 'Caseflow'}</b> {option.title}</span>
                       };
                     })}
                     label="Switch product"
