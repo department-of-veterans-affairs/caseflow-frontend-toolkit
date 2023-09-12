@@ -116,7 +116,10 @@ export default class DropdownMenu extends React.Component {
 DropdownMenu.propTypes = {
   analyticsTitle: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    title: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element
+    ]).isRequired,
     link: PropTypes.string.isRequired,
     border: PropTypes.bool,
     target: PropTypes.string
