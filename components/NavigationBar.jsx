@@ -67,9 +67,9 @@ export default class NavigationBar extends React.Component {
       <header {...headerStyling}>
         <div>
           <div {...getAppWidthStyling(wideApp)}>
-            <nav className="cf-push-left" {...pushLeftStyling} >
+            <nav className="cf-push-left" {...pushLeftStyling}>
+              <Link {...targetArgument} tabIndex={0}>
               <p {...pStyling}>
-                <Link {...targetArgument} tabIndex={0} >
                 <Link id="cf-logo-link" {...targetArgument} title="Homepage" aria-label="Caseflow" tabIndex={-1}>
                   <CaseflowLogo {...logoProps} />
                   Caseflow
@@ -79,8 +79,8 @@ export default class NavigationBar extends React.Component {
                     {appName}
                   </span>
                 </Link>}
-                </Link>
               </p>
+              </Link>
               <Breadcrumbs>
                 {this.props.children}
               </Breadcrumbs>
