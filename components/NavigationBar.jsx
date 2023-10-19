@@ -70,11 +70,11 @@ export default class NavigationBar extends React.Component {
             <nav className="cf-push-left" {...pushLeftStyling}>
               <Link {...targetArgument} tabIndex={0}>
               <p {...pStyling}>
-                <Link id="cf-logo-link" {...targetArgument} title="Homepage" aria-label="Caseflow" tabIndex={-1}>
+                <Link id="cf-logo-link" {...targetArgument} tabIndex={-2} title="Homepage" aria-label="Caseflow">
                   <CaseflowLogo {...logoProps} />
                   Caseflow
                 </Link>
-                {appName && <Link {...targetArgument}>
+                {appName && <Link {...targetArgument} tabIndex={-1}>
                   <span id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE} tabIndex={-1}>
                     {appName}
                   </span>
