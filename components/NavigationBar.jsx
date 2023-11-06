@@ -64,6 +64,7 @@ export default class NavigationBar extends React.Component {
     }
 
     return <div>
+      <a class="skip-link" href="#Main">Skip to Content</a>
       <header {...headerStyling}>
         <div>
           <div {...getAppWidthStyling(wideApp)}>
