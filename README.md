@@ -7,7 +7,7 @@ Build tools and React components for the Caseflow frontends.
 $ yarn add @department-of-veterans-affairs/caseflow-frontend-toolkit
 ```
 
-## Usage
+## Usagee
 
 See how other libraries, like [Caseflow](https://github.com/department-of-veterans-affairs/caseflow/), are using this tool.
 
