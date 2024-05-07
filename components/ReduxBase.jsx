@@ -40,8 +40,8 @@ const ReduxBase = ({
     );
 
     setStore(newStore);
-    getStoreRef(newStore);
-  }, [analyticsMiddlewareArgs, getStoreRef, enhancers, reducer, initialState]);
+    // getStoreRef(newStore);
+  }, [analyticsMiddlewareArgs, enhancers, reducer, initialState]);
 
   if (!store) return null;
 
