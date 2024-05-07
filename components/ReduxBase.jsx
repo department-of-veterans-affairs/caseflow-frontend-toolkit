@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useEffect, useSyncExternalStore } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import perfLogger from 'redux-perf-middleware';
@@ -14,44 +14,34 @@ const ReduxBase = ({
   initialState,
   children
 }) => {
-  const [store, setStore] = useState(null);
+  const middleware = [thunk, getReduxAnalyticsMiddleware(...analyticsMiddlewareArgs)];
 
-  const memoizedGetStoreRef = useCallback(getStoreRef, []);
+  // Some middleware should be skipped in test scenarios. Normally I wouldn't leave a comment
+  // like this, but we had a bug where we accidentally added essential middleware here and it
+  // was super hard to track down! :)
+  // eslint-disable-next-line no-process-env
+  if (process.env.NODE_ENV !== 'test') {
+    middleware.push(perfLogger);
+  }
 
-  const middleware = useMemo(() => {
-    const middlewareArray = [thunk, getReduxAnalyticsMiddleware(...analyticsMiddlewareArgs)];
+  // eslint-disable-next-line no-underscore-dangle
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-    // Some middleware should be skipped in test scenarios. Normally I wouldn't leave a comment
-    // like this, but we had a bug where we accidentally added essential middleware here and it
-    // was super hard to track down! :)
-    // eslint-disable-next-line no-process-env
-    if (process.env.NODE_ENV !== 'test') {
-      middlewareArray.push(perfLogger);
-    }
+  const store = createStore(
+    reducer,
+    initialState,
+    composeEnhancers(
+      applyMiddleware(...middleware),
+      ...enhancers
+    )
+  );
 
-    return middlewareArray;
-  }, [analyticsMiddlewareArgs]);
-
-  const composeEnhancers = useMemo(() => {
-    // eslint-disable-next-line no-underscore-dangle
-    return window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  }, []);
+  // Sync external store with React
+  const state = useSyncExternalStore(() => store.getState(), () => store.subscribe(() => {}));
 
   useEffect(() => {
-    const newStore = createStore(
-      reducer,
-      initialState,
-      composeEnhancers(
-        applyMiddleware(...middleware),
-        ...enhancers
-      )
-    );
-
-    setStore(newStore);
-    memoizedGetStoreRef(newStore);
-  }, [composeEnhancers, enhancers, reducer, initialState, middleware, memoizedGetStoreRef]);
-
-  if (!store) return null;
+    getStoreRef(store);
+  }, [store, getStoreRef]);
 
   return (
     <Provider store={store}>
