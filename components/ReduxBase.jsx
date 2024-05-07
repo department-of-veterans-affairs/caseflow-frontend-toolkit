@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import perfLogger from 'redux-perf-middleware';
@@ -6,12 +6,21 @@ import thunk from 'redux-thunk';
 
 import { getReduxAnalyticsMiddleware } from './util/getReduxAnalyticsMiddleware';
 
-export default class ReduxBase extends React.PureComponent {
-  componentWillMount() {
+const ReduxBase = ({
+  analyticsMiddlewareArgs = [],
+  getStoreRef = () => {},
+  enhancers = [],
+  reducer,
+  initialState,
+  children
+}) => {
+  const [store, setStore] = useState(null);
+
+  useEffect(() => {
     // eslint-disable-next-line no-underscore-dangle
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-    const middleware = [thunk, getReduxAnalyticsMiddleware(...this.props.analyticsMiddlewareArgs)];
+    const middleware = [thunk, getReduxAnalyticsMiddleware(...analyticsMiddlewareArgs)];
 
     // Some middleware should be skipped in test scenarios. Normally I wouldn't leave a comment
     // like this, but we had a bug where we accidentally added essential middleware here and it
@@ -21,33 +30,26 @@ export default class ReduxBase extends React.PureComponent {
       middleware.push(perfLogger);
     }
 
-    const store = createStore(
-      this.props.reducer,
-      this.props.initialState,
+    const newStore = createStore(
+      reducer,
+      initialState,
       composeEnhancers(
         applyMiddleware(...middleware),
-        ...this.props.enhancers
+        ...enhancers
       )
     );
 
-    this.setState({ store });
-  }
+    setStore(newStore);
+    getStoreRef(newStore);
+  }, [analyticsMiddlewareArgs, getStoreRef, enhancers, reducer, initialState]);
 
-  componentDidMount() {
-    // Dispatch relies on direct access to the store. It would be better to use connect(),
-    // but for now, we will expose this to grant that access.
-    this.props.getStoreRef(this.state.store);
-  }
+  if (!store) return null;
 
-  render = () =>
-    <Provider store={this.state.store}>
-      {this.props.children}
-    </Provider>;
-}
-
-ReduxBase.defaultProps = {
-  analyticsMiddlewareArgs: [],
-  // eslint-disable-next-line no-empty-function
-  getStoreRef: () => {},
-  enhancers: []
+  return (
+    <Provider store={store}>
+      {children}
+    </Provider>
+  );
 };
+
+export default ReduxBase;
