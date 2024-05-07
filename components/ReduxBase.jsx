@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import perfLogger from 'redux-perf-middleware';
@@ -8,13 +8,15 @@ import { getReduxAnalyticsMiddleware } from './util/getReduxAnalyticsMiddleware'
 
 const ReduxBase = ({
   analyticsMiddlewareArgs = [],
-  // getStoreRef = () => {},
+  getStoreRef = () => {},
   enhancers = [],
   reducer,
   initialState,
   children
 }) => {
   const [store, setStore] = useState(null);
+
+  const memoizedGetStoreRef = useCallback(getStoreRef, [getStoreRef]);
 
   useEffect(() => {
     // eslint-disable-next-line no-underscore-dangle
@@ -40,8 +42,8 @@ const ReduxBase = ({
     );
 
     setStore(newStore);
-    // getStoreRef(newStore);
-  }, [analyticsMiddlewareArgs, enhancers, reducer, initialState]);
+    memoizedGetStoreRef(newStore);
+  }, [memoizedGetStoreRef, analyticsMiddlewareArgs, enhancers, reducer, initialState]);
 
   if (!store) return null;
 
