@@ -8,7 +8,7 @@ import { getReduxAnalyticsMiddleware } from './util/getReduxAnalyticsMiddleware'
 
 const ReduxBase = ({
   analyticsMiddlewareArgs = [],
-  getStoreRef = () => {},
+  // getStoreRef = () => {},
   enhancers = [],
   reducer,
   initialState,
