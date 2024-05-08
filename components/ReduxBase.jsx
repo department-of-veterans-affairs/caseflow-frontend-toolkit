@@ -1,4 +1,4 @@
-import React, { useEffect, useSyncExternalStore } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import perfLogger from 'redux-perf-middleware';
@@ -8,40 +8,40 @@ import { getReduxAnalyticsMiddleware } from './util/getReduxAnalyticsMiddleware'
 
 const ReduxBase = ({
   analyticsMiddlewareArgs = [],
-  getStoreRef = () => {},
   enhancers = [],
   reducer,
   initialState,
-  children
+  children,
+  getStoreRef
 }) => {
-  const middleware = [thunk, getReduxAnalyticsMiddleware(...analyticsMiddlewareArgs)];
+  const [store, setStore] = useState(null);
+  const [isInitialized, setIsInitialized] = useState(false);
 
-  // Some middleware should be skipped in test scenarios. Normally I wouldn't leave a comment
-  // like this, but we had a bug where we accidentally added essential middleware here and it
-  // was super hard to track down! :)
-  // eslint-disable-next-line no-process-env
-  if (process.env.NODE_ENV !== 'test') {
-    middleware.push(perfLogger);
-  }
+  const middleware = useMemo(() => {
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  // eslint-disable-next-line no-underscore-dangle
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const middleware = [thunk, getReduxAnalyticsMiddleware(...analyticsMiddlewareArgs)];
 
-  const store = createStore(
-    reducer,
-    initialState,
-    composeEnhancers(
-      applyMiddleware(...middleware),
-      ...enhancers
-    )
-  );
+    if (process.env.NODE_ENV !== 'test') {
+      middleware.push(perfLogger);
+    }
 
-  // Sync external store with React
-  const state = useSyncExternalStore(() => store.getState(), () => store.subscribe(() => {}));
+    return composeEnhancers(applyMiddleware(...middleware), ...enhancers);
+  }, [analyticsMiddlewareArgs, enhancers]);
 
   useEffect(() => {
-    getStoreRef(store);
-  }, [store, getStoreRef]);
+    if (!isInitialized) {
+      const newStore = createStore(reducer, initialState, middleware);
+      setStore(newStore);
+      setIsInitialized(true);
+
+      if (typeof getStoreRef === 'function') {
+        getStoreRef(newStore);
+      }
+    }
+  }, [reducer, initialState, middleware, isInitialized, getStoreRef]);
+
+  if (!store) return null;
 
   return (
     <Provider store={store}>
