@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="6" failures="1" time="4.767">
+  <testsuite name="ReduxBase" errors="0" failures="1" skipped="5" timestamp="2024-08-14T16:16:16" time="4.306" tests="6">
+    <testcase classname="ReduxBase creates a working Redux environment" name="ReduxBase creates a working Redux environment" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="ReduxBase analytics fires an event with default analytics" name="ReduxBase analytics fires an event with default analytics" time="2.227">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledTimes(expected)
+
+Expected number of calls: 1
+Received number of calls: 0
+
+&lt;html&gt;
+  &lt;head /&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;span
+        id=&quot;redux-key&quot;
+      &gt;
+        updated value
+      &lt;/span&gt;
+      ,
+      &lt;button
+        id=&quot;button-id&quot;
+      &gt;
+        Update Redux value
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    at timeout (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/test/app/ReduxBase-test.jsx:131:34)
+    at runWithExpensiveErrorDiagnosticsDisabled (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/@testing-library/dom/dist/config.js:51:12)
+    at checkCallback (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/@testing-library/dom/dist/wait-for.js:127:77)
+    at checkRealTimersCallback (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/@testing-library/dom/dist/wait-for.js:119:16)
+    at Timeout.task [as _onTimeout] (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/jsdom/lib/jsdom/browser/Window.js:516:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)</failure>
+    </testcase>
+    <testcase classname="ReduxBase analytics fires an event with overridden values" name="ReduxBase analytics fires an event with overridden values" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="ReduxBase analytics accepts an action that generates config with a function" name="ReduxBase analytics accepts an action that generates config with a function" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="ReduxBase analytics accepts an action that generates label with a function" name="ReduxBase analytics accepts an action that generates label with a function" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="ReduxBase analytics debounces events" name="ReduxBase analytics debounces events" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+</testsuites>

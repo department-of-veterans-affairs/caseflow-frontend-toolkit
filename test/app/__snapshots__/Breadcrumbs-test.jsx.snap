@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders an array of crumbs regardless of route 1`] = `
+<DocumentFragment>
+  <div
+    data-css-c6mfa5=""
+  >
+    <span>
+      <a
+        href="/"
+      >
+        Your Queue
+      </a>
+    </span>
+    <span>
+        &gt;  
+      <a
+        href="/tasks/:vacolsId"
+      >
+        Vet. E Ran
+      </a>
+    </span>
+    <span>
+        &gt;  
+      <a
+        href="/tasks/:vacolsId/dispositions"
+      >
+        Select Dispositions
+      </a>
+    </span>
+    <span>
+        &gt;  
+      <a
+        href="/tasks/:vacolsId/submit"
+      >
+        Submit Draft Decision
+      </a>
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Breadcrumbs renders an array of crumbs regardless of route 2`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "nz2miz",
+          "pathname": "/vacolsId/documents/docId",
+          "search": "",
+          "state": undefined,
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "nz2miz",
+        "pathname": "/vacolsId/documents/docId",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Breadcrumbs
+    elements={
+      Array [
+        Object {
+          "breadcrumb": "Your Queue",
+          "path": "/",
+        },
+        Object {
+          "breadcrumb": "Vet. E Ran",
+          "path": "/tasks/:vacolsId",
+        },
+        Object {
+          "breadcrumb": "Select Dispositions",
+          "path": "/tasks/:vacolsId/dispositions",
+        },
+        Object {
+          "breadcrumb": "Submit Draft Decision",
+          "path": "/tasks/:vacolsId/submit",
+        },
+      ]
+    }
+    getBreadcrumbLabel={[Function]}
+    renderAllCrumbs={true}
+    shouldDrawCaretBeforeFirstCrumb={false}
+    styling={
+      Object {
+        "data-css-c6mfa5": "",
+      }
+    }
+  />
+</Router>
+`;
+
+exports[`Breadcrumbs renders array of crumbs, custom label fn, styling, without initial caret 1`] = `
+<DocumentFragment>
+  <div
+    data-css-c6mfa5=""
+  >
+    <a
+      href="/"
+    >
+      Assignments | Caseflow Reader
+    </a>
+      &gt;  
+    <a
+      href="/vacolsId/documents"
+    >
+      Claims Folder
+    </a>
+      &gt;  
+    <a
+      href="/vacolsId/documents/docId"
+    >
+      Document Viewer
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Breadcrumbs renders array of crumbs, custom label fn, styling, without initial caret 2`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "bhujy7",
+          "pathname": "/vacolsId/documents/docId",
+          "search": "",
+          "state": undefined,
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "bhujy7",
+        "pathname": "/vacolsId/documents/docId",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Breadcrumbs
+    elements={
+      Array [
+        Object {
+          "breadcrumb": "Document Viewer",
+          "path": "/:vacolsId/documents/:docId",
+        },
+        Object {
+          "breadcrumb": "Claims Folder",
+          "path": "/:vacolsId/documents",
+        },
+        Object {
+          "breadcrumb": "Assignments | Caseflow Reader",
+          "path": "/",
+        },
+      ]
+    }
+    getBreadcrumbLabel={[Function]}
+    renderAllCrumbs={false}
+    shouldDrawCaretBeforeFirstCrumb={false}
+    styling={
+      Object {
+        "data-css-c6mfa5": "",
+      }
+    }
+  />
+</Router>
+`;
+
+exports[`Breadcrumbs renders with props 1`] = `
+<DocumentFragment>
+  <div
+    data-css-1mdtwij=""
+  >
+      &gt;  
+    <a
+      href="/vacolsId/documents"
+    >
+      <h2
+        class="cf-application-title"
+        id="page-title"
+      >
+        Claims Folder
+      </h2>
+    </a>
+      &gt;  
+    <a
+      href="/vacolsId/documents/docId"
+    >
+      <h2
+        class="cf-application-title"
+        id="page-title"
+      >
+        Document Viewer
+      </h2>
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Breadcrumbs renders with props 2`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "29rgg6",
+          "pathname": "/vacolsId/documents/docId",
+          "search": "",
+          "state": undefined,
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "29rgg6",
+        "pathname": "/vacolsId/documents/docId",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Breadcrumbs
+    getBreadcrumbLabel={[Function]}
+    renderAllCrumbs={false}
+    shouldDrawCaretBeforeFirstCrumb={true}
+    styling={
+      Object {
+        "data-css-1mdtwij": "",
+      }
+    }
+  >
+    <div
+      breadcrumb="Document Viewer"
+      path="/:vacolsId/documents/:docId"
+    />
+    <div
+      breadcrumb="Claims Folder"
+      path="/:vacolsId/documents"
+    />
+    <div
+      path="/"
+      title="Assignments | Caseflow Reader"
+    />
+  </Breadcrumbs>
+</Router>
+`;

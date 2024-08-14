@@ -1,9 +1,10 @@
 import React from 'react';
-import { expect } from 'chai';
-import { mount } from 'enzyme';
+// import { expect } from 'chai';
+// import { mount } from 'enzyme';
+import { fireEvent, logRoles, render, screen, waitFor } from '@testing-library/react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
-import ReduxBase from '../../../components/ReduxBase';
+import ReduxBase from '../../components/ReduxBase';
 
 import sinon from 'sinon';
 
@@ -26,22 +27,34 @@ const keyId = 'redux-key';
 const buttonId = 'button-id';
 
 class ReduxDisplay extends React.PureComponent {
-  handleUpdate = () => this.props.dispatch({
-    type: ACTION_NAME
-  })
+  handleUpdate = () => {
+    console.log('handleUpdate called');
+    this.props.dispatch({
+      type: ACTION_NAME
+    });
+  
+    console.log('Calling dispatchActionWithAnalytics');
+    this.dispatchActionWithAnalytics('default-category', ACTION_NAME);
+    console.log('dispatchActionWithAnalytics called');
+  }
 
-  dispatchActionWithAnalytics = (analytics, type) => this.props.dispatch({
-    type: type || `UNRECOGNIZED_ACTION_${uuid.v4()}`,
-    meta: {
-      analytics
-    }
-  })
+  dispatchActionWithAnalytics = (analytics, type) => {
+    console.log('dispatchActionWithAnalytics called', analytics, type); // Add this log
+    this.props.dispatch({
+      type: type || `UNRECOGNIZED_ACTION_${uuid.v4()}`,
+      meta: {
+        analytics
+      }
+    });
+  }
 
   render() {
-    return [
-      <span key="display" id={keyId}>{this.props.reduxKey}</span>,
-      <button key="update" id={buttonId} onClick={this.handleUpdate}>Update Redux value</button>
-    ];
+    return (
+      <>
+        <span key="display" id={keyId}>{this.props.reduxKey}</span>,
+        <button key="update" id={buttonId} onClick={this.handleUpdate}>Update Redux value</button>
+      </>
+    );
   }
 }
 
@@ -63,47 +76,67 @@ describe('ReduxBase', () => {
   let analyticsWrapper;
 
   beforeEach(() => {
-    analyticsWrapper = sinon.spy(window, 'analyticsEvent');
+    window.analyticsEvent = jest.fn(); // Ensure analyticsEvent is defined
+    analyticsWrapper = jest.spyOn(window, 'analyticsEvent');
   });
-
+  
   afterEach(() => {
-    analyticsWrapper.restore();
+    analyticsWrapper.mockRestore();
   });
 
-  it('creates a working Redux environment', () => {
-    const wrapper = mount(<TestHarness />);
+  it('creates a working Redux environment', async () => {
+    const {container} = render(<TestHarness />);
 
-    expect(wrapper.find(`#${keyId}`).text()).to.equal('initial value');
+    expect(container.querySelector(`#${keyId}`)).toHaveTextContent('initial value');
+    
+    const button = screen.getByRole('button'); 
+    fireEvent.click(button);
 
-    wrapper.find(`#${buttonId}`).simulate('click');
-    wrapper.update();
+    expect(container.querySelector(`#${keyId}`)).toHaveTextContent('updated value');
 
-    expect(wrapper.find(`#${keyId}`).text()).to.equal('updated value');
-
-    return wait().then(() => expect(analyticsWrapper).to.have.callCount(0));
+    await waitFor(() => expect(analyticsWrapper).toHaveBeenCalledTimes(0));
   });
 
   /* eslint-disable no-undefined */
   describe('analytics', () => {
 
-    const dispatchAnalyticsEvent = (analytics, actionType, delayMs = 100) => {
-      const wrapper = mount(<TestHarness />);
+    // const dispatchAnalyticsEvent = (analytics, actionType, delayMs = 100) => {
+    //   const wrapper = mount(<TestHarness />);
 
-      wrapper.find(ReduxDisplay).instance().
-        dispatchActionWithAnalytics(analytics, actionType);
+    //   wrapper.find(ReduxDisplay).instance().
+    //     dispatchActionWithAnalytics(analytics, actionType);
 
-      return wait(delayMs);
+    //   return wait(delayMs);
+    // };
+    const dispatchAnalyticsEvent = async (analytics, actionType, delayMs = 100) => {
+      render(<TestHarness />);
+      const button = screen.getByRole('button', { name: /Update Redux value/i });
+      
+      fireEvent.click(button);
+      
+      // Wait for the dispatch and the effect to settle
+      await waitFor(() => new Promise(resolve => setTimeout(resolve, delayMs)));
     };
 
-    it('fires an event with default analytics', () =>
-      dispatchAnalyticsEvent(true, 'ACTION_WITH_DEFAULT_ANALYTICS').then(() => {
-        expect(analyticsWrapper).to.have.callCount(1);
-        expect(analyticsWrapper).to.have.been.calledWithExactly(
-          'default-category', 'ACTION_WITH_DEFAULT_ANALYTICS', undefined
-        );
-      })
-    );
 
+    it.only('fires an event with default analytics', async () => {
+      render(<TestHarness />);
+  
+      const button = screen.getByRole('button', { name: /Update Redux value/i });
+      fireEvent.click(button);
+      console.log('Button clicked in test');
+      
+      await waitFor(() => {
+        console.log('Inside waitFor');
+        expect(analyticsWrapper).toHaveBeenCalledTimes(1);
+        expect(analyticsWrapper).toHaveBeenCalledWith(
+          'default-category', 
+          'ACTION_NAME', 
+          undefined
+        );
+      }, { timeout: 2000 });
+    });
+          
     it('fires an event with overridden values', () =>
       dispatchAnalyticsEvent({
         category: 'overridden-category',

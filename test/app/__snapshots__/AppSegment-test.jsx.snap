@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppSegment applies custom styling 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment"
+    color="red"
+  >
+    <p>
+      children
+    </p>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`AppSegment renders with filledBackground prop 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-segment--alt"
+  >
+    <p>
+      children
+    </p>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`AppSegment renders with no props 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment"
+  >
+    <p>
+      children
+    </p>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`AppSegment renders with noMarginTop prop 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment"
+    data-css-1pgs8gs=""
+  >
+    <p>
+      children
+    </p>
+  </section>
+</DocumentFragment>
+`;
