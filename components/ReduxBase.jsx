@@ -17,11 +17,13 @@ const ReduxBase = ({
   const [store, setStore] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
-  const middleware = useMemo(() => {
+  const middlewareChain = useMemo(() => {
+    // eslint-disable-next-line no-underscore-dangle
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
     const middleware = [thunk, getReduxAnalyticsMiddleware(...analyticsMiddlewareArgs)];
 
+    // eslint-disable-next-line no-process-env
     if (process.env.NODE_ENV !== 'test') {
       middleware.push(perfLogger);
     }
@@ -31,7 +33,8 @@ const ReduxBase = ({
 
   useEffect(() => {
     if (!isInitialized) {
-      const newStore = createStore(reducer, initialState, middleware);
+      const newStore = createStore(reducer, initialState, middlewareChain);
+
       setStore(newStore);
       setIsInitialized(true);
 
@@ -39,9 +42,11 @@ const ReduxBase = ({
         getStoreRef(newStore);
       }
     }
-  }, [reducer, initialState, middleware, isInitialized, getStoreRef]);
+  }, [reducer, initialState, middlewareChain, isInitialized, getStoreRef]);
 
-  if (!store) return null;
+  if (!store) {
+    return null;
+  }
 
   return (
     <Provider store={store}>
