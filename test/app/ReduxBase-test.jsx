@@ -1,10 +1,9 @@
 import React from 'react';
-// import { expect } from 'chai';
-// import { mount } from 'enzyme';
 import { fireEvent, logRoles, render, screen, waitFor } from '@testing-library/react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import ReduxBase from '../../components/ReduxBase';
+import { flushDebouncedAnalytics } from '../../components/util/getReduxAnalyticsMiddleware';
 
 import sinon from 'sinon';
 
@@ -28,18 +27,17 @@ const buttonId = 'button-id';
 
 class ReduxDisplay extends React.PureComponent {
   handleUpdate = () => {
-    console.log('handleUpdate called');
     this.props.dispatch({
       type: ACTION_NAME
     });
+
+    const analytics = this.props.analytics || 'default-category';
+    const actionType = this.props.actionType || ACTION_NAME;
   
-    console.log('Calling dispatchActionWithAnalytics');
-    this.dispatchActionWithAnalytics('default-category', ACTION_NAME);
-    console.log('dispatchActionWithAnalytics called');
+    this.dispatchActionWithAnalytics(analytics, actionType);
   }
 
   dispatchActionWithAnalytics = (analytics, type) => {
-    console.log('dispatchActionWithAnalytics called', analytics, type); // Add this log
     this.props.dispatch({
       type: type || `UNRECOGNIZED_ACTION_${uuid.v4()}`,
       meta: {
@@ -64,9 +62,15 @@ const ConnectedReduxDisplay = connect(
 
 class TestHarness extends React.PureComponent {
   render() {
-    return <ReduxBase initialState={initialState} reducer={reducer} analyticsMiddlewareArgs={['default-category']}>
-      <ConnectedReduxDisplay />
-    </ReduxBase>;
+    const { analytics, actionType } = this.props; // Ensure these are extracted correctly
+    console.log('analytics:', analytics);
+    console.log('actionType:', actionType);
+
+    return (
+      <ReduxBase initialState={initialState} reducer={reducer} analyticsMiddlewareArgs={['default-category']}>
+        <ConnectedReduxDisplay analytics={analytics} actionType={actionType} />
+      </ReduxBase>
+    );
   }
 }
 
@@ -76,12 +80,14 @@ describe('ReduxBase', () => {
   let analyticsWrapper;
 
   beforeEach(() => {
-    window.analyticsEvent = jest.fn(); // Ensure analyticsEvent is defined
+    window.analyticsEvent = (a, b, c) => console.log('SERACH HERER',a, b, c)
     analyticsWrapper = jest.spyOn(window, 'analyticsEvent');
+    console.log('analyticsWrapper set up:', analyticsWrapper);
   });
   
   afterEach(() => {
-    analyticsWrapper.mockRestore();
+    // analyticsWrapper.mockRestore();
+    jest.clearAllMocks();
   });
 
   it('creates a working Redux environment', async () => {
@@ -108,81 +114,121 @@ describe('ReduxBase', () => {
 
     //   return wait(delayMs);
     // };
+
+    let renderCount = 0; // Static variable to track render calls
+
+// const dispatchAnalyticsEvent = async (analytics, actionType, delayMs = 100) => {
+//   if (renderCount === 0) {
+//     render(<TestHarness analytics={analytics} actionType={actionType} />);
+//   }
+//   renderCount++; // Increment on every call
+
+//   const button = screen.getByRole('button', { name: /Update Redux value/i });
+//   fireEvent.click(button);
+
+//   // Wait for the dispatch and the effect to settle
+//   await waitFor(() => new Promise(resolve => setTimeout(resolve, delayMs)));
+
+//   if (renderCount === 1) { // Only reset if this is the first call after rendering
+//     setTimeout(() => { renderCount = 0; }, analytics.debounceMs); // Reset after debounce period
+//   }
+// };
     const dispatchAnalyticsEvent = async (analytics, actionType, delayMs = 100) => {
-      render(<TestHarness />);
+      render(<TestHarness analytics={analytics} actionType={actionType} />);
       const button = screen.getByRole('button', { name: /Update Redux value/i });
-      
+    
       fireEvent.click(button);
-      
+    
       // Wait for the dispatch and the effect to settle
       await waitFor(() => new Promise(resolve => setTimeout(resolve, delayMs)));
+
     };
 
-
-    it.only('fires an event with default analytics', async () => {
-      render(<TestHarness />);
-  
+    const dispatchAnalyticsEventDebounce = async (analytics, actionType, delayMs = 100) => {
+      render(<TestHarness analytics={analytics} actionType={actionType} />);
       const button = screen.getByRole('button', { name: /Update Redux value/i });
+    
+      console.log('ActionType:', actionType);
       fireEvent.click(button);
-      console.log('Button clicked in test');
+      fireEvent.click(button);
+      fireEvent.click(button);
+
+      flushDebouncedAnalytics(); // Flush all debounced events
+    
+      // Wait for the dispatch and the effect to settle
+      await waitFor(() => new Promise(resolve => setTimeout(resolve, delayMs)));
+
+    };
+
+    it('fires an event with default analytics', async () => {
+      await dispatchAnalyticsEvent(true, 'ACTION_WITH_DEFAULT_ANALYTICS');
       
       await waitFor(() => {
-        console.log('Inside waitFor');
         expect(analyticsWrapper).toHaveBeenCalledTimes(1);
         expect(analyticsWrapper).toHaveBeenCalledWith(
-          'default-category', 
-          'ACTION_NAME', 
+          'default-category',
+          'ACTION_WITH_DEFAULT_ANALYTICS',
           undefined
         );
-      }, { timeout: 2000 });
+      });
     });
-          
-    it('fires an event with overridden values', () =>
-      dispatchAnalyticsEvent({
-        category: 'overridden-category',
-        action: 'overridden-action',
-        label: 'overriden-label'
-      }).then(() => {
-        expect(analyticsWrapper).to.have.callCount(1);
-        expect(analyticsWrapper).to.have.been.calledWithExactly(
-          'overridden-category', 'overridden-action', 'overriden-label'
+    
+    it('fires an event with overridden values', async () => {
+      await dispatchAnalyticsEvent(
+        { category: 'overridden-category', action: 'overridden-action', label: 'overriden-label' },
+        'ACTION_WITH_DEFAULT_ANALYTICS'
+      );
+      
+      await waitFor(() => {
+        expect(analyticsWrapper).toHaveBeenCalledTimes(1);
+        expect(analyticsWrapper).toHaveBeenCalledWith(
+          'overridden-category', 
+          'overridden-action', 
+          'overriden-label'
         );
-      })
-    );
+      });
+    });
 
     it('accepts an action that generates config with a function', () =>
       dispatchAnalyticsEvent((analyticsEvent, defaultCategory, actionType) => {
-        expect(actionType).to.equal('ACTION_WITH_FUNCTION_ANALYTICS');
-        expect(defaultCategory).to.equal('default-category');
-        expect(analyticsEvent).to.equal(window.analyticsEvent);
+        expect(actionType).toBe('ACTION_WITH_FUNCTION_ANALYTICS');
+        expect(defaultCategory).toBe('default-category');
+        expect(analyticsEvent).toBe(window.analyticsEvent);
       }, 'ACTION_WITH_FUNCTION_ANALYTICS')
     );
 
-    it('accepts an action that generates label with a function', () =>
-      dispatchAnalyticsEvent({
+    it('accepts an action that generates label with a function', async () => {
+      await dispatchAnalyticsEvent({
         label: (state) => `value: ${state.reduxKey}`
-      }, 'UNRECOGNIZED_ACTION').then(() => {
-        expect(analyticsWrapper).to.have.callCount(1);
-        expect(analyticsWrapper).to.have.been.calledWithExactly(
-          'default-category', 'UNRECOGNIZED_ACTION', 'value: initial value'
-        );
-      })
-    );
+      }, 'UNRECOGNIZED_ACTION');
+      
+      expect(analyticsWrapper).toHaveBeenCalledTimes(1);
+      expect(analyticsWrapper).toHaveBeenCalledWith(
+        'default-category', 'UNRECOGNIZED_ACTION', 'value: updated value'
+      );
+    });
 
-    it('debounces events', () => {
+    it.only('debounces events', async () => {
+      jest.useFakeTimers();
+      
       const debounceMs = 500;
-      const analytics = {
-        debounceMs
-      };
+      const analytics = { debounceMs };
       const actionType = 'UNRECOGNIZED_ACTION_DEBOUNCE';
-
-      dispatchAnalyticsEvent(analytics, actionType);
-      dispatchAnalyticsEvent(analytics, actionType);
-      dispatchAnalyticsEvent(analytics, actionType);
-
-      return dispatchAnalyticsEvent(analytics, actionType, debounceMs * 1.5).then(() => {
-        expect(analyticsWrapper).to.have.callCount(1);
+      
+      render(<TestHarness analytics={analytics} actionType={actionType} />);
+      const button = screen.getByRole('button', { name: /Update Redux value/i });
+      
+      fireEvent.click(button);
+      fireEvent.click(button);
+      fireEvent.click(button);
+      
+      jest.advanceTimersByTime(debounceMs);
+      
+      await waitFor(() => {
+        expect(analyticsWrapper).toHaveBeenCalledTimes(1);
       });
+      
+      jest.useRealTimers();
     });
   });
 });

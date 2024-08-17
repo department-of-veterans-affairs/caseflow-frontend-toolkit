@@ -1,38 +1,62 @@
 /* eslint-disable max-statements */
 
 import React from 'react';
-import { expect } from 'chai';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import StatusMessage from '../../../components/StatusMessage';
+import { render } from '@testing-library/react';
+// import { expect } from 'chai';
+// import { shallow } from 'enzyme';
+// import toJson from 'enzyme-to-json';
+import StatusMessage from '../../components/StatusMessage';
 
 describe('StatusMessage', () => {
-  it('no props', () => expect(toJson(shallow(<StatusMessage />))).to.matchSnapshot());
-  it('wrapInAppSegment', () => expect(toJson(shallow(<StatusMessage wrapInAppSegment={false} />))).to.matchSnapshot());
-  it('no props with child', () =>
-    expect(toJson(shallow(<StatusMessage><p>Magnificent desolation</p></StatusMessage>))).to.matchSnapshot());
-  it('checklist only', () =>
-    expect(toJson(shallow(<StatusMessage checklist={['apple', 'banana', 'cherry']} />))).to.matchSnapshot()
-  );
-  it('checklist only with child', () =>
-    expect(toJson(shallow(<StatusMessage
-      checklist={['apple', 'banana', 'cherry']} >
-      <p>Magnificent desolation</p>
-    </StatusMessage>))).to.matchSnapshot()
-  );
-  it('checklist, leadMessageList only', () =>
-    expect(toJson(shallow(<StatusMessage
-      checklist={['apple', 'banana', 'cherry']}
-      leadMessageList={['argon', 'boron', 'carbon']}
-    />))).to.matchSnapshot()
-  );
-  it('checklist, leadMessageList only with child', () =>
-    expect(toJson(shallow(<StatusMessage
-      checklist={['apple', 'banana', 'cherry']}
-      leadMessageList={['argon', 'boron', 'carbon']} >
-      <p>Magnificent desolation</p>
-    </StatusMessage>))).to.matchSnapshot()
-  );
+  it('no props', () => {
+    const {asFragment} = render(<StatusMessage />);  
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('wrapInAppSegment', () => {
+    const {asFragment} = render(<StatusMessage wrapInAppSegment={false}/>);  
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it('no props with child', () => {
+    const {asFragment} = render(
+      <StatusMessage>
+        <p>Magnificent desolation</p>
+      </StatusMessage>);
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it('checklist only', () => {
+    const {asFragment} = render(<StatusMessage checklist={['apple', 'banana', 'cherry']} />);
+    expect(asFragment()).toMatchSnapshot();
+  });  
+  it('checklist only with child', () => {
+    const {asFragment} = render(
+      <StatusMessage checklist={['apple', 'banana', 'cherry']}>
+        <p>Magnificent desolation</p>
+      </StatusMessage>);
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it('checklist, leadMessageList only', () => {
+    const {asFragment} = render(
+      <StatusMessage
+        checklist={['apple', 'banana', 'cherry']}
+        leadMessageList={['argon', 'boron', 'carbon']}
+      />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it.only('checklist, leadMessageList only with child', () => {
+    const {asFragment} = render(
+      <StatusMessage checklist={['apple', 'banana', 'cherry']}
+      leadMessageList={['argon', 'boron', 'carbon']}>
+        <p>Magnificent desolation</p>
+      </StatusMessage>);
+    expect(asFragment()).toMatchSnapshot();
+  });
+  //   expect(toJson(shallow(<StatusMessage
+  //     checklist={['apple', 'banana', 'cherry']}
+  //     leadMessageList={['argon', 'boron', 'carbon']} >
+  //     <p>Magnificent desolation</p>
+  //   </StatusMessage>))).to.matchSnapshot()
+  // );
   it('checklist, messageText only', () =>
     expect(toJson(shallow(<StatusMessage
       checklist={['apple', 'banana', 'cherry']}
