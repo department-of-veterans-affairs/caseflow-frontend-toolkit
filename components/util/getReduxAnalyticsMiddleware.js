@@ -54,10 +54,7 @@ export const getReduxAnalyticsMiddleware = (defaultCategory, customSetTimeout = 
     const { meta } = action;
 
     if (meta && meta.analytics) {
-      console.log(`Processing action: ${action.type} with analytics meta`);
-
       if (_.isFunction(meta.analytics)) {
-        console.log(`Executing function-based analytics for ${action.type}`);
         meta.analytics(window.analyticsEvent, defaultCategory, action.type);
       } else {
         const state = store.getState();
@@ -67,26 +64,19 @@ export const getReduxAnalyticsMiddleware = (defaultCategory, customSetTimeout = 
         const debounceMs = meta.analytics.debounceMs || 0;
 
         const triggerAnalytics = () => {
-          console.log(`Triggering analytics event for ${action.type} with label:${label}, category:${category}, and actionName:${actionName}`);
           if (typeof window.analyticsEvent === 'function') {
             window.analyticsEvent(category, actionName, label);
-          } else {
-            console.error('window.analyticsEvent is not a function');
           }
         };
 
         if (debounceMs > 0) {
-          console.log(`Debouncing analytics event for ${action.type} with debounceMs: ${debounceMs}`);
           if (!debounceFns[action.type]) {
-            console.log(`Creating new debounce function for ${action.type}`);
             debounceFns[action.type] = debounce(() => {
-              console.log(`Debounced function called for ${action.type}`);
               triggerAnalytics();
             }, debounceMs);
           }
           debounceFns[action.type]();
         } else {
-          console.log(`Triggering immediate analytics event for ${action.type}`);
           customSetTimeout(triggerAnalytics, 0);
         }
       }
