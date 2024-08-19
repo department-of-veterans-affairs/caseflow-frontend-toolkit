@@ -34,7 +34,7 @@ const ReduxBase = ({
   useEffect(() => {
     if (!isInitialized) {
       const newStore = createStore(reducer, initialState, middlewareChain);
-      
+
       setStore(newStore);
       setIsInitialized(true);
 
