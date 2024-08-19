@@ -63,8 +63,6 @@ const ConnectedReduxDisplay = connect(
 class TestHarness extends React.PureComponent {
   render() {
     const { analytics, actionType } = this.props; // Ensure these are extracted correctly
-    console.log('analytics:', analytics);
-    console.log('actionType:', actionType);
 
     return (
       <ReduxBase initialState={initialState} reducer={reducer} analyticsMiddlewareArgs={['default-category']}>
@@ -80,9 +78,8 @@ describe('ReduxBase', () => {
   let analyticsWrapper;
 
   beforeEach(() => {
-    window.analyticsEvent = (a, b, c) => console.log('SERACH HERER',a, b, c)
+    window.analyticsEvent = jest.fn();
     analyticsWrapper = jest.spyOn(window, 'analyticsEvent');
-    console.log('analyticsWrapper set up:', analyticsWrapper);
   });
   
   afterEach(() => {
@@ -148,12 +145,9 @@ describe('ReduxBase', () => {
       render(<TestHarness analytics={analytics} actionType={actionType} />);
       const button = screen.getByRole('button', { name: /Update Redux value/i });
     
-      console.log('ActionType:', actionType);
       fireEvent.click(button);
       fireEvent.click(button);
       fireEvent.click(button);
-
-      flushDebouncedAnalytics(); // Flush all debounced events
     
       // Wait for the dispatch and the effect to settle
       await waitFor(() => new Promise(resolve => setTimeout(resolve, delayMs)));
