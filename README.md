@@ -20,7 +20,7 @@ The components make assumptions, like:
 These assumptions are not explicitly documented, so you'll have to read the code. :)
 
 ### Dependencies
-This module has many peer dependencies. It relies on contracts with a variety of modules in the Webpack, React, and Karma ecosystems. Unfortunately, yarn and npm's support for `peerDependencies` is weak. For instance, adding peer dependencies can cause yarn to [log warnings for no reason](https://github.com/yarnpkg/yarn/issues/4850). This means that you'll have to just look in `package.json` for what seems relevant, and manually add it to your consumer project.
+This module has many peer dependencies. It relies on contracts with a variety of modules in the Webpack, and React ecosystems. Unfortunately, yarn and npm's support for `peerDependencies` is weak. For instance, adding peer dependencies can cause yarn to [log warnings for no reason](https://github.com/yarnpkg/yarn/issues/4850). This means that you'll have to just look in `package.json` for what seems relevant, and manually add it to your consumer project.
 
 ## Dev Notes
 This module has the public contract that consumers can require certain files in `config/`, `test/` and `components/` directly. Before you move files around, be sure that no consumer is using them. (We can come up with a more formal way to declare what files are public when the usage of this module gets more complex, but for now I'd say it's overkill.) 

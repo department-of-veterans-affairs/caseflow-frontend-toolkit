@@ -6,7 +6,7 @@ import { css } from 'glamor';
 
 describe('Breadcrumbs', () => {
   it('renders with props', () => {
-    const {asFragment} = render(
+    const { asFragment } = render(
       <MemoryRouter initialEntries={['/vacolsId/documents/docId']}>
         <Breadcrumbs>
           <div breadcrumb="Document Viewer" path="/:vacolsId/documents/:docId" />
@@ -15,43 +15,43 @@ describe('Breadcrumbs', () => {
         </Breadcrumbs>
       </MemoryRouter>
     );
-  
+
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders array of crumbs, custom label fn, styling, without initial caret', () => {
-    const {asFragment} = render(
+    const { asFragment } = render(
       <MemoryRouter initialEntries={['/vacolsId/documents/docId']}>
         <Breadcrumbs
           getBreadcrumbLabel={(route) => route.breadcrumb}
           shouldDrawCaretBeforeFirstCrumb={false}
           styling={css({
             marginTop: '-1.5rem',
-            marginBottom: '-1.5rem',
+            marginBottom: '-1.5rem'
           })}
           elements={[
             {
               breadcrumb: 'Document Viewer',
-              path: '/:vacolsId/documents/:docId',
+              path: '/:vacolsId/documents/:docId'
             },
             {
               breadcrumb: 'Claims Folder',
-              path: '/:vacolsId/documents',
+              path: '/:vacolsId/documents'
             },
             {
               breadcrumb: 'Assignments | Caseflow Reader',
-              path: '/',
-            },
+              path: '/'
+            }
           ]}
         />
       </MemoryRouter>
     );
-  
+
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders an array of crumbs regardless of route', () => {
-    const {asFragment} = render(
+    const { asFragment } = render(
       <MemoryRouter initialEntries={['/vacolsId/documents/docId']}>
         <Breadcrumbs
           getBreadcrumbLabel={(route) => route.breadcrumb}
@@ -59,30 +59,30 @@ describe('Breadcrumbs', () => {
           renderAllCrumbs
           styling={css({
             marginTop: '-1.5rem',
-            marginBottom: '-1.5rem',
+            marginBottom: '-1.5rem'
           })}
           elements={[
             {
               breadcrumb: 'Your Queue',
-              path: '/',
+              path: '/'
             },
             {
               breadcrumb: 'Vet. E Ran',
-              path: '/tasks/:vacolsId',
+              path: '/tasks/:vacolsId'
             },
             {
               breadcrumb: 'Select Dispositions',
-              path: '/tasks/:vacolsId/dispositions',
+              path: '/tasks/:vacolsId/dispositions'
             },
             {
               breadcrumb: 'Submit Draft Decision',
-              path: '/tasks/:vacolsId/submit',
-            },
+              path: '/tasks/:vacolsId/submit'
+            }
           ]}
         />
       </MemoryRouter>
     );
-  
+
     expect(asFragment()).toMatchSnapshot();
   });
 });

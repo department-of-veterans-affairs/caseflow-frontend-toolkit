@@ -36,11 +36,13 @@ const debounceFns = {};
  */
 function debounce(func, wait) {
   let timeout;
+
   return function executedFunction(...args) {
     const later = () => {
       clearTimeout(timeout);
       func(...args);
     };
+
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
@@ -88,7 +90,7 @@ export const getReduxAnalyticsMiddleware = (defaultCategory, customSetTimeout = 
 
 // Helper function to flush debounced functions (useful for testing)
 export const flushDebouncedAnalytics = () => {
-  Object.values(debounceFns).forEach(fn => {
+  Object.values(debounceFns).forEach((fn) => {
     if (typeof fn.flush === 'function') {
       fn.flush();
     }

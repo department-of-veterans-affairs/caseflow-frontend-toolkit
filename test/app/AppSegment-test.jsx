@@ -19,6 +19,7 @@ describe('AppSegment', () => {
         <p>children</p>
       </AppSegment>
     );
+
     expect(container.querySelector('.cf-app-segment--alt')).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
   });
@@ -30,15 +31,17 @@ describe('AppSegment', () => {
       </AppSegment>
     );
     // Since marginTop is applied via CSS-in-JS, the snapshot should capture the styling
+
     expect(asFragment()).toMatchSnapshot();
   });
- 
+
   it('applies custom styling', () => {
     const { asFragment } = render(
       <AppSegment styling={{ color: 'red' }}>
         <p>children</p>
       </AppSegment>
     );
+
     expect(asFragment()).toMatchSnapshot();
   });
 });
