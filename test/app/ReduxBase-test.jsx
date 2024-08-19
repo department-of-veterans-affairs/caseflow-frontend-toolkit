@@ -1,11 +1,9 @@
 import React from 'react';
-import { fireEvent, logRoles, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, logRoles, render, screen, waitFor, cleanup } from '@testing-library/react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import ReduxBase from '../../components/ReduxBase';
 import { flushDebouncedAnalytics } from '../../components/util/getReduxAnalyticsMiddleware';
-
-import sinon from 'sinon';
 
 const initialState = {
   reduxKey: 'initial value'
@@ -83,8 +81,8 @@ describe('ReduxBase', () => {
   });
   
   afterEach(() => {
-    // analyticsWrapper.mockRestore();
     jest.clearAllMocks();
+    cleanup();
   });
 
   it('creates a working Redux environment', async () => {
@@ -102,34 +100,6 @@ describe('ReduxBase', () => {
 
   /* eslint-disable no-undefined */
   describe('analytics', () => {
-
-    // const dispatchAnalyticsEvent = (analytics, actionType, delayMs = 100) => {
-    //   const wrapper = mount(<TestHarness />);
-
-    //   wrapper.find(ReduxDisplay).instance().
-    //     dispatchActionWithAnalytics(analytics, actionType);
-
-    //   return wait(delayMs);
-    // };
-
-    let renderCount = 0; // Static variable to track render calls
-
-// const dispatchAnalyticsEvent = async (analytics, actionType, delayMs = 100) => {
-//   if (renderCount === 0) {
-//     render(<TestHarness analytics={analytics} actionType={actionType} />);
-//   }
-//   renderCount++; // Increment on every call
-
-//   const button = screen.getByRole('button', { name: /Update Redux value/i });
-//   fireEvent.click(button);
-
-//   // Wait for the dispatch and the effect to settle
-//   await waitFor(() => new Promise(resolve => setTimeout(resolve, delayMs)));
-
-//   if (renderCount === 1) { // Only reset if this is the first call after rendering
-//     setTimeout(() => { renderCount = 0; }, analytics.debounceMs); // Reset after debounce period
-//   }
-// };
     const dispatchAnalyticsEvent = async (analytics, actionType, delayMs = 100) => {
       render(<TestHarness analytics={analytics} actionType={actionType} />);
       const button = screen.getByRole('button', { name: /Update Redux value/i });
@@ -138,7 +108,6 @@ describe('ReduxBase', () => {
     
       // Wait for the dispatch and the effect to settle
       await waitFor(() => new Promise(resolve => setTimeout(resolve, delayMs)));
-
     };
 
     const dispatchAnalyticsEventDebounce = async (analytics, actionType, delayMs = 100) => {
@@ -154,12 +123,17 @@ describe('ReduxBase', () => {
 
     };
 
-    it('fires an event with default analytics', async () => {
+    it('fires events with default analytics and handleupdate', async () => {
       await dispatchAnalyticsEvent(true, 'ACTION_WITH_DEFAULT_ANALYTICS');
       
       await waitFor(() => {
-        expect(analyticsWrapper).toHaveBeenCalledTimes(1);
-        expect(analyticsWrapper).toHaveBeenCalledWith(
+        expect(analyticsWrapper).toHaveBeenCalledTimes(2);
+        expect(analyticsWrapper).toHaveBeenNthCalledWith(1,
+          'default-category',
+          'ACTION_NAME',
+          undefined
+        );
+        expect(analyticsWrapper).toHaveBeenNthCalledWith(2,
           'default-category',
           'ACTION_WITH_DEFAULT_ANALYTICS',
           undefined
