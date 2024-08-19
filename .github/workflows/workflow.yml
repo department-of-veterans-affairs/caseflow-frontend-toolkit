@@ -10,9 +10,6 @@ on:
 jobs:
   test_and_lint:
     runs-on: ubuntu-latest
-    
-    # This should be removed when we move to node 20
-    env: ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true
 
     steps:
       - name: Checkout Code
