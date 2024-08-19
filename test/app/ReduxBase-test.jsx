@@ -208,21 +208,17 @@ describe('ReduxBase', () => {
       );
     });
 
-    it.only('debounces events', async () => {
+    it('debounces events', async () => {
       jest.useFakeTimers();
       
       const debounceMs = 500;
       const analytics = { debounceMs };
       const actionType = 'UNRECOGNIZED_ACTION_DEBOUNCE';
       
-      render(<TestHarness analytics={analytics} actionType={actionType} />);
-      const button = screen.getByRole('button', { name: /Update Redux value/i });
-      
-      fireEvent.click(button);
-      fireEvent.click(button);
-      fireEvent.click(button);
+      dispatchAnalyticsEventDebounce(analytics, actionType);
       
       jest.advanceTimersByTime(debounceMs);
+      flushDebouncedAnalytics();
       
       await waitFor(() => {
         expect(analyticsWrapper).toHaveBeenCalledTimes(1);

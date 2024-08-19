@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="6" failures="1" time="3.462">
-  <testsuite name="ReduxBase" errors="0" failures="1" skipped="5" timestamp="2024-08-16T20:08:21" time="2.975" tests="6">
-    <testcase classname="ReduxBase creates a working Redux environment" name="ReduxBase creates a working Redux environment" time="0">
-      <skipped/>
+<testsuites name="jest tests" tests="6" failures="0" time="3.893">
+  <testsuite name="ReduxBase" errors="0" failures="0" skipped="0" timestamp="2024-08-17T00:25:11" time="3.449" tests="6">
+    <testcase classname="ReduxBase creates a working Redux environment" name="ReduxBase creates a working Redux environment" time="0.202">
     </testcase>
-    <testcase classname="ReduxBase analytics fires an event with default analytics" name="ReduxBase analytics fires an event with default analytics" time="0">
-      <skipped/>
+    <testcase classname="ReduxBase analytics fires an event with default analytics" name="ReduxBase analytics fires an event with default analytics" time="0.157">
     </testcase>
-    <testcase classname="ReduxBase analytics fires an event with overridden values" name="ReduxBase analytics fires an event with overridden values" time="0">
-      <skipped/>
+    <testcase classname="ReduxBase analytics fires an event with overridden values" name="ReduxBase analytics fires an event with overridden values" time="0.132">
     </testcase>
-    <testcase classname="ReduxBase analytics accepts an action that generates config with a function" name="ReduxBase analytics accepts an action that generates config with a function" time="0">
-      <skipped/>
+    <testcase classname="ReduxBase analytics accepts an action that generates config with a function" name="ReduxBase analytics accepts an action that generates config with a function" time="0.137">
     </testcase>
-    <testcase classname="ReduxBase analytics accepts an action that generates label with a function" name="ReduxBase analytics accepts an action that generates label with a function" time="0">
-      <skipped/>
+    <testcase classname="ReduxBase analytics accepts an action that generates label with a function" name="ReduxBase analytics accepts an action that generates label with a function" time="0.125">
     </testcase>
-    <testcase classname="ReduxBase analytics debounces events" name="ReduxBase analytics debounces events" time="0.491">
-      <failure>Error: Ran 100000 timers, and there are still more! Assuming we&apos;ve hit an infinite recursion and bailing out...
-    at FakeTimers.advanceTimersByTime (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/@jest/fake-timers/build/legacyFakeTimers.js:297:13)
-    at Object.advanceTimersByTime (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/jest-runtime/build/index.js:1797:26)
-    at _callee7$ (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/test/app/ReduxBase-test.jsx:225:12)
-    at tryCatch (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/regenerator-runtime/runtime.js:64:40)
-    at Generator.invoke (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/regenerator-runtime/runtime.js:300:22)
-    at Generator.next (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/regenerator-runtime/runtime.js:124:21)
-    at asyncGeneratorStep (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/test/app/ReduxBase-test.jsx:8:27)
-    at _next (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/test/app/ReduxBase-test.jsx:8:27)
-    at /Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/test/app/ReduxBase-test.jsx:8:27
-    at new Promise (&lt;anonymous&gt;)
-    at Object.&lt;anonymous&gt; (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/test/app/ReduxBase-test.jsx:8:27)
-    at Object.asyncJestTest (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/jest-jasmine2/build/jasmineAsyncInstall.js:106:37)
-    at /Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/jest-jasmine2/build/queueRunner.js:45:12
-    at new Promise (&lt;anonymous&gt;)
-    at mapper (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/jest-jasmine2/build/queueRunner.js:28:19)
-    at /Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/jest-jasmine2/build/queueRunner.js:75:41
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)</failure>
-      <failure>Error: Ran 100000 timers, and there are still more! Assuming we&apos;ve hit an infinite recursion and bailing out...
-    at FakeTimers.advanceTimersByTime (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/@jest/fake-timers/build/legacyFakeTimers.js:297:13)
-    at Object.advanceTimersByTime (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/jest-runtime/build/index.js:1797:26)
-    at Object.then (/Users/adamshaw/dev/appeals/caseflow-frontend-toolkit/node_modules/@testing-library/react/dist/flush-microtasks.js:57:14)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)</failure>
+    <testcase classname="ReduxBase analytics debounces events" name="ReduxBase analytics debounces events" time="0.041">
     </testcase>
   </testsuite>
 </testsuites>
