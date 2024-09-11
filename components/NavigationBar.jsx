@@ -9,7 +9,6 @@ import { COLORS, STYLES } from '../util/StyleConstants';
 import getAppWidthStyling from './util/getAppWidthStyling';
 import classnames from 'classnames';
 
-
 const lineHeight = { lineHeight: '4em' };
 
 const pStyling = {
@@ -47,7 +46,6 @@ const clearingDivStyling = {
 const topMessageStyling = {
   marginBottom: 0
 };
-
 
 // eslint-disable-next-line no-process-env
 const env = process.env.DEPLOY_ENV;
@@ -129,7 +127,6 @@ export default class NavigationBar extends React.Component {
             {(env !== 'prod' && nodeEnv === 'development') && <span style={leftSpacing}><strong>Environment: <span className={className}>{nodeEnv}</span></strong></span>}
             {(env !== undefined && env !== 'prod' && nodeEnv !== 'development') && <span style={leftSpacing}><strong>Environment: <span className={className}>{env}</span></strong></span>}
             </nav>
-
 
             <span className="cf-push-right">
               { rightNavElement && rightNavElement }
