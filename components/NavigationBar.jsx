@@ -50,15 +50,11 @@ const topMessageStyling = {
 
 
 // eslint-disable-next-line no-process-env
-// const env = process.env.DEPLOY_ENV;
+const env = process.env.DEPLOY_ENV;
 
 // eslint-disable-next-line no-process-env
-// const nodeEnv = process.env.NODE_ENV;
-// line below is for testing different env presentations, erase before deployment to master
-const env = 'uat';
-const nodeEnv = 'production';
-// // console.log("Env: " + env)
-// console.log("nodeEnv: " + nodeEnv)
+const nodeEnv = process.env.NODE_ENV;
+
 
 const className = classnames(
   {
