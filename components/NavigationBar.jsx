@@ -55,7 +55,7 @@ const topMessageStyling = {
 // eslint-disable-next-line no-process-env
 // const nodeEnv = process.env.NODE_ENV;
 // line below is for testing different env presentations, erase before deployment to master
-const env = 'demo';
+const env = 'uat';
 const nodeEnv = 'production';
 // // console.log("Env: " + env)
 // console.log("nodeEnv: " + nodeEnv)
@@ -131,7 +131,7 @@ export default class NavigationBar extends React.Component {
                 </span>}
             {/* Environment sticky badge */}
             {(env !== 'prod' && nodeEnv === 'development') && <span style={leftSpacing}><strong>Environment: <span className={className}>{nodeEnv}</span></strong></span>}
-            {(env !== undefined) && <span style={leftSpacing}><strong>Environment: <span className={className}>{env}</span></strong></span>}
+            {(env !== undefined && env !== 'prod' && nodeEnv !== 'development') && <span style={leftSpacing}><strong>Environment: <span className={className}>{env}</span></strong></span>}
             </nav>
 
 
