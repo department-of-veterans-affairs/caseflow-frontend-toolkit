@@ -50,18 +50,12 @@ const topMessageStyling = {
 // eslint-disable-next-line no-process-env
 const env = process.env.DEPLOY_ENV;
 
-// eslint-disable-next-line no-process-env
-const nodeEnv = process.env.NODE_ENV;
-
-
 const className = classnames(
   {
-    // eslint-disable-next-line no-undefined
-    'dev-env-color': env !== 'prod' && nodeEnv === 'development',
-    'prodtest-env-color': env !== 'prod' && nodeEnv !== 'development' && env === 'prodtest',
-    'preprod-env-color': env !== 'prod' && nodeEnv !== 'development' && env === 'preprod',
-    'uat-env-color': env !== 'prod' && nodeEnv !== 'development' && env === 'uat',
-    'demo-env-color': env !== 'prod' && nodeEnv !== 'development' && env === 'demo',
+    'prodtest-env-color': env !== 'prod' && env === 'prodtest',
+    'preprod-env-color': env !== 'prod' && env === 'preprod',
+    'uat-env-color': env !== 'prod' && env === 'uat',
+    'demo-env-color': env !== 'prod' && env === 'demo',
   },
 );
 
@@ -124,8 +118,7 @@ export default class NavigationBar extends React.Component {
                   />
                 </span>}
             {/* Environment sticky badge */}
-            {(env !== 'prod' && nodeEnv === 'development') && <span style={leftSpacing}><strong>Environment: <span className={className}>{nodeEnv}</span></strong></span>}
-            {(env !== undefined && env !== 'prod' && nodeEnv !== 'development') && <span style={leftSpacing}><strong>Environment: <span className={className}>{env}</span></strong></span>}
+            {(env !== undefined && env !== 'prod') && <span style={leftSpacing}><strong>Environment: <span className={className}>{env}</span></strong></span>}
             </nav>
 
             <span className="cf-push-right">
