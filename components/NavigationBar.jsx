@@ -17,11 +17,11 @@ const pStyling = {
   fontSize: '1.7rem',
   fontWeight: 900,
   ...lineHeight,
-  '& > a': {
-    color: `${COLORS.GREY_DARK} !important`,
-    paddingLeft: '.3em'
-  }
 };
+
+const smallLeftSpacing = {
+  paddingLeft: '.3em'
+}
 
 const leftSpacing = {
   paddingLeft: '3rem'
@@ -92,7 +92,7 @@ export default class NavigationBar extends React.Component {
                   Caseflow
                 </Link>
                 {appName && <Link {...targetArgument} tabIndex={-1}>
-                  <span id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE} tabIndex={-1}>
+                  <span style={smallLeftSpacing} id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE} tabIndex={-1}>
                     {appName}
                   </span>
                 </Link>}
