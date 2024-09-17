@@ -118,7 +118,7 @@ export default class NavigationBar extends React.Component {
                   />
                 </span>}
             {/* Environment sticky badge */}
-            {(env !== undefined && env !== 'prod') && <span style={leftSpacing}><strong>Environment: <span className={className}>{env}</span></strong></span>}
+            {(env !== undefined && env !== 'prod' && (env === 'prodtest' || env === 'preprod' || env === 'uat' || env === 'demo')) && <span style={leftSpacing}><strong>Environment: <span className={className}>{env}</span></strong></span>}
             </nav>
 
             <span className="cf-push-right">
