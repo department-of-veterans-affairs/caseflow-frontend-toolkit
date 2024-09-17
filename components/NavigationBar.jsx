@@ -84,25 +84,15 @@ export default class NavigationBar extends React.Component {
       <header style={headerStyling}>
         <div>
           <div {...getAppWidthStyling(wideApp)}>
-<<<<<<< HEAD
             <nav className="cf-push-left" style={pushLeftStyling}>
               <Link {...targetArgument} tabIndex={0}>
               <p style={pStyling}>
-=======
-            <nav className="cf-push-left" {...pushLeftStyling}>
-              <Link {...targetArgument} tabIndex={0}>
-              <p {...pStyling}>
->>>>>>> 0cbbdd6 (508: Add change to make Caseflow header keyboard acc. (#123))
                 <Link id="cf-logo-link" {...targetArgument} tabIndex={-2} title="Homepage" aria-label="Caseflow">
                   <CaseflowLogo {...logoProps} />
                   Caseflow
                 </Link>
                 {appName && <Link {...targetArgument} tabIndex={-1}>
-<<<<<<< HEAD
                   <span style={smallLeftSpacing} id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE} tabIndex={-1}>
-=======
-                  <span id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE} tabIndex={-1}>
->>>>>>> 0cbbdd6 (508: Add change to make Caseflow header keyboard acc. (#123))
                     {appName}
                   </span>
                 </Link>}
