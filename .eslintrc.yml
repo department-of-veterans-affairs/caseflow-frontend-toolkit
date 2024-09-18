@@ -1,5 +1,6 @@
-extends:
-  - '@department-of-veterans-affairs/eslint-config-appeals'
-
+extends: [
+  '@department-of-veterans-affairs/eslint-config-appeals',
+  'plugin:jest/recommended',
+]
 env:
   browser: true

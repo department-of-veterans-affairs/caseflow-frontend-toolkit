@@ -34,29 +34,65 @@ const debounceFns = {};
  *
  * @param {string?} defaultCategory a default category for all events.
  */
-export const getReduxAnalyticsMiddleware = (defaultCategory) => (store) => (next) => (action) => {
-  const dispatchedAction = next(action);
-  const { meta } = action;
+function debounce(func, wait) {
+  let timeout;
 
-  if (meta) {
-    if (_.isFunction(meta.analytics)) {
-      meta.analytics(window.analyticsEvent, defaultCategory, action.type);
-    } else {
-      const label = _.isFunction(meta.analytics.label) ? meta.analytics.label(store.getState()) : meta.analytics.label;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
 
-      if (!debounceFns[action.type]) {
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+export const getReduxAnalyticsMiddleware = (defaultCategory, customSetTimeout = setTimeout) => {
+  const debounceFns = {};
+
+  return (store) => (next) => (action) => {
+    const dispatchedAction = next(action);
+    const { meta } = action;
+
+    if (meta && meta.analytics) {
+      if (_.isFunction(meta.analytics)) {
+        meta.analytics(window.analyticsEvent, defaultCategory, action.type);
+      } else {
+        const state = store.getState();
+        const label = _.isFunction(meta.analytics.label) ? meta.analytics.label(state) : meta.analytics.label;
         const category = meta.analytics.category || defaultCategory;
         const actionName = meta.analytics.action || action.type;
+        const debounceMs = meta.analytics.debounceMs || 0;
 
-        debounceFns[action.type] = _.debounce(
-          (eventLabel) => window.analyticsEvent(category, actionName, eventLabel),
-          meta.analytics.debounceMs || 0
-        );
+        const triggerAnalytics = () => {
+          if (typeof window.analyticsEvent === 'function') {
+            window.analyticsEvent(category, actionName, label);
+          }
+        };
+
+        if (debounceMs > 0) {
+          if (!debounceFns[action.type]) {
+            debounceFns[action.type] = debounce(() => {
+              triggerAnalytics();
+            }, debounceMs);
+          }
+          debounceFns[action.type]();
+        } else {
+          customSetTimeout(triggerAnalytics, 0);
+        }
       }
-
-      debounceFns[action.type](label);
     }
-  }
 
-  return dispatchedAction;
+    return dispatchedAction;
+  };
+};
+
+// Helper function to flush debounced functions (useful for testing)
+export const flushDebouncedAnalytics = () => {
+  Object.values(debounceFns).forEach((fn) => {
+    if (typeof fn.flush === 'function') {
+      fn.flush();
+    }
+  });
 };
