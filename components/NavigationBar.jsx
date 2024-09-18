@@ -4,43 +4,60 @@ import DropdownMenu from './DropdownMenu';
 import Link from './Link';
 import Breadcrumbs from './Breadcrumbs';
 import CaseflowLogo from './CaseflowLogo';
-import { css } from 'glamor';
+
 import { COLORS, STYLES } from '../util/StyleConstants';
 import getAppWidthStyling from './util/getAppWidthStyling';
+import classnames from 'classnames';
 
 const lineHeight = { lineHeight: '4em' };
 
-const pStyling = css({
+const pStyling = {
   margin: 0,
   display: 'inline-block',
   fontSize: '1.7rem',
   fontWeight: 900,
   ...lineHeight,
-  '& > a': {
-    color: `${COLORS.GREY_DARK} !important`,
-    paddingLeft: '.3em'
-  }
-});
+};
 
-const pushLeftStyling = css({
+const smallLeftSpacing = {
+  paddingLeft: '.3em'
+}
+
+const leftSpacing = {
+  paddingLeft: '3rem'
+};
+
+const pushLeftStyling = {
   display: 'flex',
   alignItems: 'center',
   ...lineHeight
-});
+};
 
-const headerStyling = css({
+const headerStyling = {
   background: COLORS.WHITE,
   ...lineHeight
-});
+};
 
-const clearingDivStyling = css({
+const clearingDivStyling = {
   borderBottom: `1px solid ${COLORS.GREY_LIGHT}`,
   clear: 'both'
-});
+};
 
-const topMessageStyling = css({
+const topMessageStyling = {
   marginBottom: 0
-});
+};
+
+// eslint-disable-next-line no-process-env
+const env = process.env.DEPLOY_ENV;
+
+const className = classnames(
+  {
+    'prodtest-env-color': env !== 'prod' && env === 'prodtest',
+    'preprod-env-color': env !== 'prod' && env === 'preprod',
+    'uat-env-color': env !== 'prod' && env === 'uat',
+    'demo-env-color': env !== 'prod' && env === 'demo',
+  },
+);
 
 export default class NavigationBar extends React.Component {
   render() {
@@ -64,18 +81,18 @@ export default class NavigationBar extends React.Component {
     }
 
     return <div>
-      <header {...headerStyling}>
+      <header style={headerStyling}>
         <div>
           <div {...getAppWidthStyling(wideApp)}>
-            <nav className="cf-push-left" {...pushLeftStyling}>
+            <nav className="cf-push-left" style={pushLeftStyling}>
               <Link {...targetArgument} tabIndex={0}>
-              <p {...pStyling}>
+              <p style={pStyling}>
                 <Link id="cf-logo-link" {...targetArgument} tabIndex={-2} title="Homepage" aria-label="Caseflow">
                   <CaseflowLogo {...logoProps} />
                   Caseflow
                 </Link>
                 {appName && <Link {...targetArgument} tabIndex={-1}>
-                  <span id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE} tabIndex={-1}>
+                  <span style={smallLeftSpacing} id="page-title" className="cf-application-title" {...STYLES.APPLICATION_TITLE} tabIndex={-1}>
                     {appName}
                   </span>
                 </Link>}
@@ -84,8 +101,8 @@ export default class NavigationBar extends React.Component {
               <Breadcrumbs>
                 {this.props.children}
               </Breadcrumbs>
-              {topMessage && <p className="cf-application-title" {...STYLES.APPLICATION_TITLE} {...topMessageStyling}>
-                 &nbsp; | &nbsp; {topMessage}
+              {topMessage && <p className="cf-application-title" {...STYLES.APPLICATION_TITLE} style={topMessageStyling}>
+                &nbsp; | &nbsp; {topMessage}
               </p>}
               { applicationUrls &&
                 <span>&nbsp; | &nbsp;
@@ -100,7 +117,10 @@ export default class NavigationBar extends React.Component {
                     label="Switch product"
                   />
                 </span>}
+            {/* Environment sticky badge */}
+            {(env !== undefined && env !== 'prod' && (env === 'prodtest' || env === 'preprod' || env === 'uat' || env === 'demo')) && <span style={leftSpacing}><strong>Environment: <span className={className}>{env}</span></strong></span>}
             </nav>
+
             <span className="cf-push-right">
               { rightNavElement && rightNavElement }
               <DropdownMenu
@@ -114,7 +134,7 @@ export default class NavigationBar extends React.Component {
             </span>
           </div>
         </div>
-        <div {...clearingDivStyling}> </div>
+        <div style={clearingDivStyling}> </div>
       </header>
       {this.props.children}
     </div>;
