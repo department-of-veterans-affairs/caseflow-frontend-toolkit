@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders an array of crumbs regardless of route 1`] = `
+<DocumentFragment>
+  <div
+    data-css-c6mfa5=""
+  >
+    <span>
+      <a
+        href="/"
+      >
+        Your Queue
+      </a>
+    </span>
+    <span>
+        &gt;  
+      <a
+        href="/tasks/:vacolsId"
+      >
+        Vet. E Ran
+      </a>
+    </span>
+    <span>
+        &gt;  
+      <a
+        href="/tasks/:vacolsId/dispositions"
+      >
+        Select Dispositions
+      </a>
+    </span>
+    <span>
+        &gt;  
+      <a
+        href="/tasks/:vacolsId/submit"
+      >
+        Submit Draft Decision
+      </a>
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Breadcrumbs renders array of crumbs, custom label fn, styling, without initial caret 1`] = `
+<DocumentFragment>
+  <div
+    data-css-c6mfa5=""
+  >
+    <a
+      href="/"
+    >
+      Assignments | Caseflow Reader
+    </a>
+      &gt;  
+    <a
+      href="/vacolsId/documents"
+    >
+      Claims Folder
+    </a>
+      &gt;  
+    <a
+      href="/vacolsId/documents/docId"
+    >
+      Document Viewer
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Breadcrumbs renders with props 1`] = `
+<DocumentFragment>
+  <div
+    data-css-1mdtwij=""
+  >
+      &gt;  
+    <a
+      href="/vacolsId/documents"
+    >
+      <h2
+        class="cf-application-title"
+        id="page-title"
+      >
+        Claims Folder
+      </h2>
+    </a>
+      &gt;  
+    <a
+      href="/vacolsId/documents/docId"
+    >
+      <h2
+        class="cf-application-title"
+        id="page-title"
+      >
+        Document Viewer
+      </h2>
+    </a>
+  </div>
+</DocumentFragment>
+`;

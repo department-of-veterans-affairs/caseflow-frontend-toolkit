@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="36" failures="0" time="5.374">
+  <testsuite name="CaseflowLogo" errors="0" failures="0" skipped="0" timestamp="2024-10-23T15:04:14" time="3.026" tests="2">
+    <testcase classname="CaseflowLogo sets all colors" name="CaseflowLogo sets all colors" time="0.055">
+    </testcase>
+    <testcase classname="CaseflowLogo has a default for background color" name="CaseflowLogo has a default for background color" time="0.02">
+    </testcase>
+  </testsuite>
+  <testsuite name="Breadcrumbs" errors="0" failures="0" skipped="0" timestamp="2024-10-23T15:04:14" time="3.344" tests="3">
+    <testcase classname="Breadcrumbs renders with props" name="Breadcrumbs renders with props" time="0.046">
+    </testcase>
+    <testcase classname="Breadcrumbs renders array of crumbs, custom label fn, styling, without initial caret" name="Breadcrumbs renders array of crumbs, custom label fn, styling, without initial caret" time="0.029">
+    </testcase>
+    <testcase classname="Breadcrumbs renders an array of crumbs regardless of route" name="Breadcrumbs renders an array of crumbs regardless of route" time="0.03">
+    </testcase>
+  </testsuite>
+  <testsuite name="AppSegment" errors="0" failures="0" skipped="0" timestamp="2024-10-23T15:04:15" time="2.905" tests="4">
+    <testcase classname="AppSegment renders with no props" name="AppSegment renders with no props" time="0.022">
+    </testcase>
+    <testcase classname="AppSegment renders with filledBackground prop" name="AppSegment renders with filledBackground prop" time="0.017">
+    </testcase>
+    <testcase classname="AppSegment renders with noMarginTop prop" name="AppSegment renders with noMarginTop prop" time="0.013">
+    </testcase>
+    <testcase classname="AppSegment applies custom styling" name="AppSegment applies custom styling" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="Link" errors="0" failures="0" skipped="0" timestamp="2024-10-23T15:04:14" time="3.334" tests="4">
+    <testcase classname="Link renders Router Link" name="Link renders Router Link" time="0.098">
+    </testcase>
+    <testcase classname="Link has correct class names for button type for primary" name="Link has correct class names for button type for primary" time="0.03">
+    </testcase>
+    <testcase classname="Link has correct class names for button type for secondary" name="Link has correct class names for button type for secondary" time="0.027">
+    </testcase>
+    <testcase classname="Link has correct class names for button type for disabled" name="Link has correct class names for button type for disabled" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="Footer" errors="0" failures="0" skipped="0" timestamp="2024-10-23T15:04:14" time="3.335" tests="2">
+    <testcase classname="Footer renders with props" name="Footer renders with props" time="0.032">
+    </testcase>
+    <testcase classname="Footer respects wideApp setting" name="Footer respects wideApp setting" time="0.027">
+    </testcase>
+  </testsuite>
+  <testsuite name="StatusMessage" errors="0" failures="0" skipped="0" timestamp="2024-10-23T15:04:14" time="3.29" tests="15">
+    <testcase classname="StatusMessage no props" name="StatusMessage no props" time="0.031">
+    </testcase>
+    <testcase classname="StatusMessage wrapInAppSegment" name="StatusMessage wrapInAppSegment" time="0.019">
+    </testcase>
+    <testcase classname="StatusMessage no props with child" name="StatusMessage no props with child" time="0.033">
+    </testcase>
+    <testcase classname="StatusMessage checklist only" name="StatusMessage checklist only" time="0.027">
+    </testcase>
+    <testcase classname="StatusMessage checklist only with child" name="StatusMessage checklist only with child" time="0.013">
+    </testcase>
+    <testcase classname="StatusMessage checklist, leadMessageList only" name="StatusMessage checklist, leadMessageList only" time="0.014">
+    </testcase>
+    <testcase classname="StatusMessage checklist, leadMessageList only with child" name="StatusMessage checklist, leadMessageList only with child" time="0.012">
+    </testcase>
+    <testcase classname="StatusMessage checklist, messageText only" name="StatusMessage checklist, messageText only" time="0.016">
+    </testcase>
+    <testcase classname="StatusMessage checklist, messageText only with child" name="StatusMessage checklist, messageText only with child" time="0.025">
+    </testcase>
+    <testcase classname="StatusMessage checklist, title only" name="StatusMessage checklist, title only" time="0.009">
+    </testcase>
+    <testcase classname="StatusMessage checklist, title only with child" name="StatusMessage checklist, title only with child" time="0.005">
+    </testcase>
+    <testcase classname="StatusMessage checklist, leadMessageList, messageText only" name="StatusMessage checklist, leadMessageList, messageText only" time="0.006">
+    </testcase>
+    <testcase classname="StatusMessage checklist, leadMessageList, messageText only with child" name="StatusMessage checklist, leadMessageList, messageText only with child" time="0.007">
+    </testcase>
+    <testcase classname="StatusMessage checklist, leadMessageList, messageText, title" name="StatusMessage checklist, leadMessageList, messageText, title" time="0.011">
+    </testcase>
+    <testcase classname="StatusMessage checklist, leadMessageList, messageText, title with child" name="StatusMessage checklist, leadMessageList, messageText, title with child" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="ReduxBase" errors="0" failures="0" skipped="0" timestamp="2024-10-23T15:04:14" time="3.872" tests="6">
+    <testcase classname="ReduxBase creates a working Redux environment" name="ReduxBase creates a working Redux environment" time="0.113">
+    </testcase>
+    <testcase classname="ReduxBase analytics fires events with default analytics and handleupdate" name="ReduxBase analytics fires events with default analytics and handleupdate" time="0.153">
+    </testcase>
+    <testcase classname="ReduxBase analytics fires an event with overridden values" name="ReduxBase analytics fires an event with overridden values" time="0.135">
+    </testcase>
+    <testcase classname="ReduxBase analytics accepts an action that generates config with a function" name="ReduxBase analytics accepts an action that generates config with a function" time="0.13">
+    </testcase>
+    <testcase classname="ReduxBase analytics accepts an action that generates label with a function" name="ReduxBase analytics accepts an action that generates label with a function" time="0.118">
+    </testcase>
+    <testcase classname="ReduxBase analytics debounces events" name="ReduxBase analytics debounces events" time="0.019">
+    </testcase>
+  </testsuite>
+</testsuites>

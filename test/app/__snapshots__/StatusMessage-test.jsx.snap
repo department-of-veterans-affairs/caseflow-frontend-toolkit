@@ -1,0 +1,370 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatusMessage checklist only 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <p
+        class="cf-msg-screen-text"
+      />
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist only with child 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        <p>
+          Magnificent desolation
+        </p>
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      />
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, leadMessageList only 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        argon
+      </h2>
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        boron
+      </h2>
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        carbon
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      />
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, leadMessageList only with child 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        <p>
+          Magnificent desolation
+        </p>
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      />
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, leadMessageList, messageText only 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        argon
+      </h2>
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        boron
+      </h2>
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        carbon
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      >
+        dummy message text
+      </p>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, leadMessageList, messageText only with child 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        <p>
+          Magnificent desolation
+        </p>
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      >
+        dummy message text
+      </p>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, leadMessageList, messageText, title 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      >
+        dummy message text
+      </h1>
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        argon
+      </h2>
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        boron
+      </h2>
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        carbon
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      >
+        dummy message text
+      </p>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, leadMessageList, messageText, title with child 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      >
+        dummy message text
+      </h1>
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        <p>
+          Magnificent desolation
+        </p>
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      >
+        dummy message text
+      </p>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, messageText only 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <p
+        class="cf-msg-screen-text"
+      >
+        dummy message text
+      </p>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, messageText only with child 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        <p>
+          Magnificent desolation
+        </p>
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      >
+        dummy message text
+      </p>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, title only 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      >
+        dummy message text
+      </h1>
+      <p
+        class="cf-msg-screen-text"
+      />
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage checklist, title only with child 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      >
+        dummy message text
+      </h1>
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        <p>
+          Magnificent desolation
+        </p>
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      />
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage no props 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <p
+        class="cf-msg-screen-text"
+      />
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage no props with child 1`] = `
+<DocumentFragment>
+  <section
+    class="cf-app-segment cf-app-msg-screen cf-app-segment--alt"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <h2
+        class="cf-msg-screen-deck"
+      >
+        <p>
+          Magnificent desolation
+        </p>
+      </h2>
+      <p
+        class="cf-msg-screen-text"
+      />
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`StatusMessage wrapInAppSegment 1`] = `
+<DocumentFragment>
+  <div
+    class="cf-app-msg-screen"
+  >
+    <div>
+      <h1
+        class="cf-msg-screen-heading"
+      />
+      <p
+        class="cf-msg-screen-text"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

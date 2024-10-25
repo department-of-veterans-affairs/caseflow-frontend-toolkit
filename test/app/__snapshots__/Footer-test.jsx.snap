@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders with props 1`] = `
+<DocumentFragment>
+  <footer
+    class="cf-app-footer"
+    data-css-f8irbh=""
+  >
+    <div
+      data-css-pw7rlt=""
+    >
+      <div
+        class="cf-push-right"
+      >
+        <a
+          href="https://feedback.va.gov"
+          target="_blank"
+        >
+          Send feedback
+        </a>
+      </div>
+    </div>
+  </footer>
+</DocumentFragment>
+`;
+
+exports[`Footer respects wideApp setting 1`] = `
+<DocumentFragment>
+  <footer
+    class="cf-app-footer"
+    data-css-f8irbh=""
+  >
+    <div
+      data-css-35ly83=""
+    >
+      <div
+        class="cf-push-right"
+      >
+        <a
+          href="https://feedback.va.gov"
+          target="_blank"
+        >
+          Send feedback
+        </a>
+      </div>
+    </div>
+  </footer>
+</DocumentFragment>
+`;
